@@ -1,4 +1,5 @@
 @import "~common/styles/functions.scss";
+@import '~common/styles/mixins.scss';
 
 .aside-list {
   display: flex;
@@ -8,10 +9,24 @@
   padding: 0;
 
   &_item {
-    margin-bottom: get-rem(12);
+    padding-bottom: get-rem(24);
 
     &:last-child {
-      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+  }
+}
+
+@include screenMdOnly {
+  .aside-list {
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: get-rem(-48);
+
+    &_item {
+      padding-bottom: 0;
+      padding-top: get-rem(48);
+      padding-right: get-rem(48);
     }
   }
 }
@@ -22,17 +37,17 @@
   align-items: center;
 
   &__icon {
-    width: get-rem(16);
-    min-width: get-rem(16);
-    height: get-rem(16);
+    width: get-rem(32);
+    min-width: get-rem(32);
+    height: get-rem(32);
   }
 
   &__content {
-    padding-left: get-rem(8);
+    padding-left: get-rem(16);
 
     & > *:not(:last-child) {
       line-height: normal;
-      margin-bottom: get-rem(2);
+      margin-bottom: get-rem(4);
     }
   }
 }

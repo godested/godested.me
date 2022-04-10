@@ -16,23 +16,23 @@ $accent: #516CF7;
   text-decoration: none;
 
   &_heading {
-    font-size: get-rem(19);
+    font-size: get-rem(38);
   }
 
   &_title {
-    font-size: get-rem(14);
+    font-size: get-rem(28);
   }
 
   &_caption {
-    font-size: get-rem(6);
+    font-size: get-rem(12);
   }
 
   &_paragraph-md {
-    font-size: get-rem(8);
+    font-size: get-rem(16);
   }
 
   &_paragraph-sm {
-    font-size: get-rem(7);
+    font-size: get-rem(14);
   }
 
   &_extra-light {
@@ -91,6 +91,9 @@ $accent: #516CF7;
     color: $accent;
   }
 
+  &_no-wrap {
+    white-space: nowrap;
+  }
 
   &_italic {
     font-style: italic;

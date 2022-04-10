@@ -8,7 +8,7 @@
   align-items: stretch;
 }
 
-@include screenMd() {
+@include screenLg() {
   .wrapper {
     padding: get-rem(30);
   }
@@ -17,19 +17,41 @@
     margin: 0 auto;
     flex-direction: row;
     max-width: 1140px;
-    border-radius: get-rem(8);
+    border-radius: get-rem(16);
     overflow: hidden;
-    box-shadow: 0 get-rem(30) get-rem(18) rgba(22, 27, 34, 0.01),
-                0 get-rem(13) get-rem(13) rgba(22, 27, 34, 0.02),
-                0 get-rem(3) get-rem(7) rgba(22, 27, 34, 0.02),
+    box-shadow: 0 get-rem(60) get-rem(36) rgba(22, 27, 34, 0.01),
+                0 get-rem(26) get-rem(26) rgba(22, 27, 34, 0.02),
+                0 get-rem(6) get-rem(14) rgba(22, 27, 34, 0.02),
   }
 }
 
 .aside {
   flex: 0;
   width: 100%;
+  padding: get-rem(64);
 }
 
 .main {
   flex: 1;
+  padding: get-rem(48) get-rem(24);
+}
+
+@include screenMd() {
+  .main {
+    padding: get-rem(48) get-rem(24);
+  }
+
+  .aside {
+    padding: get-rem(48);
+  }
+}
+
+@include screenLg() {
+  .main {
+    padding: get-rem(64) get-rem(48) get-rem(48) get-rem(32);
+  }
+
+  .aside {
+    padding: get-rem(48);
+  }
 }

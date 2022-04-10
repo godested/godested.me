@@ -1,8 +1,9 @@
 @import "~common/styles/variables.scss";
+@import "~common/styles/mixins.scss";
 @import "~common/components/typography/typography.module.scss";
 
 .block {
-  margin-bottom: get-rem(24);
+  margin-bottom: get-rem(48);
 
   &:last-child {
     margin-bottom: 0;
@@ -10,11 +11,11 @@
 }
 
 .title {
-  margin-bottom: get-rem(4);
+  margin-bottom: get-rem(8);
 }
 
 .paragraph {
-  margin-bottom: get-rem(4);
+  margin-bottom: get-rem(8);
 
   &:last-child {
     margin-bottom: 0;
@@ -27,7 +28,7 @@
   list-style-type: none;
 
   &__item {
-    margin-bottom: get-rem(6);
+    margin-bottom: get-rem(12);
 
     &:last-child {
       margin-bottom: 0;
@@ -37,15 +38,16 @@
 
 .experience {
   background-color: #ffffff;
-  padding: get-rem(8) get-rem(12) get-rem(8) get-rem(8);
-  border-radius: get-rem(8);
-  box-shadow: 0 get-rem(9) get-rem(5) rgba(0, 0, 0, 0.01),
-              0 get-rem(4) get-rem(4) rgba(0, 0, 0, 0.02),
-              0 get-rem(1) get-rem(2) rgba(0, 0, 0, 0.02);
+  padding: get-rem(16);
+  border-radius: get-rem(16);
+  box-shadow: 0 get-rem(18) get-rem(10) rgba(0, 0, 0, 0.01),
+              0 get-rem(8) get-rem(8) rgba(0, 0, 0, 0.02),
+              0 get-rem(2) get-rem(4) rgba(0, 0, 0, 0.02);
 
   &__header {
-    margin-bottom: get-rem(6);
+    margin-bottom: get-rem(12);
     display: flex;
+    flex-direction: column-reverse;
     align-items: stretch;
   }
 
@@ -54,32 +56,28 @@
     align-items: center;
     flex-direction: row;
     flex-grow: 1;
-    padding-right: get-rem(6);
+    padding-right: get-rem(12);
   }
 
   &__company-name {
-    margin-bottom: get-rem(1);
+    margin-bottom: get-rem(2);
   }
 
   &__company-logo {
-    width: get-rem(24);
-    height: get-rem(24);
+    width: get-rem(48);
+    height: get-rem(48);
   }
 
   &__company-info {
-    padding-left: get-rem(6);
+    padding-left: get-rem(12);
   }
 
   &__metrics {
+    padding-bottom: get-rem(8);
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: flex-end;
-    flex-shrink: 1;
-  }
-
-  &__dates {
-    margin-bottom: get-rem(2);
   }
 
   &__location {
@@ -89,19 +87,40 @@
 
   &__location-icon {
     display: block;
-    width: get-rem(6);
-    min-width: get-rem(6);
-    height: get-rem(6);
-    margin-right: get-rem(2);
+    width: get-rem(12);
+    min-width: get-rem(12);
+    height: get-rem(12);
+    margin-right: get-rem(4);
     transform: translateY(-22.5%);
     fill: $lightGray;
   }
 
   &__paragraph {
-    margin-bottom: get-rem(2);
+    margin-bottom: get-rem(4);
 
     &:last-child {
       margin-bottom: 0;
+    }
+  }
+}
+
+@include screenMd {
+  .experience {
+    padding: get-rem(16) get-rem(24) get-rem(16) get-rem(16);
+
+    &__header {
+      flex-direction: row;
+    }
+
+    &__metrics {
+      flex-direction: column;
+      justify-content: center;
+      flex-shrink: 1;
+      padding-bottom: 0;
+    }
+
+    &__dates {
+      margin-bottom: get-rem(4);
     }
   }
 }
@@ -113,12 +132,12 @@
   flex-direction: row;
   padding: 0;
   list-style-type: none;
-  margin: get-rem(-6) 0 0 get-rem(-6);
+  margin: get-rem(-12) 0 0 get-rem(-12);
 
   &__item {
-    flex: 1 1 33.333333%;
-    max-width: 33.333333%;
-    padding: get-rem(6) 0 0 get-rem(6);
+    flex: 1 1 100%;
+    max-width: 100%;
+    padding: get-rem(12) 0 0 get-rem(12);
 
     &:last-child {
       margin-bottom: 0;
@@ -126,31 +145,39 @@
   }
 }
 
+@include screenXl {
+  .education-list__item {
+    flex: 1 1 33.333333%;
+    max-width: 33.333333%;
+  }
+}
+
 .education {
   height: 100%;
   background-color: #ffffff;
-  padding: get-rem(8) get-rem(12) get-rem(8) get-rem(8);
-  border-radius: get-rem(8);
-  box-shadow: 0 get-rem(9) get-rem(5) rgba(0, 0, 0, 0.01),
-              0 get-rem(4) get-rem(4) rgba(0, 0, 0, 0.02),
-              0 get-rem(1) get-rem(2) rgba(0, 0, 0, 0.02);
+  padding: get-rem(16) get-rem(24) get-rem(16) get-rem(16);
+  border-radius: get-rem(16);
+  box-shadow: 0 get-rem(18) get-rem(10) rgba(0, 0, 0, 0.01),
+              0 get-rem(8) get-rem(8) rgba(0, 0, 0, 0.02),
+              0 get-rem(2) get-rem(4) rgba(0, 0, 0, 0.02);
   display: flex;
   flex-direction: row;
 
   &__company-logo {
-    width: get-rem(24);
-    height: get-rem(24);
+    width: get-rem(48);
+    min-width: get-rem(48);
+    height: get-rem(48);
   }
 
   &__info {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding-left: get-rem(6);
+    padding-left: get-rem(12);
 
     & > * {
       line-height: 1.1;
-      margin-bottom: get-rem(1);
+      margin-bottom: get-rem(2);
     }
   }
 
@@ -166,18 +193,18 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: get-rem(8);
-    height: get-rem(8);
-    min-width: get-rem(8);
+    width: get-rem(16);
+    height: get-rem(16);
+    min-width: get-rem(16);
     border-radius: 50%;
-    margin-right: get-rem(4);
+    margin-right: get-rem(8);
     transform: translateY(-10%);
     background-color: #E1E7FE;
   }
 
   &__certificate-icon {
     fill: currentColor;
-    width: get-rem(6);
-    height: get-rem(6);
+    width: get-rem(12);
+    height: get-rem(12);
   }
 }

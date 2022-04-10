@@ -2,7 +2,6 @@
 
 .aside {
   background-color: #ffffff;
-  padding: get-rem(24);
   white-space: nowrap;
 }
 
@@ -15,11 +14,11 @@
 }
 
 .profile-avatar {
-  width: get-rem(48);
-  height: get-rem(48);
+  width: get-rem(96);
+  height: get-rem(96);
   border-radius: 50%;
   overflow: hidden;
-  margin-bottom: get-rem(12);
+  margin-bottom: get-rem(24);
 }
 
 .icon-container {
@@ -34,9 +33,9 @@
 
   &__icon {
     fill: #646A7B;
-    width: get-rem(10);
-    min-width: get-rem(10);
-    height: get-rem(10);
+    width: get-rem(20);
+    min-width: get-rem(20);
+    height: get-rem(20);
   }
 }
 
@@ -50,7 +49,7 @@
 }
 
 .flag-icon {
-  border-radius: get-rem(2);
+  border-radius: get-rem(4);
   width: 100%;
   overflow: hidden;
 }

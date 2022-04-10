@@ -6,8 +6,20 @@
   }
 }
 
+@mixin screenMdOnly() {
+  @media screen and (min-width: $screenMd) and (max-width: $screenLg) {
+    @content;
+  }
+}
+
 @mixin screenLg() {
   @media screen and (min-width: $screenLg) {
+    @content;
+  }
+}
+
+@mixin screenXl() {
+  @media screen and (min-width: $screenXl) {
     @content;
   }
 }

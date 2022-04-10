@@ -18,6 +18,7 @@ export function Typography<T extends TagName>({
   inline,
   italic,
   children,
+  nowrap,
   className,
   innerRef,
   ...restProp
@@ -31,6 +32,7 @@ export function Typography<T extends TagName>({
         styles.typography,
         inline && styles.typographyInline,
         italic && styles.typographyItalic,
+        nowrap && styles.typographyNoWrap,
         resolveClassNameFromColor(fontColor),
         resolveClassNameFromWeight(fontWeight),
         resolveClassNameFromVariant(variant),
@@ -82,6 +84,7 @@ export namespace Typography {
           fontWeight: Weight;
           inline: true;
           italic: true;
+          nowrap: true;
           innerRef: Ref<T>;
         }>
       >

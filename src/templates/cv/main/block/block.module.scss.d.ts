@@ -39,6 +39,7 @@ export const typographyItalic: string;
 export const typographyLight: string;
 export const typographyLightGrayColor: string;
 export const typographyMedium: string;
+export const typographyNoWrap: string;
 export const typographyParagraphMd: string;
 export const typographyParagraphSm: string;
 export const typographyRegular: string;

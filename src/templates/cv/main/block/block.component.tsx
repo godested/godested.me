@@ -116,6 +116,7 @@ function Experience({
               fontWeight={Typography.Weight.Medium}
               fontColor={Typography.Color.Black}
               className={styles.experienceCompanyName}
+              nowrap
               {...resolveCompanyProps(companyURL)}
             >
               {companyName}
@@ -124,6 +125,7 @@ function Experience({
               as="h3"
               variant={Typography.Variant.Caption}
               fontColor={Typography.Color.LightGray}
+              nowrap
             >
               {position}
             </Typography>
@@ -133,6 +135,7 @@ function Experience({
           <Typography
             variant={Typography.Variant.Caption}
             className={styles.experienceDates}
+            nowrap
           >
             {formatDateFromTimestamp(dateStarted)} -{' '}
             {optionalMap(dateEnded, formatDateFromTimestamp, 'Present')} ·{' '}
@@ -142,6 +145,7 @@ function Experience({
             variant={Typography.Variant.Caption}
             fontColor={Typography.Color.LightGray}
             className={styles.experienceLocation}
+            nowrap
           >
             <LocationIcon className={styles.experienceLocationIcon} />
             <span>{location}</span>
@@ -184,11 +188,12 @@ function Education({
           variant={Typography.Variant.ParagraphMD}
           fontWeight={Typography.Weight.Medium}
           fontColor={Typography.Color.Black}
+          nowrap
           {...resolveCompanyProps(companyURL)}
         >
           {courseName}
         </Typography>
-        <Typography variant={Typography.Variant.Caption}>
+        <Typography variant={Typography.Variant.Caption} nowrap>
           {formatDateFromTimestamp(dateStarted)} -{' '}
           {optionalMap(dateEnded, formatDateFromTimestamp, 'Present')}
         </Typography>
@@ -197,6 +202,7 @@ function Education({
             as="h3"
             variant={Typography.Variant.Caption}
             fontColor={Typography.Color.DarkGray}
+            nowrap
           >
             {description}
           </Typography>
@@ -210,6 +216,7 @@ function Education({
             variant={Typography.Variant.Caption}
             className={styles.educationCertificate}
             fontColor={Typography.Color.DarkGray}
+            nowrap
           >
             <span className={styles.educationCertificateIconContainer}>
               <LinkIcon className={styles.educationCertificateIcon} />

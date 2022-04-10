@@ -1,7 +1,7 @@
 @import "~common/styles/functions.scss";
 
 .block {
-  margin-bottom: get-rem(24);
+  margin-bottom: get-rem(48);
 
   &:last-child {
     margin-bottom: 0;
@@ -10,5 +10,5 @@
 
 
 .title {
-  margin-bottom: get-rem(12);
+  margin-bottom: get-rem(24);
 }
