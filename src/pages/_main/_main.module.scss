@@ -4,6 +4,7 @@
 .container {
   position: relative;
   margin-bottom: get-rem(96);
+  padding: 0 get-rem(12);
 }
 
 @include screenMd {
@@ -14,6 +15,7 @@
 
 .title {
   font-size: get-rem(46);
+  line-height: 0.8em;
   color: hsl(0, 0%, 80%);
 }
 
