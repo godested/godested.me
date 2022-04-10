@@ -8,14 +8,15 @@ import {
 import classNames from 'classnames';
 import { InferProps, TagName, WithOptionalClassNameProps } from 'common/types';
 import { CSSClassName } from 'common/styles';
-import { assertNever } from 'common/utils';
+import { assertNever, optionalMap } from 'common/utils';
 import * as styles from './typography.module.scss';
 
-export function Typography<T extends ElementType>({
+// eslint-disable-next-line @typescript-eslint/ban-types
+export function Typography<D extends {}, T extends ElementType<D>>({
   variant = Typography.Variant.ParagraphMD,
   fontWeight = Typography.Weight.Regular,
-  fontColor = Typography.Color.DarkGray,
   as: ComponentToRender = resolveDefaultTagNameFromVariant(variant),
+  fontColor,
   inline,
   italic,
   children,
@@ -34,11 +35,11 @@ export function Typography<T extends ElementType>({
         inline && styles.typographyInline,
         italic && styles.typographyItalic,
         nowrap && styles.typographyNoWrap,
-        resolveClassNameFromColor(fontColor),
+        optionalMap(fontColor, resolveClassNameFromColor),
         resolveClassNameFromWeight(fontWeight),
         resolveClassNameFromVariant(variant),
       )}
-      {...(restProp as object)}
+      {...restProp}
     >
       {children}
     </Component>

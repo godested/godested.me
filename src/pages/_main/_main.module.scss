@@ -1,0 +1,44 @@
+@import '~common/styles/functions.scss';
+@import '~common/styles/mixins.scss';
+
+.container {
+  position: relative;
+  margin-bottom: get-rem(96);
+}
+
+@include screenMd {
+  .container {
+    margin-top: get-rem(96);
+  }
+}
+
+.title {
+  font-size: get-rem(46);
+  color: hsl(0, 0%, 80%);
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  margin-top: get-rem(26);
+}
+
+@include screenMd {
+  .links {
+    flex-direction: row;
+    position: relative;
+  }
+}
+
+.link {
+  opacity: 1;
+  transition: opacity 0.1s ease-in-out;
+  margin-bottom: 1.10em;
+  margin-right: 3em;
+  color: hsl(0, 0%, 100%);
+
+  &:hover {
+    opacity: 0.5;
+  }
+}

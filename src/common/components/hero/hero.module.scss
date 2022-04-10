@@ -1,8 +1,10 @@
+@import '~common/styles/functions.scss';
+
 .hero {
   display: flex;
   align-items: stretch;
   min-height: 100%;
-  background-color: hsla(0, 0%, 5%, 1);
+  background-color: hsla(0, 0%, 20%, 1);
 
   &__canvas {
     position: absolute;
@@ -10,8 +12,10 @@
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 1;
+    z-index: 3;
     filter: blur(60px);
+    pointer-events: none;
+    mix-blend-mode: color-dodge;
   }
 
   &__body {
@@ -20,6 +24,15 @@
     align-items: center;
     position: relative;
     flex-grow: 1;
-    z-index: 2;
+    z-index: 1;
   }
+}
+
+.logo {
+  position: fixed;
+  z-index: 2;
+  top: get-rem(20);
+  left: get-rem(20);
+  width: get-rem(40);
+  fill: #fff;
 }
