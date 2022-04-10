@@ -2,16 +2,16 @@ import { animationFrameScheduler, fromEvent, interval, startWith } from 'rxjs';
 import SimplexNoise from 'simplex-noise';
 import { Disposable, unwrap } from 'common/utils';
 
-const circleCount = 200;
+const circleCount = 150;
 const circlePropCount = 8;
 const circlePropsLength = circleCount * circlePropCount;
 const baseSpeed = 0.1;
 const rangeSpeed = 1;
 const baseTTL = 150;
 const rangeTTL = 200;
-const baseRadius = 15;
-const rangeRadius = 30;
-const rangeHue = 200;
+const baseRadius = 30;
+const rangeRadius = 60;
+const rangeHue = 60;
 const xOff = 0.0015;
 const yOff = 0.0015;
 const zOff = 0.0015;
@@ -144,7 +144,6 @@ export class HeroCanvas extends Disposable {
 
   private render() {
     this._visibleContext.save();
-    this._visibleContext.filter = 'blur(30px)';
     this._visibleContext.drawImage(this._hiddenCanvas, 0, 0);
     this._visibleContext.restore();
   }
@@ -153,15 +152,15 @@ export class HeroCanvas extends Disposable {
     this._hiddenContext.clearRect(
       0,
       0,
-      this._visibleCanvas.width,
-      this._visibleCanvas.height,
+      this._hiddenCanvas.width,
+      this._hiddenCanvas.height,
     );
     this._visibleContext.fillStyle = 'hsla(0,0%,5%,1)';
     this._visibleContext.fillRect(
       0,
       0,
-      this._hiddenCanvas.width,
-      this._hiddenCanvas.height,
+      this._visibleCanvas.width,
+      this._visibleCanvas.height,
     );
 
     this.updateCircles();
