@@ -4,7 +4,7 @@
   display: flex;
   align-items: stretch;
   min-height: 100%;
-  background-color: hsla(0, 0%, 20%, 1);
+  background-color: hsla(0, 0%, 6%, 1);
 
   &__canvas {
     position: absolute;
@@ -14,8 +14,9 @@
     height: 100%;
     z-index: 3;
     filter: blur(60px);
+    opacity: 0.33;
     pointer-events: none;
-    mix-blend-mode: color-dodge;
+    mix-blend-mode: hard-light;
   }
 
   &__body {
