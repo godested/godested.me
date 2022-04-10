@@ -1,37 +1,43 @@
-name: Check PR
+name: CI/CD
 
-on: [pull_request]
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
 
 jobs:
-  run-ci:
-    env:
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  build:
 
-    name: Run Type Check & Linters
     runs-on: ubuntu-latest
 
+    strategy:
+      matrix:
+        node-version: [14.x]
+
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
+    - name: Checkout repository
+      uses: actions/checkout@v2
 
-      - name: Set up Node
-        uses: actions/setup-node@v3
-        with:
-          node-version: 14
+    - name: Set up Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
 
-      - name: Install dependencies (with cache)
-        uses: bahmutov/npm-install@HEAD
+    - name: Install dependencies
+      run: npm install
 
-      - name: Check types
-        run: npm run type-check
+    - name: Build
+      run: npm run build
 
-      - name: Check linting
-        run: npm run lint
-
-      - name: Run tests
-        run: npm run test
-
-      - name: Check commits messages
-        uses: wagoid/commitlint-github-action@v4
+    - name: Deploy
+      run: |
+        git config --global user.name $user_name
+        git config --global user.email $user_email
+        git remote set-url origin https://${github_token}@github.com/${repository}
+        npm run deploy
+      env:
+        user_name: 'github-actions[bot]'
+        user_email: 'github-actions[bot]@users.noreply.github.com'
+        github_token: ${{ secrets.ACTIONS_DEPLOY_ACCESS_TOKEN }}
+        repository: ${{ github.repository }}
