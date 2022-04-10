@@ -1,3 +1,4 @@
+import { ElementType } from 'react';
 import { CSSClassName } from 'common/styles';
 
 type AllowedClassNameKey =
@@ -24,3 +25,6 @@ export type WithAdditionalClassNameProps<
 export type WithOptionalClassNameProps<
   TKey extends AllowedClassNameKey = 'className',
 > = Partial<WithAdditionalClassNameProps<TKey>>;
+
+// eslint-disable-next-line @typescript-eslint/ban-types
+export type InferProps<T> = T extends ElementType<infer P> ? P : {};

@@ -3,14 +3,15 @@ import {
   ReactElement,
   Ref,
   ComponentPropsWithoutRef,
+  ElementType,
 } from 'react';
 import classNames from 'classnames';
-import { TagName, WithOptionalClassNameProps } from 'common/types';
+import { InferProps, TagName, WithOptionalClassNameProps } from 'common/types';
 import { CSSClassName } from 'common/styles';
 import { assertNever } from 'common/utils';
 import * as styles from './typography.module.scss';
 
-export function Typography<T extends TagName>({
+export function Typography<T extends ElementType>({
   variant = Typography.Variant.ParagraphMD,
   fontWeight = Typography.Weight.Regular,
   fontColor = Typography.Color.DarkGray,
@@ -22,7 +23,7 @@ export function Typography<T extends TagName>({
   className,
   innerRef,
   ...restProp
-}: Typography.Props<T>): ReactElement {
+}: Typography.Props<T> & InferProps<T>): ReactElement {
   const Component = ComponentToRender as 'h1'; // hack for not working with large union
   return (
     <Component
@@ -71,9 +72,10 @@ export namespace Typography {
     Gray,
     LightGray,
     Accent,
+    White,
   }
 
-  export type Props<T extends TagName> = Readonly<
+  export type Props<T extends ElementType> = Readonly<
     ComponentPropsWithoutRef<T> &
       WithOptionalClassNameProps &
       PropsWithChildren<
@@ -147,6 +149,8 @@ function resolveClassNameFromColor(color: Typography.Color): CSSClassName {
       return styles.typographyLightGrayColor;
     case Typography.Color.Accent:
       return styles.typographyAccentColor;
+    case Typography.Color.White:
+      return styles.typographyWhiteColor;
     default:
       return assertNever(color);
   }

@@ -21,3 +21,4 @@ export const typographyParagraphSm: string;
 export const typographyRegular: string;
 export const typographyThin: string;
 export const typographyTitle: string;
+export const typographyWhiteColor: string;
