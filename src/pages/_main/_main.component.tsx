@@ -22,6 +22,7 @@ export function MainPage(): ReactElement {
               as="span"
               variant={Typography.Variant.Title}
               fontWeight={Typography.Weight.Medium}
+              className={styles.username}
               inline
             >
               @godested
