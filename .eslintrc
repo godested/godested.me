@@ -16,7 +16,13 @@
     "Atomics": "readonly",
     "SharedArrayBuffer": "readonly"
   },
-  "plugins": ["react", "react-hooks", "jsx-a11y", "prettier", "jest"],
+  "plugins": [
+    "react",
+    "react-hooks",
+    "jsx-a11y",
+    "prettier",
+    "jest"
+  ],
   "extends": [
     "plugin:react/recommended",
     "airbnb",
@@ -25,11 +31,14 @@
     "plugin:jest/style"
   ],
   "rules": {
+    "arrow-body-style": "off",
     "jest/prefer-strict-equal": "error",
     "jest/prefer-to-have-length": "warn",
     "prettier/prettier": "error",
     "import/prefer-default-export": "off",
+    "import/export": "off",
     "react/prop-types": "off",
+    "react/react-in-jsx-scope": "off",
     "react/jsx-filename-extension": "off",
     "react/jsx-props-no-spreading": "off",
     "import/no-extraneous-dependencies": [
@@ -67,18 +76,27 @@
       "parserOptions": {
         "project": "./tsconfig.json"
       },
-      "plugins": ["@typescript-eslint/eslint-plugin"],
+      "plugins": [
+        "@typescript-eslint/eslint-plugin"
+      ],
       "extends": [
         "plugin:@typescript-eslint/eslint-recommended",
         "plugin:@typescript-eslint/recommended",
         "prettier"
       ],
       "rules": {
+        "no-shadow": "off",
+        "@typescript-eslint/no-shadow": "error",
         "@typescript-eslint/explicit-function-return-type": "off",
         "@typescript-eslint/no-explicit-any": "off",
         "@typescript-eslint/no-var-requires": "off",
-        "no-use-before-define": [0],
-        "@typescript-eslint/no-use-before-define": [1],
+        "@typescript-eslint/no-namespace": "off",
+        "no-use-before-define": [
+          0
+        ],
+        "@typescript-eslint/no-use-before-define": [
+          0
+        ],
         "import/no-unresolved": 0,
         "import/no-extraneous-dependencies": [
           "error",
@@ -94,12 +112,17 @@
         "quotes": "off",
         "@typescript-eslint/quotes": [
           2,
-          "backtick",
+          "single",
           {
             "avoidEscape": true
           }
         ],
-        "@typescript-eslint/no-unused-vars": [2, { "argsIgnorePattern": "^_" }]
+        "@typescript-eslint/no-unused-vars": [
+          2,
+          {
+            "argsIgnorePattern": "^_"
+          }
+        ]
       }
     }
   ],

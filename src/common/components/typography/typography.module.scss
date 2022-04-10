@@ -1,0 +1,102 @@
+@import '~common/styles/variables.scss';
+@import '~common/styles/functions.scss';
+
+$black: #2E2E48;
+$darkGray: #47516B;
+$gray: #646A7B;
+$lightGray: #79819A;
+$accent: #516CF7;
+
+.typography {
+  display: block;
+  font-family: $primaryFont;
+  margin: 0;
+  padding: 0;
+  line-height: 125%;
+  text-decoration: none;
+
+  &_heading {
+    font-size: get-rem(19);
+  }
+
+  &_title {
+    font-size: get-rem(14);
+  }
+
+  &_caption {
+    font-size: get-rem(6);
+  }
+
+  &_paragraph-md {
+    font-size: get-rem(8);
+  }
+
+  &_paragraph-sm {
+    font-size: get-rem(7);
+  }
+
+  &_extra-light {
+    font-weight: 100;
+  }
+
+  &_light {
+    font-weight: 200;
+  }
+
+  &_thin {
+    font-weight: 300;
+  }
+
+  &_regular {
+    font-weight: 400;
+  }
+
+  &_medium {
+    font-weight: 500;
+  }
+
+  &_demi-bold {
+    font-weight: 600;
+  }
+
+  &_bold {
+    font-weight: 700;
+  }
+
+  &_extra-bold {
+    font-weight: 800;
+  }
+
+  &_black {
+    font-weight: 900;
+  }
+
+  &_black-color {
+    color: $black;
+  }
+
+  &_dark-gray-color {
+    color: $darkGray;
+  }
+
+  &_gray-color {
+    color: $gray;
+  }
+
+  &_light-gray-color {
+    color: $lightGray;
+  }
+
+  &_accent-color {
+    color: $accent;
+  }
+
+
+  &_italic {
+    font-style: italic;
+  }
+
+  &_inline {
+    display: inline-block;
+  }
+}

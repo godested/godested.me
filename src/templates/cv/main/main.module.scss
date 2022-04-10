@@ -1,0 +1,7 @@
+@import '~common/styles/functions.scss';
+
+.main {
+  // TODO: variables
+  background-color: #F7F9FC;
+  padding: get-rem(32) get-rem(24) get-rem(24) get-rem(16) ;
+}

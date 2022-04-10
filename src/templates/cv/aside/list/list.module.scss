@@ -1,0 +1,38 @@
+@import "~common/styles/functions.scss";
+
+.aside-list {
+  display: flex;
+  list-style-type: none;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+
+  &_item {
+    margin-bottom: get-rem(12);
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.item-with-icon {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  &__icon {
+    width: get-rem(16);
+    min-width: get-rem(16);
+    height: get-rem(16);
+  }
+
+  &__content {
+    padding-left: get-rem(8);
+
+    & > *:not(:last-child) {
+      line-height: normal;
+      margin-bottom: get-rem(2);
+    }
+  }
+}

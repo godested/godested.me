@@ -1,38 +1,40 @@
 {
-  "name": "gatsby-starter-ts",
-  "description": "A TypeScript starter for Gatsby that includes all you need to build amazing projects",
+  "name": "godested-site",
+  "description": "Godested site",
   "version": "1.0.0",
   "private": true,
-  "author": "João Pedro Schmitz <hey@joaopedro.dev> (https://joaopedro.dev)",
+  "author": "Zaitsev Ilya <godested@gmail.com>",
   "license": "MIT",
-  "keywords": [
-    "gatsby",
-    "starter",
-    "typescript"
-  ],
   "scripts": {
+    "prestart": "npm run tsm:build",
     "start": "gatsby develop",
+    "prebuild": "npm run tsm:build",
     "build": "gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
+    "tsm:watch": "npm run tsm:build -- --watch",
+    "tsm:build": "node ./node_modules/.bin/typed-scss-modules \"./src/**/*.module.scss\" --aliasPrefixes.\"~\" \"src/\" --logLevel \"error\"",
     "type-check": "tsc",
-    "lint": "eslint --ignore-path .gitignore \"src/**/*.+(ts|js|tsx)\"",
-    "format": "prettier --ignore-path .gitignore \"src/**/*.+(ts|js|tsx)\" --write",
+    "lint": "eslint --ignore-path .gitignore \"src/**/*.+(ts|tsx)\"",
+    "format": "prettier --ignore-path .gitignore \"src/**/*.+(ts|tsx)\" --write",
     "postinstall": "husky install",
     "test": "jest",
     "commit": "cz"
   },
   "lint-staged": {
-    "./src/**/*.{ts,js,jsx,tsx}": [
-      "yarn lint --fix",
-      "yarn format"
+    "./src/**/*.{ts,tsx}": [
+      "npm run lint --fix",
+      "npm run format"
     ]
   },
   "dependencies": {
+    "classnames": "2.3.1",
     "gatsby": "4.11.1",
+    "gatsby-plugin-react-helmet": "5.11.0",
+    "normalize.css": "8.0.1",
     "react": "18.0.0",
     "react-dom": "18.0.0",
-    "tsconfig-paths-webpack-plugin": "3.5.2"
+    "react-helmet": "6.1.0"
   },
   "devDependencies": {
     "@babel/preset-react": "7.16.7",
@@ -47,6 +49,7 @@
     "@types/node": "16.11.26",
     "@types/react": "17.0.43",
     "@types/react-dom": "17.0.14",
+    "@types/react-helmet": "6.1.5",
     "@typescript-eslint/eslint-plugin": "5.18.0",
     "@typescript-eslint/parser": "5.18.0",
     "babel-jest": "27.5.1",
@@ -63,13 +66,19 @@
     "eslint-plugin-prettier": "4.0.0",
     "eslint-plugin-react": "7.29.4",
     "eslint-plugin-react-hooks": "4.4.0",
+    "gatsby-plugin-provide-react": "1.0.2",
+    "gatsby-plugin-react-svg": "3.1.0",
+    "gatsby-plugin-sass": "5.11.1",
     "husky": "7.0.4",
     "identity-obj-proxy": "3.0.0",
     "jest": "27.5.1",
     "lint-staged": "12.3.7",
     "prettier": "2.6.2",
+    "sass": "1.50.0",
     "ts-jest": "27.1.4",
-    "typescript": "4.6.3"
+    "tsconfig-paths-webpack-plugin": "3.5.2",
+    "typed-scss-modules": "6.2.0",
+    "typescript": "4.4.2"
   },
   "config": {
     "commitizen": {

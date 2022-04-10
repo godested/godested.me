@@ -1,24 +1,37 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "allowJs": true,
+    "importHelpers": true,
+    "target": "es6",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": false,
+    "allowSyntheticDefaultImports": true,
     "skipLibCheck": true,
-    "strict": false,
     "forceConsistentCasingInFileNames": true,
-    "noEmit": true,
-    "esModuleInterop": true,
-    "module": "esnext",
+    "esModuleInterop": false,
+    "module": "es6",
     "moduleResolution": "node",
+    "downlevelIteration": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noImplicitOverride": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "incremental": true,
     "resolveJsonModule": true,
-    "isolatedModules": true,
+    "isolatedModules": false,
+    "strict": true,
     "jsx": "preserve",
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["./src/*"],
-      "@/static/*": ["./static/*"]
-    }
+    "baseUrl": "./src",
   },
-  "exclude": ["node_modules"],
-  "include": ["./src/**/*", "./__helpers__/*"]
+  "exclude": [
+    "node_modules"
+  ],
+  "include": [
+    "./src/**/*",
+    "./__helpers__/*"
+  ]
 }

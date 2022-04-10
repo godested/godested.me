@@ -1,0 +1,35 @@
+@import '~common/styles/mixins.scss';
+@import '~common/styles/functions.scss';
+
+.content {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  align-items: stretch;
+}
+
+@include screenMd() {
+  .wrapper {
+    padding: get-rem(30);
+  }
+
+  .content {
+    margin: 0 auto;
+    flex-direction: row;
+    max-width: 1140px;
+    border-radius: get-rem(8);
+    overflow: hidden;
+    box-shadow: 0 get-rem(30) get-rem(18) rgba(22, 27, 34, 0.01),
+                0 get-rem(13) get-rem(13) rgba(22, 27, 34, 0.02),
+                0 get-rem(3) get-rem(7) rgba(22, 27, 34, 0.02),
+  }
+}
+
+.aside {
+  flex: 0;
+  width: 100%;
+}
+
+.main {
+  flex: 1;
+}

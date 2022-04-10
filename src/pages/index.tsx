@@ -1,16 +1,10 @@
-import React from 'react';
+import { ReactElement } from 'react';
+import { Typography } from 'common/components/typography';
 
-import Title from '@/components/Title';
-
-export default function Home() {
+export default function MainPage(): ReactElement {
   return (
     <main>
-      <Title>Hello TypeScript!</Title>
-      <p>A TypeScript starter for Gatsby. Great for advanced users.</p>
-      <p>
-        Follow me on Twitter (
-        <a href="https://twitter.com/jpedroschmitz">@jpedroschmitz</a>)
-      </p>
+      <Typography>Hello, world!</Typography>
     </main>
   );
 }

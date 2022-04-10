@@ -1,0 +1,56 @@
+@import "~common/styles/functions.scss";
+
+.aside {
+  background-color: #ffffff;
+  padding: get-rem(24);
+  white-space: nowrap;
+}
+
+.position {
+  background: linear-gradient(102.91deg, #53266F 2.33%, #2A67AC 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+}
+
+.profile-avatar {
+  width: get-rem(48);
+  height: get-rem(48);
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: get-rem(12);
+}
+
+.icon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+  min-width: 100%;
+  background-color: #E2E6EE;
+
+  &__icon {
+    fill: #646A7B;
+    width: get-rem(10);
+    min-width: get-rem(10);
+    height: get-rem(10);
+  }
+}
+
+.social-icon {
+  border-radius: 50%;
+  overflow: hidden;
+  object-fit: contain;
+  width: 100%;
+  min-width: 100%;
+  height: 100%;
+}
+
+.flag-icon {
+  border-radius: get-rem(2);
+  width: 100%;
+  overflow: hidden;
+}

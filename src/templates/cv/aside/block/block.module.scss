@@ -1,0 +1,14 @@
+@import "~common/styles/functions.scss";
+
+.block {
+  margin-bottom: get-rem(24);
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+
+.title {
+  margin-bottom: get-rem(12);
+}

@@ -1,9 +1,10 @@
-import React from 'react';
+import { ReactElement } from 'react';
+import { Typography } from 'common/components/typography';
 
-export default function NotFound() {
+export default function NotFound(): ReactElement {
   return (
     <main>
-      <p>Sorry, page not found!</p>
+      <Typography>Sorry, page not found!</Typography>
     </main>
   );
 }
