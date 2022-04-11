@@ -1,3 +1,4 @@
-import { ReactHTML } from 'react';
+export type TagName = keyof JSX.IntrinsicElements;
 
-export type TagName = keyof ReactHTML;
+// eslint-disable-next-line @typescript-eslint/ban-types
+export type ComponentType<P = {}> = TagName | React.ComponentType<P>;

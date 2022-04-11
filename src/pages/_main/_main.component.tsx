@@ -14,19 +14,17 @@ export function MainPage(): ReactElement {
         <main className={styles.container}>
           <Typography
             variant={Typography.Variant.Heading}
-            fontWeight={Typography.Weight.Medium}
+            fontWeight={Typography.Weight.DemiBold}
             className={styles.title}
           >
             Ilya Zaitsev{' '}
-            <Typography
-              as="span"
-              variant={Typography.Variant.Title}
-              fontWeight={Typography.Weight.Medium}
-              className={styles.username}
-              inline
-            >
-              @godested
-            </Typography>
+          </Typography>
+          <Typography
+            variant={Typography.Variant.Title}
+            fontWeight={Typography.Weight.Medium}
+            className={styles.username}
+          >
+            @godested
           </Typography>
           {/* ul -> li + config? */}
           <div className={styles.links}>

@@ -1,18 +1,11 @@
-import {
-  PropsWithChildren,
-  ReactElement,
-  Ref,
-  ComponentPropsWithoutRef,
-  ElementType,
-} from 'react';
+import { ReactElement, Ref, ElementType, ReactNode } from 'react';
 import classNames from 'classnames';
-import { InferProps, TagName, WithOptionalClassNameProps } from 'common/types';
 import { CSSClassName } from 'common/styles';
 import { assertNever, optionalMap } from 'common/utils';
+import { InferProps, WithOptionalClassNameProps } from 'common/types';
 import * as styles from './typography.module.scss';
 
-// eslint-disable-next-line @typescript-eslint/ban-types
-export function Typography<D extends {}, T extends ElementType<D>>({
+export function Typography<T extends ElementType = 'h1'>({
   variant = Typography.Variant.ParagraphMD,
   fontWeight = Typography.Weight.Regular,
   as: ComponentToRender = resolveDefaultTagNameFromVariant(variant),
@@ -77,20 +70,18 @@ export namespace Typography {
   }
 
   export type Props<T extends ElementType> = Readonly<
-    ComponentPropsWithoutRef<T> &
-      WithOptionalClassNameProps &
-      PropsWithChildren<
-        Partial<{
-          as: T;
-          variant: Variant;
-          fontColor: Color;
-          fontWeight: Weight;
-          inline: true;
-          italic: true;
-          nowrap: true;
-          innerRef: Ref<T>;
-        }>
-      >
+    WithOptionalClassNameProps &
+      Partial<{
+        as: T;
+        variant: Variant;
+        fontColor: Color;
+        fontWeight: Weight;
+        inline: true;
+        italic: true;
+        nowrap: true;
+        children: ReactNode | undefined;
+        innerRef: Ref<T>;
+      }>
   >;
 }
 
@@ -159,7 +150,7 @@ function resolveClassNameFromColor(color: Typography.Color): CSSClassName {
 
 function resolveDefaultTagNameFromVariant(
   variant: Typography.Variant,
-): TagName {
+): ElementType {
   switch (variant) {
     case Typography.Variant.Heading:
       return 'h2';

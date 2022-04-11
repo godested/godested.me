@@ -26,5 +26,8 @@ export type WithOptionalClassNameProps<
   TKey extends AllowedClassNameKey = 'className',
 > = Partial<WithAdditionalClassNameProps<TKey>>;
 
-// eslint-disable-next-line @typescript-eslint/ban-types
-export type InferProps<T> = T extends ElementType<infer P> ? P : {};
+export type InferProps<T extends ElementType> = T extends ElementType<infer P>
+  ? P
+  : T extends keyof JSX.IntrinsicElements
+  ? JSX.IntrinsicElements[T]
+  : never;

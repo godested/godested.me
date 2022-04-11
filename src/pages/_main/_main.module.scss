@@ -20,14 +20,15 @@
 }
 
 .username {
-  color: hsl(0, 0%, 60%);
+  color: hsl(0, 0%, 100%);
+  opacity: 0.65;
 }
 
 .links {
   display: flex;
   flex-direction: column;
   position: absolute;
-  margin-top: get-rem(26);
+  margin-top: get-rem(46);
 }
 
 @include screenMd {
