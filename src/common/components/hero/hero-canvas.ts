@@ -1,27 +1,34 @@
-import { animationFrameScheduler, fromEvent, interval, startWith } from 'rxjs';
+import { animationFrameScheduler, interval } from 'rxjs';
 import SimplexNoise from 'simplex-noise';
 import { Disposable, unwrap } from 'common/utils';
 
 const simplex = new SimplexNoise();
 
-const circleCount = 150;
 const circlePropCount = 8;
-const circlePropsLength = circleCount * circlePropCount;
 const baseSpeed = 0.1;
-const rangeSpeed = 1;
-const baseTTL = 150;
-const rangeTTL = 200;
-const baseRadius = 30;
-const rangeRadius = 60;
-const rangeHue = 60;
+const rangeSpeed = 0.2;
+const baseTTL = 200;
+const rangeTTL = 250;
+const hueOffset = 170;
+const hueRange = 320;
 const xOff = 0.0015;
 const yOff = 0.0015;
 const zOff = 0.0015;
 
 export class HeroCanvas extends Disposable {
-  private readonly _circleProps = new Float32Array(circlePropsLength);
+  private readonly _circleCount = Math.round(
+    Math.max(window.innerWidth, window.innerHeight) / 2,
+  );
 
-  private _baseHue = 220;
+  private readonly _circlePropsLength = this._circleCount * circlePropCount;
+
+  private readonly _circleProps = new Float32Array(this._circlePropsLength);
+
+  private readonly _baseRadius = (window.innerWidth / 150) * devicePixelRatio;
+
+  private readonly _rangeRadius = (window.innerWidth / 75) * devicePixelRatio;
+
+  private _baseHue = hueOffset;
 
   private readonly _context: CanvasRenderingContext2D;
 
@@ -33,7 +40,11 @@ export class HeroCanvas extends Disposable {
       "Didn't found canvas context",
     );
 
-    for (let index = 0; index < circlePropsLength; index += circlePropCount) {
+    for (
+      let index = 0;
+      index < this._circlePropsLength;
+      index += circlePropCount
+    ) {
       this._circleProps.set(this.createCircleProps(), index);
     }
 
@@ -46,7 +57,7 @@ export class HeroCanvas extends Disposable {
     this._circleProps.set(this.createCircleProps(), index);
   }
 
-  private isInBounds(x: number, y: number, radius: number) {
+  private isInBounds(x: number, y: number, radius: number): boolean {
     return (
       x < -radius ||
       x > this._canvas.width + radius ||
@@ -56,25 +67,25 @@ export class HeroCanvas extends Disposable {
   }
 
   private createCircleProps(): readonly number[] {
-    const x = random(this._canvas.width);
-    const y = random(this._canvas.height);
+    const x = getRandomArbitrary(this._canvas.width);
+    const y = getRandomArbitrary(this._canvas.height);
     const n = simplex.noise3D(x * xOff, y * yOff, this._baseHue * zOff);
-    const t = random(Math.PI * 2);
-    const speed = baseSpeed + random(rangeSpeed);
+    const t = getRandomArbitrary(Math.PI * 2);
+    const speed = baseSpeed + getRandomArbitrary(rangeSpeed);
     const vx = speed * Math.cos(t);
     const vy = speed * Math.sin(t);
     const life = 0;
-    const ttl = baseTTL + random(rangeTTL);
-    const radius = baseRadius + random(rangeRadius);
-    const hue = this._baseHue + n * rangeHue;
+    const ttl = baseTTL + getRandomArbitrary(rangeTTL);
+    const radius = this._baseRadius + getRandomArbitrary(this._rangeRadius);
+    const hue = this._baseHue + n * ((hueRange - this._baseHue) / 2);
 
     return [x, y, vx, vy, life, ttl, radius, hue];
   }
 
   private drawCircles() {
-    this._baseHue += 1;
+    this._baseHue += 0.8;
 
-    for (let i = 0; i < circlePropsLength; i += circlePropCount) {
+    for (let i = 0; i < this._circlePropsLength; i += circlePropCount) {
       const i2 = 1 + i;
       const i3 = 2 + i;
       const i4 = 3 + i;
@@ -92,7 +103,9 @@ export class HeroCanvas extends Disposable {
       let life = this._circleProps[i5];
 
       this._context.save();
-      this._context.fillStyle = `hsla(${hue},60%,30%,${fadeInOut(life, ttl)})`;
+      this._context.fillStyle = `hsla(${
+        hueOffset + (hue % (hueRange - hueOffset))
+      },60%,30%,${fadeInOut(life, ttl)})`;
       this._context.beginPath();
       this._context.arc(x, y, radius, 0, Math.PI * 2);
       this._context.fill();
@@ -125,4 +138,6 @@ const fadeInOut = (t: number, m: number) => {
   return Math.abs(((t + hm) % m) - hm) / hm;
 };
 
-const random = (n: number) => n * Math.random();
+function getRandomArbitrary(max: number, min = 0) {
+  return Math.random() * (max - min) + min;
+}

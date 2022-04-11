@@ -14,14 +14,14 @@ export function MainPage(): ReactElement {
         <main className={styles.container}>
           <Typography
             variant={Typography.Variant.Heading}
-            fontWeight={Typography.Weight.DemiBold}
+            fontWeight={Typography.Weight.Medium}
             className={styles.title}
           >
             Ilya Zaitsev{' '}
           </Typography>
           <Typography
             variant={Typography.Variant.Title}
-            fontWeight={Typography.Weight.Medium}
+            fontWeight={Typography.Weight.Regular}
             className={styles.username}
           >
             @godested

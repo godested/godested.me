@@ -1,26 +1,34 @@
-import { ReactElement, Ref, ElementType, ReactNode } from 'react';
+import { ReactElement, Ref, ReactNode, ElementType } from 'react';
 import classNames from 'classnames';
 import { CSSClassName } from 'common/styles';
 import { assertNever, optionalMap } from 'common/utils';
-import { InferProps, WithOptionalClassNameProps } from 'common/types';
+import {
+  WithOptionalClassNameProps,
+  PolymorphicComponentProps,
+} from 'common/types';
 import * as styles from './typography.module.scss';
 
-export function Typography<T extends ElementType = 'h1'>({
-  variant = Typography.Variant.ParagraphMD,
-  fontWeight = Typography.Weight.Regular,
-  as: ComponentToRender = resolveDefaultTagNameFromVariant(variant),
-  fontColor,
-  inline,
-  italic,
-  children,
-  nowrap,
-  className,
-  innerRef,
-  ...restProp
-}: Typography.Props<T> & InferProps<T>): ReactElement {
-  const Component = ComponentToRender as 'h1'; // hack for not working with large union
+export function Typography<T extends ElementType = 'p'>(
+  props: Typography.Props<T>,
+): ReactElement {
+  const {
+    variant = Typography.Variant.ParagraphMD,
+    fontWeight = Typography.Weight.Regular,
+    as: Tag = resolveDefaultTagNameFromVariant(variant),
+    fontColor,
+    inline,
+    italic,
+    children,
+    nowrap,
+    className,
+    innerRef,
+    ...restProps
+  } = props;
+
+  const ComponentToRender = Tag as 'p';
+
   return (
-    <Component
+    <ComponentToRender
       ref={innerRef as Ref<HTMLHeadingElement>}
       className={classNames(
         className,
@@ -32,10 +40,10 @@ export function Typography<T extends ElementType = 'h1'>({
         resolveClassNameFromWeight(fontWeight),
         resolveClassNameFromVariant(variant),
       )}
-      {...restProp}
+      {...restProps}
     >
       {children}
-    </Component>
+    </ComponentToRender>
   );
 }
 
@@ -69,19 +77,21 @@ export namespace Typography {
     White,
   }
 
-  export type Props<T extends ElementType> = Readonly<
-    WithOptionalClassNameProps &
-      Partial<{
-        as: T;
-        variant: Variant;
-        fontColor: Color;
-        fontWeight: Weight;
-        inline: true;
-        italic: true;
-        nowrap: true;
-        children: ReactNode | undefined;
-        innerRef: Ref<T>;
-      }>
+  export type Props<T extends ElementType> = PolymorphicComponentProps<
+    T,
+    Readonly<
+      WithOptionalClassNameProps &
+        Partial<{
+          variant: Variant;
+          fontColor: Color;
+          fontWeight: Weight;
+          inline: true;
+          italic: true;
+          nowrap: true;
+          children: ReactNode | undefined;
+          innerRef: Ref<T>;
+        }>
+    >
   >;
 }
 
@@ -150,7 +160,7 @@ function resolveClassNameFromColor(color: Typography.Color): CSSClassName {
 
 function resolveDefaultTagNameFromVariant(
   variant: Typography.Variant,
-): ElementType {
+): keyof JSX.IntrinsicElements {
   switch (variant) {
     case Typography.Variant.Heading:
       return 'h2';

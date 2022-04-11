@@ -94,8 +94,6 @@ export function AsideComponent({
               </Typography>
               <Typography
                 as="a"
-                target="_blank"
-                rel="noopener noreferrer"
                 href={profileURL}
                 variant={Typography.Variant.ParagraphMD}
                 fontColor={Typography.Color.DarkGray}
