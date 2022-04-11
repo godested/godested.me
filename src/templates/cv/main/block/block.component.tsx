@@ -22,11 +22,11 @@ export function MainBlock({
   content,
 }: MainBlockProps): ReactElement {
   const renderContent = (): ReactElement | readonly ReactElement[] => {
-    const { type, data } = content;
+    const { type } = content;
 
     switch (type) {
       case CV.ContentType.Text:
-        return data.map(({ variant, color, weight, text }, index) => (
+        return content.data.map(({ variant, color, weight, text }, index) => (
           <Typography
             // eslint-disable-next-line react/no-array-index-key
             key={index}
@@ -41,13 +41,21 @@ export function MainBlock({
       case CV.ContentType.Education:
         return (
           <ul className={styles.educationList}>
-            {data.map((education, index) => (
+            {content.data.map((education, index) => (
               <li
                 // eslint-disable-next-line react/no-array-index-key
                 key={index}
                 className={styles.educationListItem}
               >
-                <Education {...education} />
+                <Education
+                  companyLogoURL={education.companyLogoURL}
+                  companyURL={education.companyURL}
+                  courseName={education.courseName}
+                  dateStarted={education.dateStarted}
+                  dateEnded={education.dateEnded}
+                  description={education.description}
+                  certificateURL={education.certificateURL}
+                />
               </li>
             ))}
           </ul>
@@ -55,13 +63,22 @@ export function MainBlock({
       case CV.ContentType.Experience:
         return (
           <ul className={styles.experienceList}>
-            {data.map((experience, index) => (
+            {content.data.map((experience, index) => (
               <li
                 // eslint-disable-next-line react/no-array-index-key
                 key={index}
                 className={styles.experienceListItem}
               >
-                <Experience {...experience} />
+                <Experience
+                  companyName={experience.companyName}
+                  companyLogoURL={experience.companyLogoURL}
+                  companyURL={experience.companyURL}
+                  dateStarted={experience.dateStarted}
+                  dateEnded={experience.dateEnded}
+                  description={experience.description}
+                  location={experience.location}
+                  position={experience.position}
+                />
               </li>
             ))}
           </ul>
@@ -194,7 +211,11 @@ function Education({
         >
           {courseName}
         </Typography>
-        <Typography variant={Typography.Variant.Caption} nowrap>
+        <Typography
+          variant={Typography.Variant.Caption}
+          fontColor={Typography.Color.Gray}
+          nowrap
+        >
           {formatDateFromTimestamp(dateStarted)} -{' '}
           {optionalMap(dateEnded, formatDateFromTimestamp, 'Present')}
         </Typography>
@@ -232,7 +253,7 @@ function Education({
 
 function resolveCompanyProps(
   companyURL: string | undefined,
-): Typography.Props<'h2' | 'a'> {
+): Typography.Props<'a'> {
   return isSomething(companyURL)
     ? {
         as: 'a',

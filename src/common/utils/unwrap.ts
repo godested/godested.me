@@ -5,9 +5,8 @@ import { IfOptional, OptionalKeys } from './types';
 export function unwrap<T>(
   value: IfOptional<T>,
   assertion: string,
-  ctx?: object,
 ): NonNullable<T> {
-  assertExists(value, assertion, ctx);
+  assertExists(value, assertion);
   return value;
 }
 
@@ -16,8 +15,5 @@ export function unwrapProp<T extends object, K extends OptionalKeys<T>>(
   obj: T,
   prop: K,
 ): NonNullable<T[K]> {
-  return unwrap<T[K] | undefined | null>(obj[prop], 'unwrapProp', {
-    prop,
-    obj,
-  });
+  return unwrap<T[K] | undefined | null>(obj[prop], 'unwrapProp');
 }

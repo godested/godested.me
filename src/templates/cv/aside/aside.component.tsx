@@ -134,9 +134,7 @@ export function AsideComponent({
   );
 }
 
-function resolveContactProps(
-  contact: CV.Contact,
-): Typography.Props<'h2' | 'a'> {
+function resolveContactProps(contact: CV.Contact): Typography.Props<'a'> {
   const { type, value } = contact;
 
   switch (type) {
