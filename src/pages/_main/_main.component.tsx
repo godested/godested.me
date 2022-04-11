@@ -34,7 +34,7 @@ export function MainPage(): ReactElement {
               variant={Typography.Variant.ParagraphMD}
               className={styles.link}
             >
-              Resume
+              CV / Résumé
             </Typography>
             <Typography
               as="a"
