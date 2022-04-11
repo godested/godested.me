@@ -4,7 +4,6 @@
 .container {
   position: relative;
   margin-bottom: get-rem(140);
-  padding: 0 get-rem(12);
 }
 
 @include screenMd {

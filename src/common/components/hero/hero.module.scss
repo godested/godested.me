@@ -1,3 +1,4 @@
+@import '~common/styles/mixins.scss';
 @import '~common/styles/functions.scss';
 
 .hero {
@@ -19,11 +20,20 @@
 
   &__body {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     position: relative;
     flex-grow: 1;
     z-index: 3;
+    padding: 0 get-rem(40);
+  }
+}
+
+@include screenMd {
+  .hero {
+    &__body {
+      justify-content: center;
+    }
   }
 }
 
