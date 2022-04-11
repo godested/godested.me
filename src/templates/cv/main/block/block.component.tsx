@@ -134,6 +134,7 @@ function Experience({
         <div className={styles.experienceMetrics}>
           <Typography
             variant={Typography.Variant.Caption}
+            fontColor={Typography.Color.DarkGray}
             className={styles.experienceDates}
             nowrap
           >
