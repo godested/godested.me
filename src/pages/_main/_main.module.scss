@@ -3,13 +3,14 @@
 
 .container {
   position: relative;
-  margin-bottom: get-rem(96);
+  margin-bottom: get-rem(140);
   padding: 0 get-rem(12);
 }
 
 @include screenMd {
   .container {
     margin-top: get-rem(96);
+    margin-bottom: 0;
   }
 }
 
@@ -39,13 +40,44 @@
 }
 
 .link {
+  display: block;
+  position: relative;
   opacity: 1;
-  transition: opacity 0.1s ease-in-out;
-  margin-bottom: 1.10em;
+  transition: opacity 0.2s ease-in-out;
+  margin-bottom: 3em;
   margin-right: 3em;
   color: hsl(0, 0%, 100%);
+  will-change: opacity;
+
+  &::before {
+    content: '';
+    position: absolute;
+    animation: slideIn 1s ease-in-out;
+    transition: transform 0.2s ease-in-out;
+    will-change: transform;
+    top: 120%;
+    width: 120%;
+    border-bottom: get-rem(1) solid currentColor;
+    transform-origin: left center;
+    pointer-events: none;
+  }
 
   &:hover {
     opacity: 0.5;
+
+    &::before {
+      transform: scaleX(0);
+    }
   }
 }
+
+@keyframes slideIn {
+  from {
+    transform: scaleX(0);
+  }
+
+  to {
+    transform: scaleX(1);
+  }
+}
+

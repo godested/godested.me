@@ -8,7 +8,7 @@ const circlePropCount = 8;
 const baseSpeed = 0.1;
 const rangeSpeed = 0.2;
 const baseTTL = 200;
-const rangeTTL = 250;
+const rangeTTL = 400;
 const hueOffset = 170;
 const hueRange = 320;
 const xOff = 0.0015;
@@ -17,16 +17,16 @@ const zOff = 0.0015;
 
 export class HeroCanvas extends Disposable {
   private readonly _circleCount = Math.round(
-    Math.max(window.innerWidth, window.innerHeight) / 2,
+    Math.max(window.innerWidth, window.innerHeight) / 1.2,
   );
 
   private readonly _circlePropsLength = this._circleCount * circlePropCount;
 
   private readonly _circleProps = new Float32Array(this._circlePropsLength);
 
-  private readonly _baseRadius = (window.innerWidth / 150) * devicePixelRatio;
+  private readonly _baseRadius = (window.innerWidth / 35) * devicePixelRatio;
 
-  private readonly _rangeRadius = (window.innerWidth / 75) * devicePixelRatio;
+  private readonly _rangeRadius = (window.innerWidth / 70) * devicePixelRatio;
 
   private _baseHue = hueOffset;
 
@@ -60,23 +60,23 @@ export class HeroCanvas extends Disposable {
   private isInBounds(x: number, y: number, radius: number): boolean {
     return (
       x < -radius ||
-      x > this._canvas.width + radius ||
+      x > this._canvas.clientWidth + radius ||
       y < -radius ||
-      y > this._canvas.height + radius
+      y > this._canvas.clientHeight + radius
     );
   }
 
   private createCircleProps(): readonly number[] {
-    const x = getRandomArbitrary(this._canvas.width);
-    const y = getRandomArbitrary(this._canvas.height);
+    const x = getRandomArbitrary(this._canvas.clientWidth);
+    const y = getRandomArbitrary(this._canvas.clientHeight);
     const n = simplex.noise3D(x * xOff, y * yOff, this._baseHue * zOff);
     const t = getRandomArbitrary(Math.PI * 2);
-    const speed = baseSpeed + getRandomArbitrary(rangeSpeed);
+    const speed = getRandomArbitrary(rangeSpeed, baseSpeed);
     const vx = speed * Math.cos(t);
     const vy = speed * Math.sin(t);
     const life = 0;
-    const ttl = baseTTL + getRandomArbitrary(rangeTTL);
-    const radius = this._baseRadius + getRandomArbitrary(this._rangeRadius);
+    const ttl = getRandomArbitrary(rangeTTL, baseTTL);
+    const radius = getRandomArbitrary(this._rangeRadius, this._baseRadius);
     const hue = this._baseHue + n * ((hueRange - this._baseHue) / 2);
 
     return [x, y, vx, vy, life, ttl, radius, hue];
@@ -125,9 +125,19 @@ export class HeroCanvas extends Disposable {
   }
 
   private draw(): void {
-    this._context.clearRect(0, 0, this._canvas.width, this._canvas.height);
+    this._context.clearRect(
+      0,
+      0,
+      this._canvas.clientWidth,
+      this._canvas.clientHeight,
+    );
     this._context.fillStyle = 'hsla(0,0%,5%,1)';
-    this._context.fillRect(0, 0, this._canvas.width, this._canvas.height);
+    this._context.fillRect(
+      0,
+      0,
+      this._canvas.clientWidth,
+      this._canvas.clientHeight,
+    );
 
     this.drawCircles();
   }

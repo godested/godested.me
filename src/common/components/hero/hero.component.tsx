@@ -11,22 +11,22 @@ export function Hero({
   children,
   className,
 }: PropsWithChildren<WithOptionalClassNameProps>): ReactElement {
-  const canvasRef = useLazyRef(
+  const heroCanvasRef = useLazyRef(
     () => new ExpectedRef<HTMLCanvasElement>('hero-canvas'),
   );
 
   useEffect(() => {
-    const canvas = new HeroCanvas(canvasRef.node);
+    const heroCanvas = new HeroCanvas(heroCanvasRef.node);
 
     return () => {
-      canvas.dispose();
+      heroCanvas.dispose();
     };
   }, []);
 
   return (
     <div className={classNames(styles.hero, className)}>
       <Logo className={styles.logo} />
-      <canvas ref={canvasRef.update} className={styles.heroCanvas} />
+      <canvas ref={heroCanvasRef.update} className={styles.heroCanvas} />
       <div className={styles.heroBody}>{children}</div>
     </div>
   );
