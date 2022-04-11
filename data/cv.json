@@ -68,7 +68,8 @@
       "title": "Professional summary",
       "data": [
         {
-          "text": "Passionate frontend engineer with more than 5 years of commercial experience. Good at project development from scratch and improvement of existing solutions. Have analytical and problem-solving skills. Confidently understand how to build an MVP. Able to create full autonomy in frontend development. Strive to improve DX, automate code quality analysis. Familiar with unit economics. Ready to analyze business requirements, propose product and development flow improvements."
+          "text": "Passionate frontend engineer with more than 5 years of commercial experience. Good at project development from scratch and improvement of existing solutions. Have analytical and problem-solving skills. Confidently understand how to build an MVP. Able to create full autonomy in frontend development. Strive to improve DX, automate code quality analysis. Familiar with unit economics. Ready to analyze business requirements, propose product and development flow improvements.",
+          "color": 3
         },
         {
           "text": "Looking for a professional workgroup to implement knowledge and gained experience, be a part of the “Big idea” project, grow and contribute, improve management and product skills to obtain a lead position in the future.",
@@ -87,7 +88,8 @@
           "position": "Senior Frontend Engineer",
           "description": [
             {
-              "text": "Developed and launched 5 multi-screen games. Took responsibility for code review, improving DX, refactoring of existing solutions, developing new big features."
+              "text": "Developed and launched 5 multi-screen games. Took responsibility for code review, improving DX, refactoring of existing solutions, developing new big features.",
+              "color": 3
             },
             {
               "text": "TypeScript, React, Mobx, RxJS, Inversify, Webpack, Protobuf, Jest, Kibana, Jenkins.",
@@ -104,7 +106,8 @@
           "position": "Senior Frontend Engineer",
           "description": [
             {
-              "text": "Successfully launched social app, brand landings. Further evolution to full-fledged product (with support, analytics, payments) was made. Had active participation in the hiring of technical specialists as a interviewer for various projects. Was a mentor for junior developers."
+              "text": "Successfully launched social app, brand landings. Further evolution to full-fledged product (with support, analytics, payments) was made. Had active participation in the hiring of technical specialists as a interviewer for various projects. Was a mentor for junior developers.",
+              "color": 3
             },
             {
               "text": "React, Redux, Redux-Saga, Webpack, Gatsby, TypeScript, WebSockets, GitLab CI/CD, Docker, Sentry, PRPL pattern.",
@@ -122,6 +125,7 @@
           "position": "Frontend Developer",
           "description": [
             {
+              "color": 3,
               "text": "In collaboration with a back-end developer, successfully developed an application based on UX mockups."
             },
             {
@@ -140,6 +144,7 @@
           "position": "Frontend Developer",
           "description": [
             {
+              "color": 3,
               "text": "Developed service for searching closest money exchangers with a favorable rate. Mobile-first, cross-browser and SEO friendly app.\nDeveloped service with real-time calls, pptx presentations and schedule manager. "
             },
             {
@@ -158,6 +163,7 @@
           "position": "Frontend Developer",
           "description": [
             {
+              "color": 3,
               "text": "Developed real-time crypto-currencies exchange MVP."
             },
             {
@@ -175,6 +181,7 @@
           "position": "Frontend Developer",
           "description": [
             {
+              "color": 3,
               "text": "Developed a banking system in a team with a mentor. Developed a lot of landing pages."
             },
             {
@@ -222,9 +229,11 @@
       "title": "Highlights",
       "data": [
         {
+          "color": 3,
           "text": "I’m familiar with fast prototyping and release MVP for early test ideas in the real world. It took me about 3 months to analyze requirements, set up development flow, and create the first social discovery MVP (with paying customers) version of the latest released project."
         },
         {
+          "color": 3,
           "text": "I’ve hacked a game dedicated to the contest at OdessaJS while sitting at the OdessaJS conference  😄"
         }
       ]
