@@ -73,7 +73,7 @@
         },
         {
           "text": "Looking for a professional workgroup to implement knowledge and gained experience, be a part of the “Big idea” project, grow and contribute, improve management and product skills to obtain a lead position in the future.",
-          "color": 0
+          "color": 1
         }
       ]
     },
@@ -93,7 +93,7 @@
             },
             {
               "text": "TypeScript, React, Mobx, RxJS, Inversify, Webpack, Protobuf, Jest, Kibana, Jenkins.",
-              "color": 0
+              "color": 1
             }
           ],
           "dateStarted": 1598907600000,
@@ -111,7 +111,7 @@
             },
             {
               "text": "React, Redux, Redux-Saga, Webpack, Gatsby, TypeScript, WebSockets, GitLab CI/CD, Docker, Sentry, PRPL pattern.",
-              "color": 0
+              "color": 1
             }
           ],
           "dateStarted": 1551391200000,
@@ -130,7 +130,7 @@
             },
             {
               "text": "React, Redux, Redux-Saga, Webpack, CMMN, BPMN, Docker.",
-              "color": 0
+              "color": 1
             }
           ],
           "dateStarted": 1541023200000,
@@ -149,7 +149,7 @@
             },
             {
               "text": "React, Redux, Redux-Saga, Webpack, CMMN, BPMN, Docker.",
-              "color": 0
+              "color": 1
             }
           ],
           "dateStarted": 1525122000000,
@@ -168,7 +168,7 @@
             },
             {
               "text": "React, Redux, TypeScript, WebSockets, Node.js.",
-              "color": 0
+              "color": 1
             }
           ],
           "dateStarted": 1517436000000,
@@ -186,7 +186,7 @@
             },
             {
               "text": "React, Redux, WebSockets, Gulp, Node.js, Ruby.",
-              "color": 0
+              "color": 1
             }
           ],
           "dateStarted": 1488319200000,
