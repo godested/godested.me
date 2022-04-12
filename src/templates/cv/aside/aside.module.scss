@@ -1,16 +1,32 @@
 @import "~common/styles/functions.scss";
+@import '~common/components/theme/theme-provider-mixins.module.scss';
 
 .aside {
-  background-color: #ffffff;
   white-space: nowrap;
+
+  @include themeLight {
+    background-color: #ffffff;
+  }
+
+  @include themeDark {
+    background-color: #1B2132;
+  }
+  @include themeChangeTransition(background-color);
 }
 
 .position {
-  background: linear-gradient(102.91deg, #53266F 2.33%, #2A67AC 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   text-fill-color: transparent;
+
+  @include themeLight {
+    background-image: linear-gradient(102.91deg, #53266F 2.33%, #2A67AC 100%);
+  }
+
+  @include themeDark {
+    background-image: linear-gradient(102.91deg, #D2B3E5 2.33%, #ADCAEB 100%);
+  }
 }
 
 .profile-avatar {
@@ -31,11 +47,30 @@
   min-width: 100%;
   background-color: #E2E6EE;
 
+  @include themeLight {
+    background-color: #E2E6EE;
+  }
+
+  @include themeDark {
+    background-color: #2D3753;
+  }
+
+  @include themeChangeTransition(background-color);
+
   &__icon {
-    fill: #646A7B;
     width: get-rem(20);
     min-width: get-rem(20);
     height: get-rem(20);
+
+    @include themeLight {
+      fill: #646A7B;
+    }
+
+    @include themeDark {
+      fill: #B8BCC6;
+    }
+
+    @include themeChangeTransition(fill);
   }
 }
 

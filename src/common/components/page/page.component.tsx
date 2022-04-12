@@ -1,6 +1,7 @@
 import { PropsWithChildren } from 'react';
 import { Helmet } from 'react-helmet';
 import { WithOptionalClassNameProps } from 'common/types';
+import { ThemeProvider } from '../theme';
 
 export type PageProps = Readonly<
   PropsWithChildren<{
@@ -23,7 +24,7 @@ export function Page({ title, rootClassName, children }: PageProps) {
         {/* eslint-disable-next-line jsx-a11y/html-has-lang */}
         <html className={rootClassName} />
       </Helmet>
-      {children}
+      <ThemeProvider>{children}</ThemeProvider>
     </>
   );
 }

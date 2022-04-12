@@ -1,27 +1,50 @@
 @import '~common/styles/mixins.scss';
 @import '~common/styles/functions.scss';
+@import '~common/components/theme/theme-provider-mixins.module.scss';
+
+.wrapper {
+  @include screenLg() {
+    padding: get-rem(30);
+  }
+
+  @include themeLight {
+    background-color: #E3E7ED;
+  }
+
+  @include themeDark {
+    background-color: hsl(218, 22%, 5%);
+  }
+
+  @include themeChangeTransition(background-color);
+}
+
+
 
 .content {
   display: flex;
   flex-direction: column;
-  background-color: #fff;
   align-items: stretch;
-}
 
-@include screenLg() {
-  .wrapper {
-    padding: get-rem(30);
-  }
-
-  .content {
+  @include screenLg() {
     margin: 0 auto;
     flex-direction: row;
     max-width: 1140px;
     border-radius: get-rem(16);
     overflow: hidden;
-    box-shadow: 0 get-rem(60) get-rem(36) rgba(22, 27, 34, 0.01),
-                0 get-rem(26) get-rem(26) rgba(22, 27, 34, 0.02),
-                0 get-rem(6) get-rem(14) rgba(22, 27, 34, 0.02),
+
+    @include themeLight {
+      box-shadow: 0 get-rem(60) get-rem(36) hsla(215, 21%, 11%, 0.01),
+        0 get-rem(26) get-rem(26) hsla(215, 21%, 11%, 0.01),
+        0 get-rem(6) get-rem(14) hsla(215, 21%, 11%, 0.01);
+    }
+
+    @include themeDark {
+      box-shadow: 0 get-rem(60) get-rem(36) hsla(215, 21%, 89%, 0.01),
+        0 get-rem(26) get-rem(26) hsla(215, 21%, 89%, 0.01),
+        0 get-rem(6) get-rem(14) hsla(215, 21%, 89%, 0.01);
+    }
+
+    @include themeChangeTransition(box-shadow);
   }
 }
 
@@ -29,29 +52,26 @@
   flex: 0;
   width: 100%;
   padding: get-rem(64);
+
+  @include screenMd() {
+    padding: get-rem(48);
+  }
+
+  @include screenLg() {
+    padding: get-rem(48);
+  }
 }
 
 .main {
   flex: 1;
   padding: get-rem(48) get-rem(24);
-}
 
-@include screenMd() {
-  .main {
+  @include screenMd() {
     padding: get-rem(48) get-rem(24);
   }
 
-  .aside {
-    padding: get-rem(48);
-  }
-}
-
-@include screenLg() {
-  .main {
+  @include screenLg() {
     padding: get-rem(64) get-rem(48) get-rem(48) get-rem(32);
   }
-
-  .aside {
-    padding: get-rem(48);
-  }
 }
+

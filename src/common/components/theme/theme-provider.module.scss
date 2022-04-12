@@ -1,0 +1,24 @@
+@import './theme-provider-mixins.module.scss';
+
+:global {
+  .theme {
+    &_light {
+      --theme: light;
+    }
+
+    &_dark {
+      --theme: dark;
+    }
+
+    &_changing {
+      --toggling: true;
+    }
+  }
+}
+
+:export {
+  themeChangingDuration: $themeChangingDuration;
+  themeDark: theme_dark;
+  themeLight: theme_light;
+  themeChanging: theme_changing;
+}

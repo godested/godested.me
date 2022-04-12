@@ -2,24 +2,32 @@
 
 @mixin screenMd() {
   @media screen and (min-width: $screenMd) {
-    @content;
+    & {
+      @content;
+    }
   }
 }
 
 @mixin screenMdOnly() {
   @media screen and (min-width: $screenMd) and (max-width: $screenLg) {
-    @content;
+    & {
+      @content;
+    }
   }
 }
 
 @mixin screenLg() {
   @media screen and (min-width: $screenLg) {
-    @content;
+    & {
+      @content;
+    }
   }
 }
 
 @mixin screenXl() {
   @media screen and (min-width: $screenXl) {
-    @content;
+    & {
+      @content;
+    }
   }
 }

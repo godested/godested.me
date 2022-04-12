@@ -1,13 +1,12 @@
 @import '~common/styles/functions.scss';
 @import '~common/styles/mixins.scss';
+@import '~common/components/theme/theme-provider-mixins.module.scss';
 
 .container {
   position: relative;
   margin-bottom: get-rem(140);
-}
 
-@include screenMd {
-  .container {
+  @include screenMd {
     margin-top: get-rem(96);
     margin-bottom: 0;
   }
@@ -16,11 +15,28 @@
 .title {
   font-size: get-rem(46);
   line-height: 0.8em;
-  color: hsl(0, 0%, 100%);
+
+  @include themeDark {
+    color: hsl(0, 0%, 100%);
+  }
+
+  @include themeLight {
+    color: hsl(0, 0%, 0%);
+  }
+
+  @include themeChangeTransition(color);
 }
 
 .username {
-  color: hsl(0, 0%, 100%);
+  @include themeDark {
+    color: hsl(0, 0%, 100%);
+  }
+
+  @include themeLight {
+    color: hsl(0, 0%, 0%);
+  }
+
+  @include themeChangeTransition(color);
   opacity: 0.65;
 }
 
@@ -29,10 +45,8 @@
   flex-direction: column;
   position: absolute;
   margin-top: get-rem(46);
-}
 
-@include screenMd {
-  .links {
+  @include screenMd {
     flex-direction: row;
     position: relative;
   }
@@ -45,8 +59,17 @@
   transition: opacity 0.2s ease-in-out;
   margin-bottom: 3em;
   margin-right: 3em;
-  color: hsl(0, 0%, 100%);
   will-change: opacity;
+
+  @include themeDark {
+    color: hsl(0, 0%, 100%);
+  }
+
+  @include themeLight {
+    color: hsl(0, 0%, 0%);
+  }
+
+  @include themeChangeTransition(color);
 
   &::before {
     content: '';

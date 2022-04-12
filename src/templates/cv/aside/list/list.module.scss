@@ -8,22 +8,20 @@
   margin: 0;
   padding: 0;
 
+  @include screenMdOnly {
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: get-rem(-48);
+  }
+
   &_item {
     padding-bottom: get-rem(24);
 
     &:last-child {
       padding-bottom: 0;
     }
-  }
-}
 
-@include screenMdOnly {
-  .aside-list {
-    flex-direction: row;
-    flex-wrap: wrap;
-    margin-top: get-rem(-48);
-
-    &_item {
+    @include screenMdOnly {
       padding-bottom: 0;
       padding-top: get-rem(48);
       padding-right: get-rem(48);

@@ -237,7 +237,6 @@ function Education({
             rel="noopener noreferrer"
             variant={Typography.Variant.Caption}
             className={styles.educationCertificate}
-            fontColor={Typography.Color.DarkGray}
             nowrap
           >
             <span className={styles.educationCertificateIconContainer}>

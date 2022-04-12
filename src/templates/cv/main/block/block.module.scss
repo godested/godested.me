@@ -1,6 +1,7 @@
 @import "~common/styles/variables.scss";
 @import "~common/styles/mixins.scss";
 @import "~common/components/typography/typography.module.scss";
+@import '~common/components/theme/theme-provider-mixins.module.scss';
 
 .block {
   margin-bottom: get-rem(48);
@@ -37,18 +38,38 @@
 }
 
 .experience {
-  background-color: #ffffff;
   padding: get-rem(16);
   border-radius: get-rem(16);
-  box-shadow: 0 get-rem(18) get-rem(10) rgba(0, 0, 0, 0.01),
-              0 get-rem(8) get-rem(8) rgba(0, 0, 0, 0.02),
-              0 get-rem(2) get-rem(4) rgba(0, 0, 0, 0.02);
+
+  @include themeLight {
+    background-color: #ffffff;
+    box-shadow: 0 get-rem(18) get-rem(10) rgba(0, 0, 0, 0.01),
+                0 get-rem(8) get-rem(8) rgba(0, 0, 0, 0.02),
+                0 get-rem(2) get-rem(4) rgba(0, 0, 0, 0.02);
+  }
+
+  @include themeDark {
+    background-color: #1B2132;
+    box-shadow: 0 get-rem(18) get-rem(10) rgba(255, 255, 255, 0.01),
+                0 get-rem(8) get-rem(8) rgba(255, 255, 255, 0.02),
+                0 get-rem(2) get-rem(4) rgba(255, 255, 255, 0.02);
+  }
+
+  @include themeChangeTransition(background-color, box-shadow);
+
+  @include screenMd {
+    padding: get-rem(16) get-rem(24) get-rem(16) get-rem(16);
+  }
 
   &__header {
     margin-bottom: get-rem(12);
     display: flex;
     flex-direction: column-reverse;
     align-items: stretch;
+
+    @include screenMd {
+      flex-direction: row;
+    }
   }
 
   &__company {
@@ -78,6 +99,13 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-end;
+
+    @include screenMd {
+      flex-direction: column;
+      justify-content: center;
+      flex-shrink: 1;
+      padding-bottom: 0;
+    }
   }
 
   &__location {
@@ -92,7 +120,23 @@
     height: get-rem(12);
     margin-right: get-rem(4);
     transform: translateY(-22.5%);
-    fill: $lightGray;
+
+    @include themeLight {
+      fill: $lightThemeLightGray;
+    }
+
+    @include themeDark {
+      fill: $darkThemeLightGray;
+    }
+
+    @include themeChangeTransition(fill);
+  }
+
+
+  &__dates {
+    @include screenMd {
+      margin-bottom: get-rem(4);
+    }
   }
 
   &__paragraph {
@@ -100,27 +144,6 @@
 
     &:last-child {
       margin-bottom: 0;
-    }
-  }
-}
-
-@include screenMd {
-  .experience {
-    padding: get-rem(16) get-rem(24) get-rem(16) get-rem(16);
-
-    &__header {
-      flex-direction: row;
-    }
-
-    &__metrics {
-      flex-direction: column;
-      justify-content: center;
-      flex-shrink: 1;
-      padding-bottom: 0;
-    }
-
-    &__dates {
-      margin-bottom: get-rem(4);
     }
   }
 }
@@ -142,26 +165,36 @@
     &:last-child {
       margin-bottom: 0;
     }
-  }
-}
 
-@include screenXl {
-  .education-list__item {
-    flex: 1 1 33.333333%;
-    max-width: 33.333333%;
+    @include screenXl {
+      flex: 1 1 33.333333%;
+      max-width: 33.333333%;
+    }
   }
 }
 
 .education {
   height: 100%;
-  background-color: #ffffff;
   padding: get-rem(16) get-rem(24) get-rem(16) get-rem(16);
   border-radius: get-rem(16);
-  box-shadow: 0 get-rem(18) get-rem(10) rgba(0, 0, 0, 0.01),
-              0 get-rem(8) get-rem(8) rgba(0, 0, 0, 0.02),
-              0 get-rem(2) get-rem(4) rgba(0, 0, 0, 0.02);
   display: flex;
   flex-direction: row;
+
+  @include themeLight {
+    background-color: #ffffff;
+    box-shadow: 0 get-rem(18) get-rem(10) rgba(0, 0, 0, 0.01),
+      0 get-rem(8) get-rem(8) rgba(0, 0, 0, 0.02),
+      0 get-rem(2) get-rem(4) rgba(0, 0, 0, 0.02);
+  }
+
+  @include themeDark {
+    background-color: #1B2132;
+    box-shadow: 0 get-rem(18) get-rem(10) rgba(255, 255, 255, 0.01),
+      0 get-rem(8) get-rem(8) rgba(255, 255, 255, 0.02),
+      0 get-rem(2) get-rem(4) rgba(255, 255, 255, 0.02);
+  }
+
+  @include themeChangeTransition(background-color, box-shadow);
 
   &__company-logo {
     width: get-rem(48);
@@ -200,6 +233,7 @@
     margin-right: get-rem(8);
     transform: translateY(-10%);
     background-color: #E1E7FE;
+    color: $accent;
   }
 
   &__certificate-icon {

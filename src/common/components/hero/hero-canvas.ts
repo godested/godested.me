@@ -131,13 +131,6 @@ export class HeroCanvas extends Disposable {
       this._canvas.clientWidth,
       this._canvas.clientHeight,
     );
-    this._context.fillStyle = 'hsla(0,0%,5%,1)';
-    this._context.fillRect(
-      0,
-      0,
-      this._canvas.clientWidth,
-      this._canvas.clientHeight,
-    );
 
     this.drawCircles();
   }

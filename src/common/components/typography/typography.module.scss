@@ -1,10 +1,17 @@
 @import '~common/styles/variables.scss';
 @import '~common/styles/functions.scss';
+@import '~common/components/theme/theme-provider-mixins.module.scss';
 
-$black: #2E2E48;
-$darkGray: #47516B;
-$gray: #646A7B;
-$lightGray: #79819A;
+$lightThemeBlack: #2E2E48;
+$lightThemeDarkGray: #47516B;
+$lightThemeGray: #646A7B;
+$lightThemeLightGray: #79819A;
+
+$darkThemeBlack: #EFEFF5;
+$darkThemeDarkGray: #C7CAD1;
+$darkThemeGray: #B8BCC6;
+$darkThemeLightGray: #8E94A4;
+
 $accent: #516CF7;
 
 .typography {
@@ -73,19 +80,43 @@ $accent: #516CF7;
   }
 
   &_black-color {
-    color: $black;
+    @include themeLight {
+      color: $lightThemeBlack;
+    }
+
+    @include themeDark {
+      color: $darkThemeBlack;
+    }
   }
 
   &_dark-gray-color {
-    color: $darkGray;
+    @include themeLight {
+      color: $lightThemeDarkGray;
+    }
+
+    @include themeDark {
+      color: $darkThemeDarkGray;
+    }
   }
 
   &_gray-color {
-    color: $gray;
+    @include themeLight {
+      color: $lightThemeGray;
+    }
+
+    @include themeDark {
+      color: $darkThemeGray;
+    }
   }
 
   &_light-gray-color {
-    color: $lightGray;
+    @include themeLight {
+      color: $lightThemeLightGray;
+    }
+
+    @include themeDark {
+      color: $darkThemeLightGray;
+    }
   }
 
   &_accent-color {
@@ -94,6 +125,10 @@ $accent: #516CF7;
 
   &_white-color {
     color: #fff;
+
+    @include themeDark {
+      color: #000;
+    }
   }
 
   &_no-wrap {

@@ -1,5 +1,13 @@
-@import '~common/styles/functions.scss';
+@import '~common/components/theme/theme-provider-mixins.module.scss';
 
 .main {
-  background-color: #F7F9FC;
+  @include themeLight {
+    background-color: #F7F9FC;
+  }
+
+  @include themeDark {
+    background-color: #121621;
+  }
+
+  @include themeChangeTransition(background-color);
 }
