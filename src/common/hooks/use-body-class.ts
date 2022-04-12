@@ -6,7 +6,7 @@ export function useBodyClasses(
   ...classes: readonly (CSSClassName | undefined)[]
 ) {
   useEffect(() => {
-    const validClasses = [...classes].filter(isSomething);
+    const validClasses = classes.filter(isSomething);
     document.body.classList.add(...validClasses);
 
     return () => document.body.classList.remove(...validClasses);
