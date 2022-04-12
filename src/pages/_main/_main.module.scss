@@ -1,6 +1,5 @@
 @import '~common/styles/functions.scss';
 @import '~common/styles/mixins.scss';
-@import '~common/components/theme/theme-provider-mixins.module.scss';
 
 .container {
   position: relative;
@@ -15,28 +14,11 @@
 .title {
   font-size: get-rem(46);
   line-height: 0.8em;
-
-  @include themeDark {
-    color: hsl(0, 0%, 100%);
-  }
-
-  @include themeLight {
-    color: hsl(0, 0%, 0%);
-  }
-
-  @include themeChangeTransition(color);
+  color: hsl(0, 0%, 100%);
 }
 
 .username {
-  @include themeDark {
-    color: hsl(0, 0%, 100%);
-  }
-
-  @include themeLight {
-    color: hsl(0, 0%, 0%);
-  }
-
-  @include themeChangeTransition(color);
+  color: hsl(0, 0%, 100%);
   opacity: 0.65;
 }
 
@@ -60,16 +42,7 @@
   margin-bottom: 3em;
   margin-right: 3em;
   will-change: opacity;
-
-  @include themeDark {
-    color: hsl(0, 0%, 100%);
-  }
-
-  @include themeLight {
-    color: hsl(0, 0%, 0%);
-  }
-
-  @include themeChangeTransition(color);
+  color: hsl(0, 0%, 100%);
 
   &::before {
     content: '';

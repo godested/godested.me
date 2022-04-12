@@ -6,7 +6,6 @@ import { ExpectedRef } from 'common/utils/ref';
 import Logo from 'common/assets/images/logo.inline.svg';
 import { HeroCanvas } from './hero-canvas';
 import * as styles from './hero.module.scss';
-import { ThemeToggler } from '../theme';
 
 export function Hero({
   children,
@@ -29,7 +28,6 @@ export function Hero({
       <Logo className={styles.logo} />
       <canvas ref={heroCanvasRef.update} className={styles.heroCanvas} />
       <div className={styles.heroBody}>{children}</div>
-      <ThemeToggler className={styles.themeToggler} />
     </div>
   );
 }

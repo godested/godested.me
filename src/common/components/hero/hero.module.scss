@@ -6,16 +6,7 @@
   display: flex;
   align-items: stretch;
   min-height: 100%;
-
-  @include themeLight {
-    background-color: hsl(260, 47%, 70%);
-  }
-
-  @include themeDark {
-    background-color: #36225E;
-  }
-
-  @include themeChangeTransition(background-color);
+  background-color: hsl(0, 0, 8%);
 
   &__canvas {
     position: absolute;
@@ -26,12 +17,6 @@
     z-index: 1;
     filter: blur(60px);
     pointer-events: none;
-
-    @include themeLight {
-      opacity: 0.5;
-    }
-
-    @include themeChangeTransition(opacity);
   }
 
   &__body {
@@ -55,16 +40,7 @@
   top: get-rem(20);
   left: get-rem(20);
   width: get-rem(40);
-
-  @include themeDark {
-    fill: #fff;
-  }
-
-  @include themeLight {
-    fill: #000;
-  }
-
-  @include themeChangeTransition(fill);
+  fill: #000;
 }
 
 .theme-toggler {
