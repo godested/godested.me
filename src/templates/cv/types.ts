@@ -96,7 +96,7 @@ export namespace CV {
       companyLogoURL: string;
       courseName: string;
       dateStarted: number;
-      dateEnded: number | undefined;
+      dateEnded?: number;
       companyURL?: string;
       description?: string;
       certificateURL?: string;

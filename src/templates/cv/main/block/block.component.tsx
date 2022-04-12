@@ -3,12 +3,7 @@ import classNames from 'classnames';
 import { WithOptionalClassNameProps } from 'common/types';
 import { Typography } from 'common/components/typography';
 import { CV } from 'templates/cv/types';
-import {
-  assertNever,
-  optionalMap,
-  getDateMonth,
-  isSomething,
-} from 'common/utils';
+import { assertNever, getDateMonth, isSomething, isNumber } from 'common/utils';
 import { SVGDefs } from 'common/components/svg-defs';
 import LocationIcon from 'common/assets/icons/location.inline.svg';
 import LinkIcon from 'common/assets/icons/link.inline.svg';
@@ -155,8 +150,8 @@ function Experience({
             className={styles.experienceDates}
             nowrap
           >
-            {formatDateFromTimestamp(dateStarted)} -{' '}
-            {optionalMap(dateEnded, formatDateFromTimestamp, 'Present')} ·{' '}
+            {formatDates(dateStarted, dateEnded)}
+            {' · '}
             {formatDuration(dateStarted, dateEnded)}
           </Typography>
           <Typography
@@ -216,8 +211,7 @@ function Education({
           fontColor={Typography.Color.Gray}
           nowrap
         >
-          {formatDateFromTimestamp(dateStarted)} -{' '}
-          {optionalMap(dateEnded, formatDateFromTimestamp, 'Present')}
+          {formatDates(dateStarted, dateEnded)}
         </Typography>
         {isSomething(description) && (
           <Typography
@@ -277,6 +271,18 @@ function Icon({
   );
 }
 
+function formatDates(
+  dateStarted: number,
+  dateEnded: number | string | undefined,
+): string {
+  return [
+    formatDateFromTimestamp(dateStarted),
+    isNumber(dateEnded) ? formatDateFromTimestamp(dateEnded) : dateEnded,
+  ]
+    .filter(isSomething)
+    .join(' - ');
+}
+
 function formatDateFromTimestamp(timestamp: number): string {
   const date = new Date(timestamp);
   return `${getDateMonth(date).substring(0, 3)} ${date.getFullYear()}`;
@@ -292,5 +298,7 @@ function formatDuration(timestampA: number, timestampB = Date.now()): string {
   return [
     years > 0 ? `${years} yr${years > 1 ? 's' : ''}` : undefined,
     `${months} ${months > 1 ? 'mos' : 'mon'}`,
-  ].join(' ');
+  ]
+    .filter(isSomething)
+    .join(' ');
 }

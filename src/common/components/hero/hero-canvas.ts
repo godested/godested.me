@@ -5,30 +5,40 @@ import { Disposable, unwrap } from 'common/utils';
 const simplex = new SimplexNoise();
 
 const circlePropCount = 8;
-const baseSpeed = 0.25;
-const rangeSpeed = 0.35;
-const baseTTL = 100;
-const rangeTTL = 300;
-const hueOffset = 200;
-const hueRange = 310;
-const xOff = 0.0015;
-const yOff = 0.0015;
-const zOff = 0.0015;
+const baseSpeed = 0.1;
+const rangeSpeed = 0.2;
+const baseTTL = 200;
+const rangeTTL = 500;
+const hueOffset = 165;
+const hueRange = 320;
+const xOff = 0.5;
+const yOff = 0.5;
+const zOff = 0.5;
+const saturation = 70;
+const lightness = 40;
+
+const maxHueOffset = hueRange - hueOffset / 2;
+const hueCenter = hueOffset + maxHueOffset;
 
 export class HeroCanvas extends Disposable {
-  private readonly _circleCount =
+  private readonly _circleCount: number =
     Math.round(Math.max(window.innerWidth, window.innerHeight) / 2) *
     devicePixelRatio;
 
-  private readonly _circlePropsLength = this._circleCount * circlePropCount;
+  private readonly _circlePropsLength: number =
+    this._circleCount * circlePropCount;
 
-  private readonly _circleProps = new Float32Array(this._circlePropsLength);
+  private readonly _circleProps: Float32Array = new Float32Array(
+    this._circlePropsLength,
+  );
 
-  private readonly _baseRadius = (window.innerWidth / 20) * devicePixelRatio;
+  private readonly _baseRadius: number =
+    window.innerWidth * 0.01 * devicePixelRatio;
 
-  private readonly _rangeRadius = (window.innerWidth / 40) * devicePixelRatio;
+  private readonly _rangeRadius: number =
+    window.innerWidth * 0.05 * devicePixelRatio;
 
-  private _baseHue = hueOffset;
+  private _lifeTime = 0;
 
   private _canvasBoundingClientRect: DOMRect;
 
@@ -83,7 +93,7 @@ export class HeroCanvas extends Disposable {
   private createCircleProps(): readonly number[] {
     const x = getRandomArbitrary(this.canvasClientRect.width);
     const y = getRandomArbitrary(this.canvasClientRect.height);
-    const n = simplex.noise3D(x * xOff, y * yOff, this._baseHue * zOff);
+    const n = simplex.noise3D(x * xOff, y * yOff, this._lifeTime * zOff);
     const t = getRandomArbitrary(Math.PI * 2);
     const speed = getRandomArbitrary(rangeSpeed, baseSpeed);
     const vx = speed * Math.cos(t);
@@ -91,13 +101,14 @@ export class HeroCanvas extends Disposable {
     const life = 0;
     const ttl = getRandomArbitrary(rangeTTL, baseTTL);
     const radius = getRandomArbitrary(this._rangeRadius, this._baseRadius);
-    const hue = this._baseHue + n * ((hueRange - this._baseHue) / 2);
+
+    const hue = hueCenter + maxHueOffset * n * Math.cos(this._lifeTime);
 
     return [x, y, vx, vy, life, ttl, radius, hue];
   }
 
   private drawCircles() {
-    this._baseHue += 0.8;
+    this._lifeTime += 0.01;
 
     for (let i = 0; i < this._circlePropsLength; i += circlePropCount) {
       const i2 = 1 + i;
@@ -119,7 +130,7 @@ export class HeroCanvas extends Disposable {
       this._context.save();
       this._context.fillStyle = `hsla(${
         hueOffset + (hue % (hueRange - hueOffset))
-      },60%,30%,${fadeInOut(life, ttl)})`;
+      },${saturation}%,${lightness}%,${fadeInOut(life, ttl)})`;
       this._context.beginPath();
       this._context.arc(x, y, radius, 0, Math.PI * 2);
       this._context.fill();
