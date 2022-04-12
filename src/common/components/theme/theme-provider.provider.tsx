@@ -9,7 +9,13 @@ import {
   ContextType,
   useEffect,
 } from 'react';
-import { assertNever, createUseContext, isSomething, noop } from 'common/utils';
+import {
+  assertNever,
+  createUseContext,
+  isBrowser,
+  isSomething,
+  noop,
+} from 'common/utils';
 import { CSSClassName } from 'common/styles';
 import { useBodyClasses } from 'common/hooks';
 import { Theme } from './types';
@@ -73,7 +79,9 @@ export function useThemedClassName(
 }
 
 function resolveTheme(defaultTheme: Theme = Theme.Light): Theme {
-  return loadTheme() ?? resolveThemeFromDeviceSettings() ?? defaultTheme;
+  return isBrowser
+    ? loadTheme() ?? resolveThemeFromDeviceSettings() ?? defaultTheme
+    : defaultTheme;
 }
 
 function resolveBodyClassNameFromTheme(theme: Theme): CSSClassName {
@@ -92,17 +100,12 @@ function saveTheme(theme: Theme): void {
 }
 
 function loadTheme(): Theme | undefined {
-  const theme = isSomething(window)
-    ? window.localStorage.getItem('theme')
-    : undefined;
+  const theme = window.localStorage.getItem('theme');
   return isSomething(theme) ? (parseInt(theme, 10) as Theme) : undefined;
 }
 
 function resolveThemeFromDeviceSettings(): Theme | undefined {
-  if (
-    isSomething(window) &&
-    window.matchMedia?.('(prefers-color-scheme: dark)').matches
-  ) {
+  if (window.matchMedia?.('(prefers-color-scheme: dark)').matches) {
     return Theme.Dark;
   }
 

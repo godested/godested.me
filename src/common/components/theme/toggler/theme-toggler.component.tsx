@@ -1,7 +1,7 @@
 import { ReactElement } from 'react';
 import { WithOptionalClassNameProps } from 'common/types';
 import classNames from 'classnames';
-import { isSomething } from 'common/utils';
+import { isBrowser } from 'common/utils';
 import { useTheme, useChangeTheme } from '../theme-provider.provider';
 import { Theme } from '../types';
 import { SunIcon } from './sun-icon.component';
@@ -31,8 +31,7 @@ export function ThemeToggler({
         className,
       )}
     >
-      {isSomething(window) &&
-        (theme === Theme.Light ? <MoonIcon /> : <SunIcon />)}
+      {isBrowser && (theme === Theme.Light ? <MoonIcon /> : <SunIcon />)}
     </button>
   );
 }

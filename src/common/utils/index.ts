@@ -7,3 +7,4 @@ export * from './date';
 export * from './disposable';
 export * from './noop';
 export * from './react-context';
+export * from './is-browser';
