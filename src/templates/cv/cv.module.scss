@@ -12,7 +12,7 @@
   }
 
   @include themeDark {
-    background-color: hsl(218, 22%, 5%);
+    background-color: hsl(222, 25%, 23%);
   }
 
   @include themeChangeTransition(background-color);
@@ -54,10 +54,6 @@
   padding: get-rem(64);
 
   @include screenMd() {
-    padding: get-rem(48);
-  }
-
-  @include screenLg() {
     padding: get-rem(48);
   }
 }

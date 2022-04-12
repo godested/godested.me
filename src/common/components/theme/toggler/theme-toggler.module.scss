@@ -8,6 +8,11 @@
   background: transparent;
   cursor: pointer;
   text-align: left;
+  transition: opacity 200ms ease-in-out;
+
+  &:hover {
+    opacity: 0.6;
+  }
 
   @include themeLight {
     color: #000;

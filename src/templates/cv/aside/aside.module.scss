@@ -2,6 +2,7 @@
 @import '~common/components/theme/theme-provider-mixins.module.scss';
 
 .aside {
+  position: relative;
   white-space: nowrap;
 
   @include themeLight {
@@ -12,6 +13,21 @@
     background-color: #1B2132;
   }
   @include themeChangeTransition(background-color);
+}
+
+.theme-toggler {
+  position: absolute;
+  top: get-rem(48);
+  right: get-rem(48);
+  font-size: get-rem(24);
+
+    @include themeLight {
+      color: #1B2132;
+    }
+
+    @include themeDark {
+      color: #B8BCC6;
+    }
 }
 
 .position {

@@ -1,6 +1,7 @@
 import { ReactElement } from 'react';
 import classNames from 'classnames';
 import { WithAdditionalClassNameProps } from 'common/types';
+import { ThemeToggler } from 'common/components/theme';
 import { Typography } from 'common/components/typography';
 import { assertNever } from 'common/utils';
 import LocationIcon from 'common/assets/icons/location.inline.svg';
@@ -21,6 +22,7 @@ export function AsideComponent({
 
   return (
     <aside className={classNames(styles.aside, asideClassName)}>
+      <ThemeToggler className={styles.themeToggler} />
       <AsideBlock>
         <img
           src={profile.avatarURL}

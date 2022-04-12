@@ -8,11 +8,11 @@
   min-height: 100%;
 
   @include themeLight {
-    background-color: hsla(0, 0%, 94%, 1);
+    background-color: hsl(260, 47%, 70%);
   }
 
   @include themeDark {
-    background-color: hsla(0, 0%, 6%, 1);
+    background-color: #36225E;
   }
 
   @include themeChangeTransition(background-color);
@@ -28,7 +28,7 @@
     pointer-events: none;
 
     @include themeLight {
-      opacity: 0.6;
+      opacity: 0.5;
     }
 
     @include themeChangeTransition(opacity);

@@ -92,12 +92,17 @@ function saveTheme(theme: Theme): void {
 }
 
 function loadTheme(): Theme | undefined {
-  const theme = window.localStorage.getItem('theme');
+  const theme = isSomething(window)
+    ? window.localStorage.getItem('theme')
+    : undefined;
   return isSomething(theme) ? (parseInt(theme, 10) as Theme) : undefined;
 }
 
 function resolveThemeFromDeviceSettings(): Theme | undefined {
-  if (window.matchMedia?.('(prefers-color-scheme: dark)').matches) {
+  if (
+    isSomething(window) &&
+    window.matchMedia?.('(prefers-color-scheme: dark)').matches
+  ) {
     return Theme.Dark;
   }
 

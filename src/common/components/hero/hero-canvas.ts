@@ -1,4 +1,4 @@
-import { animationFrameScheduler, interval } from 'rxjs';
+import { animationFrameScheduler, fromEvent, interval } from 'rxjs';
 import SimplexNoise from 'simplex-noise';
 import { Disposable, unwrap } from 'common/utils';
 
@@ -16,19 +16,21 @@ const yOff = 0.0015;
 const zOff = 0.0015;
 
 export class HeroCanvas extends Disposable {
-  private readonly _circleCount = Math.round(
-    Math.max(window.innerWidth, window.innerHeight) / 1.2,
-  );
+  private readonly _circleCount =
+    Math.round(Math.max(window.innerWidth, window.innerHeight) / 1.2) *
+    devicePixelRatio;
 
   private readonly _circlePropsLength = this._circleCount * circlePropCount;
 
   private readonly _circleProps = new Float32Array(this._circlePropsLength);
 
-  private readonly _baseRadius = (window.innerWidth / 35) * devicePixelRatio;
+  private readonly _baseRadius = (window.innerWidth / 20) * devicePixelRatio;
 
-  private readonly _rangeRadius = (window.innerWidth / 70) * devicePixelRatio;
+  private readonly _rangeRadius = (window.innerWidth / 40) * devicePixelRatio;
 
   private _baseHue = hueOffset;
+
+  private _canvasBoundingClientRect: DOMRect;
 
   private readonly _context: CanvasRenderingContext2D;
 
@@ -40,6 +42,18 @@ export class HeroCanvas extends Disposable {
       "Didn't found canvas context",
     );
 
+    this._canvasBoundingClientRect = this._canvas.getBoundingClientRect();
+
+    this.addDisposable(
+      fromEvent(this._canvas, 'resize').subscribe(() => {
+        this._canvasBoundingClientRect = this._canvas.getBoundingClientRect();
+      }),
+    );
+
+    this.addDisposable(
+      interval(0, animationFrameScheduler).subscribe(() => this.draw()),
+    );
+
     for (
       let index = 0;
       index < this._circlePropsLength;
@@ -47,10 +61,10 @@ export class HeroCanvas extends Disposable {
     ) {
       this._circleProps.set(this.createCircleProps(), index);
     }
+  }
 
-    this.addDisposable(
-      interval(0, animationFrameScheduler).subscribe(() => this.draw()),
-    );
+  private get canvasClientRect() {
+    return this._canvasBoundingClientRect;
   }
 
   private initCircle(index: number): void {
@@ -60,15 +74,15 @@ export class HeroCanvas extends Disposable {
   private isInBounds(x: number, y: number, radius: number): boolean {
     return (
       x < -radius ||
-      x > this._canvas.clientWidth + radius ||
+      x > this.canvasClientRect.width + radius ||
       y < -radius ||
-      y > this._canvas.clientHeight + radius
+      y > this.canvasClientRect.height + radius
     );
   }
 
   private createCircleProps(): readonly number[] {
-    const x = getRandomArbitrary(this._canvas.clientWidth);
-    const y = getRandomArbitrary(this._canvas.clientHeight);
+    const x = getRandomArbitrary(this.canvasClientRect.width);
+    const y = getRandomArbitrary(this.canvasClientRect.height);
     const n = simplex.noise3D(x * xOff, y * yOff, this._baseHue * zOff);
     const t = getRandomArbitrary(Math.PI * 2);
     const speed = getRandomArbitrary(rangeSpeed, baseSpeed);
@@ -128,8 +142,8 @@ export class HeroCanvas extends Disposable {
     this._context.clearRect(
       0,
       0,
-      this._canvas.clientWidth,
-      this._canvas.clientHeight,
+      this.canvasClientRect.width,
+      this.canvasClientRect.height,
     );
 
     this.drawCircles();
