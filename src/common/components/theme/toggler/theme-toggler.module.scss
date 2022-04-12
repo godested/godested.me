@@ -1,0 +1,31 @@
+@import '~common/components/theme/theme-provider-mixins.module.scss';
+
+.theme-toggler {
+  display: block;
+  border: none;
+  padding: 0.25em;
+  margin: 0;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+
+  @include themeLight {
+    color: #000;
+  }
+
+  @include themeDark {
+    color: #fff;
+  }
+
+  @include themeChangeTransition(color);
+
+  &_inverted {
+    @include themeLight {
+      color: #fff;
+    }
+
+    @include themeDark {
+      color: #000;
+    }
+  }
+}
