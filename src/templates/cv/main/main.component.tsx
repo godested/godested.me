@@ -1,9 +1,9 @@
 import { WithAdditionalClassNameProps } from 'common/types';
 import { ReactElement } from 'react';
 import classNames from 'classnames';
-import * as styles from './main.module.scss';
 import { MainBlock } from './block/block.component';
 import { useCV } from '../cv.provider';
+import * as styles from './main.module.scss';
 
 export function MainComponent({
   mainClassName,

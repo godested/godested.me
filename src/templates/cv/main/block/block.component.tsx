@@ -150,7 +150,7 @@ function Experience({
             className={styles.experienceDates}
             nowrap
           >
-            {formatDates(dateStarted, dateEnded)}
+            {formatDates(dateStarted, dateEnded ?? 'Present')}
             {' · '}
             {formatDuration(dateStarted, dateEnded)}
           </Typography>
@@ -264,7 +264,7 @@ function Icon({
   return (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" {...props}>
       <g clipPath="url(#shape)">
-        <rect x="0" y="0" width="200" height="100" fill="#E2E6EE" />
+        <rect x="0" y="0" width="200" height="100" fill="transparent" />
         <image href={url} height="100%" width="100%" />
       </g>
     </svg>

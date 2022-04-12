@@ -24,7 +24,7 @@
 }
 
 .experience-list {
-  margin: 0;
+  margin: 0 get-rem(-24);
   padding: 0;
   list-style-type: none;
 
@@ -35,11 +35,14 @@
       margin-bottom: 0;
     }
   }
+
+  @include screenMd {
+    margin: 0;
+  }
 }
 
 .experience {
-  padding: get-rem(16);
-  border-radius: get-rem(16);
+  padding: get-rem(16) get-rem(24);
 
   @include themeLight {
     background-color: #ffffff;
@@ -58,6 +61,7 @@
   @include themeChangeTransition(background-color, box-shadow);
 
   @include screenMd {
+    border-radius: get-rem(16);
     padding: get-rem(16) get-rem(24) get-rem(16) get-rem(16);
   }
 
@@ -119,7 +123,7 @@
     min-width: get-rem(12);
     height: get-rem(12);
     margin-right: get-rem(4);
-    transform: translateY(-22.5%);
+    transform: translateY(-10.5%);
 
     @include themeLight {
       fill: $lightThemeLightGray;
@@ -155,7 +159,11 @@
   flex-direction: row;
   padding: 0;
   list-style-type: none;
-  margin: get-rem(-12) 0 0 get-rem(-12);
+  margin: get-rem(-12) get-rem(-24) 0 get-rem(-36);
+
+  @include screenMd {
+    margin: get-rem(-12) 0 0 get-rem(-12);
+  }
 
   &__item {
     flex: 1 1 100%;
@@ -175,10 +183,14 @@
 
 .education {
   height: 100%;
-  padding: get-rem(16) get-rem(24) get-rem(16) get-rem(16);
-  border-radius: get-rem(16);
+  padding: get-rem(16) get-rem(24) get-rem(16) get-rem(24);
   display: flex;
   flex-direction: row;
+
+  @include screenMd {
+    border-radius: get-rem(16);
+    padding: get-rem(16) get-rem(24) get-rem(16) get-rem(16);
+  }
 
   @include themeLight {
     background-color: #ffffff;
@@ -210,7 +222,11 @@
 
     & > * {
       line-height: 1.1;
-      margin-bottom: get-rem(2);
+      margin-bottom: get-rem(3);
+
+      &:last-child {
+        margin-bottom: 0;
+      }
     }
   }
 
@@ -219,7 +235,20 @@
     flex-direction: row;
     line-height: normal;
     align-items: center;
-    color: $accent
+    margin-top: get-rem(1);
+    transition: opacity 200ms ease-in-out;
+
+    &:hover {
+      opacity: 0.7;
+    }
+
+    @include themeLight {
+      color: #516CF7;
+    }
+
+    @include themeDark {
+      color: hsl(230, 95%, 75%);
+    }
   }
 
   &__certificate-icon-container {
@@ -232,7 +261,7 @@
     border-radius: 50%;
     margin-right: get-rem(8);
     transform: translateY(-10%);
-    color: $accent;
+    color: currentColor;
 
     @include themeLight {
       background-color: #E1E7FE;

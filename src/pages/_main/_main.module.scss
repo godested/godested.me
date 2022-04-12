@@ -1,5 +1,6 @@
 @import '~common/styles/functions.scss';
 @import '~common/styles/mixins.scss';
+@import '~common/components/theme/theme-provider-mixins.module.scss';
 
 .container {
   position: relative;
@@ -14,11 +15,11 @@
 .title {
   font-size: get-rem(46);
   line-height: 0.8em;
-  color: hsl(0, 0%, 100%);
+  color: #ffffff;
 }
 
 .username {
-  color: hsl(0, 0%, 100%);
+  color: #ffffff;;
   opacity: 0.65;
 }
 
@@ -38,32 +39,43 @@
   display: block;
   position: relative;
   opacity: 1;
-  transition: opacity 0.2s ease-in-out;
   margin-bottom: 3em;
   margin-right: 3em;
   will-change: opacity;
-  color: hsl(0, 0%, 100%);
 
-  &::before {
+  @include theme($light, $dark) {
+    &[href] {
+      transition: opacity 0.2s ease-in-out;
+      color: #ffffff;
+
+      &:hover {
+        opacity: 0.5;
+        color: #ffffff;
+      }
+    }
+  }
+
+  &:hover,
+  &:active {
+    &::after {
+      transform: scaleX(0);
+    }
+  }
+
+  &::after {
     content: '';
     position: absolute;
     animation: slideIn 1s ease-in-out;
     transition: transform 0.2s ease-in-out;
     will-change: transform;
     top: 120%;
+    left: 0;
     width: 120%;
     border-bottom: get-rem(1) solid currentColor;
     transform-origin: left center;
     pointer-events: none;
   }
 
-  &:hover {
-    opacity: 0.5;
-
-    &::before {
-      transform: scaleX(0);
-    }
-  }
 }
 
 @keyframes slideIn {

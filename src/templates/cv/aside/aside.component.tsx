@@ -11,9 +11,9 @@ import UkraineIcon from 'common/assets/flags/ukraine.inline.svg';
 import EnglandIcon from 'common/assets/flags/england.inline.svg';
 import { AsideBlock } from './block/block.component';
 import { AsideList } from './list/list.component';
+import { CV } from '../types';
 import { useCV } from '../cv.provider';
 import * as styles from './aside.module.scss';
-import { CV } from '../types';
 
 export function AsideComponent({
   asideClassName,

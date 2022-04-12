@@ -1,4 +1,14 @@
-$themeChangingDuration: 500;
+$themeChangingDuration: 250;
+$light: light;
+$dark: dark;
+
+@mixin theme($colors...) {
+  @each $color in $colors {
+    :global(.theme_#{$color}) & {
+      @content
+    }
+  }
+}
 
 @mixin themeLight {
   :global(.theme_light) & {

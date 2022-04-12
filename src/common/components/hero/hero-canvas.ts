@@ -9,7 +9,7 @@ const baseSpeed = 0.1;
 const rangeSpeed = 0.2;
 const baseTTL = 200;
 const rangeTTL = 500;
-const hueOffset = 165;
+const hueOffset = 180;
 const hueRange = 320;
 const xOff = 0.5;
 const yOff = 0.5;
@@ -22,7 +22,7 @@ const hueCenter = hueOffset + maxHueOffset;
 
 export class HeroCanvas extends Disposable {
   private readonly _circleCount: number =
-    Math.round(Math.max(window.innerWidth, window.innerHeight) / 2) *
+    Math.round(Math.max(window.innerWidth, window.innerHeight) * 0.35) *
     devicePixelRatio;
 
   private readonly _circlePropsLength: number =
@@ -33,10 +33,12 @@ export class HeroCanvas extends Disposable {
   );
 
   private readonly _baseRadius: number =
-    window.innerWidth * 0.01 * devicePixelRatio;
+    Math.round(Math.max(window.innerWidth, window.innerHeight) * 0.01) *
+    devicePixelRatio;
 
   private readonly _rangeRadius: number =
-    window.innerWidth * 0.05 * devicePixelRatio;
+    Math.round(Math.max(window.innerWidth, window.innerHeight) * 0.02) *
+    devicePixelRatio;
 
   private _lifeTime = 0;
 

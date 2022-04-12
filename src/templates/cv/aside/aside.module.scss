@@ -1,4 +1,5 @@
 @import "~common/styles/functions.scss";
+@import "~common/styles/mixins.scss";
 @import '~common/components/theme/theme-provider-mixins.module.scss';
 
 .aside {
@@ -17,17 +18,21 @@
 
 .theme-toggler {
   position: absolute;
-  top: get-rem(48);
-  right: get-rem(48);
-  font-size: get-rem(24);
+  top: get-rem(64);
+  right: get-rem(64);
 
-    @include themeLight {
-      color: #1B2132;
-    }
+  @include themeLight {
+    color: #1B2132;
+  }
 
-    @include themeDark {
-      color: #B8BCC6;
-    }
+  @include themeDark {
+    color: #B8BCC6;
+  }
+
+  @include screenMd() {
+    top: get-rem(48);
+    right: get-rem(48);
+  }
 }
 
 .position {
@@ -37,11 +42,11 @@
   text-fill-color: transparent;
 
   @include themeLight {
-    background-image: linear-gradient(102.91deg, #53266F 2.33%, #2A67AC 100%);
+    background-image: linear-gradient(102.91deg, hsl(277, 49%, 29%) 2.33%, hsl(212, 61%, 42%) 100%);
   }
 
   @include themeDark {
-    background-image: linear-gradient(102.91deg, #D2B3E5 2.33%, #ADCAEB 100%);
+    background-image: linear-gradient(102.91deg, hsl(277, 56%, 70%) 2.33%, hsl(212, 70%, 70%) 100%);
   }
 }
 
