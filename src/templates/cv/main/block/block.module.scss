@@ -232,8 +232,15 @@
     border-radius: 50%;
     margin-right: get-rem(8);
     transform: translateY(-10%);
-    background-color: #E1E7FE;
     color: $accent;
+
+    @include themeLight {
+      background-color: #E1E7FE;
+    }
+
+    @include themeDark {
+      background-color: #2F3751;
+    }
   }
 
   &__certificate-icon {

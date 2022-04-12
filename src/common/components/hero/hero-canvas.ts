@@ -5,10 +5,10 @@ import { Disposable, unwrap } from 'common/utils';
 const simplex = new SimplexNoise();
 
 const circlePropCount = 8;
-const baseSpeed = 0.1;
-const rangeSpeed = 0.2;
-const baseTTL = 200;
-const rangeTTL = 400;
+const baseSpeed = 0.25;
+const rangeSpeed = 0.35;
+const baseTTL = 100;
+const rangeTTL = 300;
 const hueOffset = 200;
 const hueRange = 310;
 const xOff = 0.0015;
@@ -17,7 +17,7 @@ const zOff = 0.0015;
 
 export class HeroCanvas extends Disposable {
   private readonly _circleCount =
-    Math.round(Math.max(window.innerWidth, window.innerHeight) / 1.2) *
+    Math.round(Math.max(window.innerWidth, window.innerHeight) / 2) *
     devicePixelRatio;
 
   private readonly _circlePropsLength = this._circleCount * circlePropCount;
