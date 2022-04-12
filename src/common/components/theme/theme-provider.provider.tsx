@@ -88,19 +88,16 @@ function resolveBodyClassNameFromTheme(theme: Theme): CSSClassName {
 }
 
 function saveTheme(theme: Theme): void {
-  localStorage.setItem('theme', String(theme));
+  window.localStorage.setItem('theme', String(theme));
 }
 
 function loadTheme(): Theme | undefined {
-  const theme = localStorage.getItem('theme');
+  const theme = window.localStorage.getItem('theme');
   return isSomething(theme) ? (parseInt(theme, 10) as Theme) : undefined;
 }
 
 function resolveThemeFromDeviceSettings(): Theme | undefined {
-  if (
-    window.matchMedia &&
-    window.matchMedia('(prefers-color-scheme: dark)').matches
-  ) {
+  if (window.matchMedia?.('(prefers-color-scheme: dark)').matches) {
     return Theme.Dark;
   }
 
