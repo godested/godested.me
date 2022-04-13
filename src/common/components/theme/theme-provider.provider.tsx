@@ -17,7 +17,8 @@ import {
   noop,
 } from 'common/utils';
 import { CSSClassName } from 'common/styles';
-import { useBodyClasses } from 'common/hooks';
+import { Helmet } from 'react-helmet';
+import classNames from 'classnames';
 import { Theme } from './types';
 import * as styles from './theme-provider.module.scss';
 
@@ -57,10 +58,19 @@ export function ThemeProvider({
     [setTheme, setChangingClassName],
   );
 
-  useBodyClasses(resolveBodyClassNameFromTheme(theme), changingClassName);
-
   return (
     <ThemeContext.Provider value={theme}>
+      {/* TODO: Weird type error */}
+      {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+      {/* @ts-ignore */}
+      <Helmet>
+        <body
+          className={classNames(
+            resolveBodyClassNameFromTheme(theme),
+            changingClassName,
+          )}
+        />
+      </Helmet>
       <ChangeThemeContext.Provider value={changeTheme}>
         {children}
       </ChangeThemeContext.Provider>
