@@ -29,6 +29,10 @@ jobs:
 
     - name: Build
       run: npm run build:prefix-paths
+      env:
+        CLOUDINARY_CLOUD_NAME: ${{ secrets.CLOUDINARY_CLOUD_NAME }}
+        CLOUDINARY_API_KEY: ${{ secrets.CLOUDINARY_API_KEY }}
+        CLOUDINARY_API_SECRET: ${{ secrets.CLOUDINARY_API_SECRET }}
 
     - name: Deploy
       run: |
