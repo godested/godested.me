@@ -13,7 +13,7 @@ export namespace CV {
   export type Profile = Readonly<{
     name: string;
     position: string;
-    avatarURL: string;
+    avatarCloudinaryID: string;
   }>;
 
   export enum ContactType {

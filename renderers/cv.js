@@ -7,6 +7,9 @@ exports.renderer = (createPage) => {
   createPage({
     path: '/cv',
     component: path.resolve('src/templates/cv/index.tsx'),
-    context: cv,
+    context: {
+      cv,
+      avatarCloudinaryID: cv.profile.avatarCloudinaryID,
+    },
   });
 };

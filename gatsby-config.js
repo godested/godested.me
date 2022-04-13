@@ -1,3 +1,6 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
+require('dotenv').config();
+
 module.exports = {
   pathPrefix: '/godested-site',
   // Since `gatsby-plugin-typescript` is automatically included in Gatsby you
@@ -24,6 +27,31 @@ module.exports = {
         rule: {
           include: /\.inline\.svg$/,
         },
+      },
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'images',
+        path: `${__dirname}/src/common/assets/images`,
+      },
+    },
+    {
+      resolve: 'gatsby-transformer-cloudinary',
+      options: {
+        cloudName: process.env.CLOUDINARY_CLOUD_NAME,
+        apiKey: process.env.CLOUDINARY_API_KEY,
+        apiSecret: process.env.CLOUDINARY_API_SECRET,
+        uploadFolder: 'gatsby-cloudinary',
+      },
+    },
+    {
+      resolve: 'gatsby-source-cloudinary',
+      options: {
+        cloudName: process.env.CLOUDINARY_CLOUD_NAME,
+        apiKey: process.env.CLOUDINARY_API_KEY,
+        apiSecret: process.env.CLOUDINARY_API_SECRET,
+        resourceType: 'image',
       },
     },
   ],

@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import { useLazyRef } from 'common/hooks';
 import { WithOptionalClassNameProps } from 'common/types';
 import { ExpectedRef } from 'common/utils/ref';
-import Logo from 'common/assets/images/logo.inline.svg';
+import Logo from 'common/assets/icons/logo.inline.svg';
 import { HeroCanvas } from './hero-canvas';
 import * as styles from './hero.module.scss';
 

@@ -7,10 +7,10 @@ import { CVProvider } from './cv.provider';
 
 export default function CVPage({
   pageContext,
-}: PageProps<unknown, CV>): ReactElement {
+}: PageProps<unknown, { cv: CV }>): ReactElement {
   return (
-    <Page title={`${pageContext.profile.name} CV`}>
-      <CVProvider cv={pageContext}>
+    <Page title={`${pageContext.cv.profile.name} CV`}>
+      <CVProvider cv={pageContext.cv}>
         <CVComponent />
       </CVProvider>
     </Page>
