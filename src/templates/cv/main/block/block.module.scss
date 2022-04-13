@@ -247,7 +247,7 @@
 
     @include theme($dark, $light) {
       &[href]{
-        transition: opacity 200ms ease-in-out;
+        transition: opacity 100ms ease-in-out;
 
         &:hover {
           opacity: 0.7;

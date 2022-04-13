@@ -34,14 +34,14 @@
 
     @include themeLight {
       box-shadow: 0 get-rem(60) get-rem(36) hsla(215, 21%, 11%, 0.01),
-        0 get-rem(26) get-rem(26) hsla(215, 21%, 11%, 0.01),
-        0 get-rem(6) get-rem(14) hsla(215, 21%, 11%, 0.01);
+                  0 get-rem(26) get-rem(26) hsla(215, 21%, 11%, 0.01),
+                  0 get-rem(6) get-rem(14) hsla(215, 21%, 11%, 0.01);
     }
 
     @include themeDark {
-      box-shadow: 0 get-rem(60) get-rem(36) hsla(215, 21%, 89%, 0.01),
-        0 get-rem(26) get-rem(26) hsla(215, 21%, 89%, 0.01),
-        0 get-rem(6) get-rem(14) hsla(215, 21%, 89%, 0.01);
+      box-shadow: 0 get-rem(60) get-rem(36) rgba(0, 0, 0, 0.05),
+                  0 get-rem(26) get-rem(26) rgba(0, 0, 0, 0.1),
+                  0 get-rem(6) get-rem(14) rgba(0, 0, 0, 0.1);
     }
 
     @include themeChangeTransition(box-shadow);

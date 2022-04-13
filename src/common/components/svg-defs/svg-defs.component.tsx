@@ -1,17 +1,16 @@
-import { ReactElement, SVGProps } from 'react';
-import * as styles from './svg-defs.module.scss';
+import { ReactElement, ReactSVG } from 'react';
 
-export function SVGDefs({
-  children,
-  ...props
-}: Omit<SVGProps<SVGSVGElement>, 'className'>): ReactElement {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      {...props}
-      className={styles.svgDefs}
-    >
-      <defs>{children}</defs>
-    </svg>
-  );
+export type SVGDefsProps = Readonly<
+  {
+    children:
+      | ReactElement<unknown, keyof ReactSVG>
+      | readonly ReactElement<unknown, keyof ReactSVG>[];
+  } & ({ singleton: true; id: string } | { singleton?: undefined })
+>;
+
+/* eslint-disable react/destructuring-assignment */
+export function SVGDefs(props: SVGDefsProps): ReactElement | null {
+  // TODO: singleton
+  return <defs>{props.children}</defs>;
 }
+/* eslint-enable */
