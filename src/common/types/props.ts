@@ -1,9 +1,10 @@
-import { CSSClassName } from 'common/styles';
 import {
   ComponentPropsWithoutRef,
   ElementType,
   JSXElementConstructor,
 } from 'react';
+import { CSSClassName } from 'common/styles';
+import { Primitive } from 'common/utils';
 
 type AllowedClassNameKey =
   | 'className'
@@ -33,7 +34,11 @@ export type WithOptionalClassNameProps<
 // A more precise version of just React.ComponentPropsWithoutRef on its own
 export type PropsOf<
   C extends keyof JSX.IntrinsicElements | JSXElementConstructor<any>,
-> = JSX.LibraryManagedAttributes<C, ComponentPropsWithoutRef<C>>;
+> = JSX.LibraryManagedAttributes<C, ComponentPropsWithoutRef<C>> &
+  (C extends keyof JSX.IntrinsicElements
+    ? { [dataKey: `data-${string}`]: Primitive }
+    : // eslint-disable-next-line @typescript-eslint/ban-types
+      {});
 
 type AsProp<C extends ElementType> = Readonly<{
   /**

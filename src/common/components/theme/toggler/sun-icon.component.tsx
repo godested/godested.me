@@ -1,42 +1,23 @@
 import { ReactElement } from 'react';
-import { motion } from 'framer-motion';
-import { TRANSITION } from './constants';
+import * as styles from './sun-icon.module.scss';
 
 export function SunIcon(): ReactElement {
-  const whileTap = { scale: 0.95, rotate: 15 };
-
-  const raysVariants = {
-    initial: { rotate: 45 },
-    animate: { rotate: 0, TRANSITION },
-  };
-
-  const coreVariants = {
-    initial: { scale: 1.5 },
-    animate: { scale: 1, TRANSITION },
-  };
-
   return (
-    <motion.svg
-      key="sun"
+    <svg
       viewBox="0 0 24 24"
       fill="none"
       width="1em"
       height="1em"
       xmlns="http://www.w3.org/2000/svg"
-      whileTap={whileTap}
-      // Centers the rotation anchor point vertically & horizontally
-      style={{ originX: '50%', originY: '50%' }}
     >
-      <motion.circle
+      <circle
         cx="11.9998"
         cy="11.9998"
         r="5.75375"
         fill="currentColor"
-        initial="initial"
-        animate="animate"
-        variants={coreVariants}
+        className={styles.sunIconCore}
       />
-      <motion.g initial="initial" animate="animate" variants={raysVariants}>
+      <g className={styles.sunIconRays}>
         <circle
           cx="3.08982"
           cy="6.85502"
@@ -67,7 +48,7 @@ export function SunIcon(): ReactElement {
           fill="currentColor"
         />
         <circle cx="12" cy="1.71143" r="1.71143" fill="currentColor" />
-      </motion.g>
-    </motion.svg>
+      </g>
+    </svg>
   );
 }

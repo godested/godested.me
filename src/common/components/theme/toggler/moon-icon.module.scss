@@ -1,0 +1,13 @@
+@import '../theme-provider-mixins.module.scss';
+
+.moon-icon {
+  animation: spin $themeChangingDuration * 2 + ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  transform-origin: center center;
+}
+
+@keyframes spin {
+  from {
+    transform: scale(65%) rotate(90deg);
+  }
+}
+
