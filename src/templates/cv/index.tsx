@@ -1,6 +1,6 @@
 import { ReactElement } from 'react';
 import { PageProps } from 'gatsby';
-import { Page } from 'common/components/page';
+import { Page } from 'components/page';
 import { CV } from './types';
 import CVComponent from './cv.component';
 import { CVProvider } from './cv.provider';

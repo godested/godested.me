@@ -1,7 +1,9 @@
 @import '../theme-provider-mixins.module.scss';
 
 .sun-icon {
-  transform: translateZ(0);
+  display: block;
+  width: 1em;
+  height: 1em;
 
   &__core {
     animation: scale $themeChangingDuration * 2 +ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
@@ -18,10 +20,18 @@
   from {
     transform: rotate(45deg);
   }
+
+  to {
+    transform: rotate(0);
+  }
 }
 
 @keyframes scale {
   from {
     transform: scale(150%);
+  }
+
+  to {
+    transform: scale(100%);
   }
 }

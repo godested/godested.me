@@ -1,7 +1,7 @@
 import { ReactElement } from 'react';
-import { Typography } from 'common/components/typography';
-import { Hero } from 'common/components/hero';
-import { Page } from 'common/components/page';
+import { Typography } from 'components/typography';
+import { Hero } from 'components/hero';
+import { Page } from 'components/page';
 import { Link } from 'gatsby';
 
 export default function NotFoundPage(): ReactElement {

@@ -1,4 +1,4 @@
-import { WithAdditionalClassNameProps } from 'common/types';
+import { WithAdditionalClassNameProps } from 'types';
 import { ReactElement } from 'react';
 import classNames from 'classnames';
 import { MainBlock } from './block/block.component';

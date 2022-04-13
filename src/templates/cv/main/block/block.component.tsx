@@ -1,12 +1,12 @@
 import { PropsWithChildren, ReactElement, SVGProps } from 'react';
 import classNames from 'classnames';
-import { WithOptionalClassNameProps } from 'common/types';
-import { Typography } from 'common/components/typography';
+import { WithOptionalClassNameProps } from 'types';
+import { Typography } from 'components/typography';
 import { CV } from 'templates/cv/types';
-import { assertNever, getDateMonth, isSomething, isNumber } from 'common/utils';
-import { SVGDefs } from 'common/components/svg-defs';
-import LocationIcon from 'common/assets/icons/location.inline.svg';
-import LinkIcon from 'common/assets/icons/link.inline.svg';
+import { assertNever, getDateMonth, isSomething, isNumber } from 'utils';
+import { SVGDefs } from 'components/svg-defs';
+import LocationIcon from 'assets/icons/location.inline.svg';
+import LinkIcon from 'assets/icons/link.inline.svg';
 import * as styles from './block.module.scss';
 
 type MainBlockProps = Readonly<{ content: CV.Content }> &

@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
-import { WithOptionalClassNameProps } from 'common/types';
+import { WithOptionalClassNameProps } from 'types';
 import classNames from 'classnames';
 import { useTheme, useChangeTheme } from '../theme-provider.provider';
 import { Theme } from '../types';

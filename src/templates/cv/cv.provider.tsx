@@ -1,5 +1,5 @@
-import { createUseContext } from 'common/utils';
 import { createContext, PropsWithChildren, ReactElement } from 'react';
+import { createUseContext } from 'utils';
 import { CV } from './types';
 
 export const CVContext = createContext<CV | undefined>(undefined);

@@ -1,7 +1,7 @@
-@import "~common/styles/variables.scss";
-@import "~common/styles/mixins.scss";
-@import "~common/components/typography/typography.module.scss";
-@import '~common/components/theme/theme-provider-mixins.module.scss';
+@import "~/styles/variables.scss";
+@import "~/styles/mixins.scss";
+@import "~/components/typography/typography.module.scss";
+@import '~/components/theme/theme-provider-mixins.module.scss';
 
 .block {
   margin-bottom: get-rem(48);

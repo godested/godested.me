@@ -1,8 +1,8 @@
 import { PropsWithChildren, ReactElement } from 'react';
 import classNames from 'classnames';
-import { WithOptionalClassNameProps } from 'common/types';
-import { isSomething } from 'common/utils';
-import { Typography } from 'common/components/typography';
+import { WithOptionalClassNameProps } from 'types';
+import { isSomething } from 'utils';
+import { Typography } from 'components/typography';
 import * as styles from './block.module.scss';
 
 type AsideBlockProps = Readonly<
@@ -15,7 +15,7 @@ export function AsideBlock({
   title,
 }: AsideBlockProps): ReactElement {
   return (
-    <div className={classNames(styles.block, className)}>
+    <section className={classNames(styles.block, className)}>
       {isSomething(title) && (
         <Typography
           variant={Typography.Variant.Caption}
@@ -26,6 +26,6 @@ export function AsideBlock({
         </Typography>
       )}
       {children}
-    </div>
+    </section>
   );
 }

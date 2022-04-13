@@ -15,6 +15,7 @@ module.exports = {
         cssLoaderOptions: {
           modules: {
             exportLocalsConvention: 'camelCaseOnly',
+            localIdentName: '[sha1:hash:hex:5]',
           },
         },
         sassRuleTest: /\.scss$/,
@@ -33,7 +34,7 @@ module.exports = {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'images',
-        path: `${__dirname}/src/common/assets/images`,
+        path: `${__dirname}/src/assets/images`,
       },
     },
     {

@@ -3,8 +3,8 @@ import {
   ElementType,
   JSXElementConstructor,
 } from 'react';
-import { CSSClassName } from 'common/styles';
-import { Primitive } from 'common/utils';
+import { CSSClassName } from 'styles';
+import { Primitive } from 'utils';
 
 type AllowedClassNameKey =
   | 'className'

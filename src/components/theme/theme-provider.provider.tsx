@@ -15,8 +15,8 @@ import {
   isBrowser,
   isSomething,
   noop,
-} from 'common/utils';
-import { CSSClassName } from 'common/styles';
+} from 'utils';
+import { CSSClassName } from 'styles';
 import { Helmet } from 'react-helmet';
 import classNames from 'classnames';
 import { Theme } from './types';

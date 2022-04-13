@@ -1,11 +1,8 @@
 import { ReactElement, Ref, ReactNode, ElementType } from 'react';
 import classNames from 'classnames';
-import { CSSClassName } from 'common/styles';
-import { assertNever, optionalMap } from 'common/utils';
-import {
-  WithOptionalClassNameProps,
-  PolymorphicComponentProps,
-} from 'common/types';
+import { CSSClassName } from 'styles';
+import { assertNever, optionalMap } from 'utils';
+import { WithOptionalClassNameProps, PolymorphicComponentProps } from 'types';
 import * as styles from './typography.module.scss';
 
 export function Typography<T extends ElementType = 'p'>(

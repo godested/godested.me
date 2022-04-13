@@ -1,8 +1,8 @@
 import { ReactElement } from 'react';
 import { Link } from 'gatsby';
-import { Typography } from 'common/components/typography';
-import { Hero } from 'common/components/hero';
-import { Page } from 'common/components/page';
+import { Typography } from 'components/typography';
+import { Hero } from 'components/hero';
+import { Page } from 'components/page';
 import * as styles from './_main.module.scss';
 
 // TODO: LinkComponent<{ to: string, external: boolean }>

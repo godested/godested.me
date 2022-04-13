@@ -2,15 +2,15 @@ import { ReactElement } from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 import Image from 'gatsby-image';
 import classNames from 'classnames';
-import { WithAdditionalClassNameProps } from 'common/types';
-import { ThemeToggler } from 'common/components/theme';
-import { Typography } from 'common/components/typography';
-import { assertNever } from 'common/utils';
-import LocationIcon from 'common/assets/icons/location.inline.svg';
-import MailIcon from 'common/assets/icons/mail.inline.svg';
-import PhoneIcon from 'common/assets/icons/phone.inline.svg';
-import UkraineIcon from 'common/assets/flags/ukraine.inline.svg';
-import EnglandIcon from 'common/assets/flags/england.inline.svg';
+import { WithAdditionalClassNameProps } from 'types';
+import { ThemeToggler } from 'components/theme';
+import { Typography } from 'components/typography';
+import { assertNever } from 'utils';
+import LocationIcon from 'assets/icons/location.inline.svg';
+import MailIcon from 'assets/icons/mail.inline.svg';
+import PhoneIcon from 'assets/icons/phone.inline.svg';
+import UkraineIcon from 'assets/flags/ukraine.inline.svg';
+import EnglandIcon from 'assets/flags/england.inline.svg';
 import { AsideBlock } from './block/block.component';
 import { AsideList } from './list/list.component';
 import { CV } from '../types';
@@ -43,6 +43,7 @@ export function AsideComponent({
           fluid={data.image.fluid}
           alt={profile.name}
           className={styles.profileAvatar}
+          backgroundColor
         />
         <Typography
           as="h1"

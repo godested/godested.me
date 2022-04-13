@@ -1,6 +1,6 @@
 import { PropsWithChildren } from 'react';
 import { Helmet } from 'react-helmet';
-import { WithOptionalClassNameProps } from 'common/types';
+import { WithOptionalClassNameProps } from 'types';
 import { ThemeProvider } from '../theme';
 
 export type PageProps = Readonly<

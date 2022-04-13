@@ -1,5 +1,5 @@
-import { Typography } from 'common/components/typography';
-import { assertNever } from 'common/utils';
+import { Typography } from 'components/typography';
+import { assertNever } from 'utils';
 
 export type CV = Readonly<{
   profile: CV.Profile;
