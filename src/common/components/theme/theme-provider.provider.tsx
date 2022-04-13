@@ -78,7 +78,7 @@ export function useThemedClassName(
   return classNamesMap[theme];
 }
 
-function resolveTheme(defaultTheme: Theme = Theme.Dark): Theme {
+function resolveTheme(defaultTheme: Theme = Theme.Light): Theme {
   return isBrowser
     ? loadTheme() ?? resolveThemeFromDeviceSettings() ?? defaultTheme
     : defaultTheme;

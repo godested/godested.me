@@ -1,6 +1,7 @@
 @import '../theme-provider-mixins.module.scss';
 
 .sun-icon {
+  transform: translateZ(0);
 
   &__core {
     animation: scale $themeChangingDuration * 2 +ms cubic-bezier(0.22, 1, 0.36, 1) forwards;

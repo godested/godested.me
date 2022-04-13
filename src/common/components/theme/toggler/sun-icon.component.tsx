@@ -9,6 +9,7 @@ export function SunIcon(): ReactElement {
       width="1em"
       height="1em"
       xmlns="http://www.w3.org/2000/svg"
+      className={styles.sunIcon}
     >
       <circle
         cx="11.9998"
