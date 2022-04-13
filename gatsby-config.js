@@ -4,6 +4,7 @@ module.exports = {
   // don't need to define it here (just if you need to change the options)
   plugins: [
     'gatsby-plugin-provide-react',
+    'gatsby-plugin-preact',
     'gatsby-plugin-react-helmet',
     {
       resolve: 'gatsby-plugin-sass',
