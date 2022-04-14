@@ -22,8 +22,7 @@
     "postinstall": "husky install",
     "test": "jest",
     "commit": "cz",
-    "build:cv-pdf": "node ./scripts/generate-cv-pdf.js",
-    "optimize-pdf": "node ./scripts/optimize-pdf.js"
+    "build:cv-pdf": "node ./scripts/generate-cv-pdf.js"
   },
   "lint-staged": {
     "./src/**/*.{ts,tsx}": [
@@ -85,7 +84,6 @@
     "gatsby-source-filesystem": "4.12.1",
     "gatsby-transformer-cloudinary": "2.2.4",
     "gh-pages": "3.2.3",
-    "gsx-pdf-optimize": "1.0.4",
     "husky": "7.0.4",
     "identity-obj-proxy": "3.0.0",
     "jest": "27.5.1",
