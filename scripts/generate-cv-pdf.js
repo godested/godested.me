@@ -27,11 +27,7 @@ const generatePdf = async ({ pagePath }) => {
   const browser = await puppeteer.launch({ headless: true });
   const page = await browser.newPage();
   const htmlPath = path.join(currentDir, 'public', pagePath, 'index.html');
-  const downloadDir = path.join(currentDir, 'public/pdf');
-
-  if (!fs.existsSync(downloadDir)) {
-    fs.mkdirSync(downloadDir);
-  }
+  const downloadDir = path.join(currentDir, 'public', pagePath);
 
   const contentHtml = fs
     .readFileSync(htmlPath, 'utf8')
@@ -70,5 +66,4 @@ async function generateCvPDFs() {
   );
 }
 
-// DELETE!
 generateCvPDFs();
