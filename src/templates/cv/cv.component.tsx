@@ -12,7 +12,7 @@ export default function CVComponent(): ReactElement {
         <AsideComponent asideClassName={styles.aside} />
         <MainComponent mainClassName={styles.main} />
         <div className={styles.downloadButtonContainer}>
-          <DownloadButton className={styles.downloadButton} url="/cv/cv.pdf" />
+          <DownloadButton className={styles.downloadButton} url="/cv.pdf" />
         </div>
       </article>
     </div>

@@ -1,5 +1,4 @@
 import { ReactElement } from 'react';
-import { Link } from 'gatsby';
 import classNames from 'classnames';
 import { WithAdditionalClassNameProps } from 'types';
 import DownloadIcon from 'assets/icons/download.inline.svg';
@@ -16,13 +15,12 @@ export function DownloadButton({
   className,
 }: DownloadButtonProps): ReactElement {
   return (
-    /* TODO: Weird type error */
-    /* eslint-disable-next-line @typescript-eslint/ban-ts-comment */
-    /* @ts-ignore */
-    <Link
-      target="_blank"
-      rel="noopener noreferrer"
-      to={url}
+    <a
+      onClick={(event) => {
+        event.preventDefault();
+        window.open(window.location.href + url, '_blank');
+      }}
+      href={url}
       className={classNames(styles.downloadButton, className)}
     >
       <Typography as="span" className={styles.downloadButtonText}>
@@ -31,6 +29,6 @@ export function DownloadButton({
       <span className={styles.downloadButtonIconWrapper}>
         <DownloadIcon className={styles.downloadButtonIcon} />
       </span>
-    </Link>
+    </a>
   );
 }
