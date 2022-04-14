@@ -45,7 +45,7 @@ const generatePdf = async ({ pagePath }) => {
   await page.setJavaScriptEnabled(true);
   await page.evaluateHandle('document.fonts.ready');
   await page.addStyleTag({
-    content: `html { font-size:${convertPixelToInches(16, 72)} }`,
+    content: `html { font-size:${convertPixelToInches(16, 72)}; }`,
   });
   await page.setJavaScriptEnabled(false);
 

@@ -110,66 +110,71 @@ function Experience({
 }: CV.Experience['data'][number]): ReactElement {
   return (
     <div className={styles.experience}>
-      <div className={styles.experienceHeader}>
-        <div className={styles.experienceCompany}>
-          <Icon className={styles.experienceCompanyLogo} url={companyLogoURL} />
-          <div className={styles.experienceCompanyInfo}>
+      <div className={styles.experienceContent}>
+        <div className={styles.experienceHeader}>
+          <div className={styles.experienceCompany}>
+            <Icon
+              className={styles.experienceCompanyLogo}
+              url={companyLogoURL}
+            />
+            <div className={styles.experienceCompanyInfo}>
+              <Typography
+                as="h2"
+                variant={Typography.Variant.ParagraphMD}
+                fontWeight={Typography.Weight.Medium}
+                fontColor={Typography.Color.Black}
+                className={styles.experienceCompanyName}
+                nowrap
+                {...resolveCompanyProps(companyURL)}
+              >
+                {companyName}
+              </Typography>
+              <Typography
+                as="h3"
+                variant={Typography.Variant.Caption}
+                fontColor={Typography.Color.LightGray}
+                nowrap
+              >
+                {position}
+              </Typography>
+            </div>
+          </div>
+          <div className={styles.experienceMetrics}>
             <Typography
-              as="h2"
-              variant={Typography.Variant.ParagraphMD}
-              fontWeight={Typography.Weight.Medium}
-              fontColor={Typography.Color.Black}
-              className={styles.experienceCompanyName}
+              variant={Typography.Variant.Caption}
+              fontColor={Typography.Color.DarkGray}
+              className={styles.experienceDates}
               nowrap
-              {...resolveCompanyProps(companyURL)}
             >
-              {companyName}
+              {formatDates(dateStarted, dateEnded ?? 'Present')}
+              {' · '}
+              {formatDuration(dateStarted, dateEnded)}
             </Typography>
             <Typography
-              as="h3"
               variant={Typography.Variant.Caption}
               fontColor={Typography.Color.LightGray}
+              className={styles.experienceLocation}
               nowrap
             >
-              {position}
+              <LocationIcon className={styles.experienceLocationIcon} />
+              <span>{location}</span>
             </Typography>
           </div>
         </div>
-        <div className={styles.experienceMetrics}>
-          <Typography
-            variant={Typography.Variant.Caption}
-            fontColor={Typography.Color.DarkGray}
-            className={styles.experienceDates}
-            nowrap
-          >
-            {formatDates(dateStarted, dateEnded ?? 'Present')}
-            {' · '}
-            {formatDuration(dateStarted, dateEnded)}
-          </Typography>
-          <Typography
-            variant={Typography.Variant.Caption}
-            fontColor={Typography.Color.LightGray}
-            className={styles.experienceLocation}
-            nowrap
-          >
-            <LocationIcon className={styles.experienceLocationIcon} />
-            <span>{location}</span>
-          </Typography>
+        <div>
+          {description.map(({ variant, color, weight, text }, index) => (
+            <Typography
+              // eslint-disable-next-line react/no-array-index-key
+              key={index}
+              variant={variant ?? Typography.Variant.ParagraphSM}
+              fontColor={color}
+              fontWeight={weight}
+              className={styles.experienceParagraph}
+            >
+              {text}
+            </Typography>
+          ))}
         </div>
-      </div>
-      <div>
-        {description.map(({ variant, color, weight, text }, index) => (
-          <Typography
-            // eslint-disable-next-line react/no-array-index-key
-            key={index}
-            variant={variant ?? Typography.Variant.ParagraphSM}
-            fontColor={color}
-            fontWeight={weight}
-            className={styles.experienceParagraph}
-          >
-            {text}
-          </Typography>
-        ))}
       </div>
     </div>
   );
@@ -186,51 +191,53 @@ function Education({
 }: CV.Education['data'][number]): ReactElement {
   return (
     <div className={styles.education}>
-      <Icon className={styles.educationCompanyLogo} url={companyLogoURL} />
-      <div className={styles.educationInfo}>
-        <Typography
-          as="h2"
-          variant={Typography.Variant.ParagraphMD}
-          fontWeight={Typography.Weight.Medium}
-          fontColor={Typography.Color.Black}
-          nowrap
-          {...resolveCompanyProps(companyURL)}
-        >
-          {courseName}
-        </Typography>
-        <Typography
-          variant={Typography.Variant.Caption}
-          fontColor={Typography.Color.Gray}
-          nowrap
-        >
-          {formatDates(dateStarted, dateEnded)}
-        </Typography>
-        {isSomething(description) && (
+      <div className={styles.educationContent}>
+        <Icon className={styles.educationCompanyLogo} url={companyLogoURL} />
+        <div className={styles.educationInfo}>
           <Typography
-            as="h3"
+            as="h2"
+            variant={Typography.Variant.ParagraphMD}
+            fontWeight={Typography.Weight.Medium}
+            fontColor={Typography.Color.Black}
+            nowrap
+            {...resolveCompanyProps(companyURL)}
+          >
+            {courseName}
+          </Typography>
+          <Typography
             variant={Typography.Variant.Caption}
-            fontColor={Typography.Color.DarkGray}
+            fontColor={Typography.Color.Gray}
             nowrap
           >
-            {description}
+            {formatDates(dateStarted, dateEnded)}
           </Typography>
-        )}
-        {isSomething(certificateURL) && (
-          <Typography
-            as="a"
-            href={certificateURL}
-            target="_blank"
-            rel="noopener noreferrer"
-            variant={Typography.Variant.Caption}
-            className={styles.educationCertificate}
-            nowrap
-          >
-            <span className={styles.educationCertificateIconContainer}>
-              <LinkIcon className={styles.educationCertificateIcon} />
-            </span>
-            <span>Course certificate</span>
-          </Typography>
-        )}
+          {isSomething(description) && (
+            <Typography
+              as="h3"
+              variant={Typography.Variant.Caption}
+              fontColor={Typography.Color.DarkGray}
+              nowrap
+            >
+              {description}
+            </Typography>
+          )}
+          {isSomething(certificateURL) && (
+            <Typography
+              as="a"
+              href={certificateURL}
+              target="_blank"
+              rel="noopener noreferrer"
+              variant={Typography.Variant.Caption}
+              className={styles.educationCertificate}
+              nowrap
+            >
+              <span className={styles.educationCertificateIconContainer}>
+                <LinkIcon className={styles.educationCertificateIcon} />
+              </span>
+              <span>Course certificate</span>
+            </Typography>
+          )}
+        </div>
       </div>
     </div>
   );
