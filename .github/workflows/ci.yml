@@ -35,7 +35,10 @@ jobs:
         CLOUDINARY_API_SECRET: ${{ secrets.CLOUDINARY_API_SECRET }}
 
     - name: Build CV PDF
-      run: npm run build:cv-pdf
+      run: |
+        cp -a ${PWD}/src/assets/fonts/. ~/.fonts
+        fc-cache -f -v
+        npm run build:cv-pdf
 
     - name: Deploy
       run: |

@@ -49,11 +49,6 @@ const generatePdf = async ({ pagePath }) => {
   });
   await page.setJavaScriptEnabled(false);
 
-  fs.writeFileSync(
-    path.join(downloadDir, `${normalizePageName(pagePath)}.html`),
-    contentHtml,
-  );
-
   const width = 1188;
   const height = width * Math.sqrt(2);
 
@@ -61,7 +56,6 @@ const generatePdf = async ({ pagePath }) => {
     printBackground: true,
     width: convertPixelToInches(width, 72),
     height: convertPixelToInches(height, 72),
-    pageRanges: '1',
     path: path.join(downloadDir, `${normalizePageName(pagePath)}.pdf`),
   });
 
