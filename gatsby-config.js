@@ -1,6 +1,8 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 require('dotenv').config();
 
+const IS_DEV = process.env.NODE_ENV === 'development';
+
 module.exports = {
   pathPrefix: '/godested-site',
   // Since `gatsby-plugin-typescript` is automatically included in Gatsby you
@@ -15,7 +17,9 @@ module.exports = {
         cssLoaderOptions: {
           modules: {
             exportLocalsConvention: 'camelCaseOnly',
-            localIdentName: '[sha1:hash:hex:5]',
+            localIdentName: IS_DEV
+              ? '[local]__[path][name]'
+              : '[sha1:hash:hex:5]',
           },
         },
         sassRuleTest: /\.scss$/,

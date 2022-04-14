@@ -78,6 +78,8 @@
   }
 
   &__content {
+    position: relative;
+    z-index: 1;
     padding: get-rem(16) get-rem(24);
 
     @include screenMd {
