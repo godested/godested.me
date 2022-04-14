@@ -29,6 +29,7 @@
 }
 
 .content {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -64,6 +65,42 @@
   }
 }
 
+.download-button-container {
+  width: 100%;
+  position: fixed;
+  left: 0;
+  padding: 0 get-rem(20);
+  bottom: get-rem(20);
+  z-index: 3;
+
+  @include screenMd {
+    left: auto;
+    padding: 0;
+    right: get-rem(20);
+    width: get-rem(210);
+  }
+
+  @include screenLg {
+    position: absolute;
+    bottom: auto;
+    width: auto;
+    right: 0;
+    top: 0;
+  }
+
+  @include print {
+    display: none;
+  }
+
+  .download-button {
+    width: auto;
+
+    @include screenLg {
+      border-radius: 0 0 0 get-rem(16);
+    }
+  }
+}
+
 .aside {
   flex: 0;
   width: 100%;
@@ -77,9 +114,11 @@
 .main {
   flex: 1;
   padding: get-rem(48) get-rem(24);
+  padding-bottom: get-rem(80);
 
   @include screenMd() {
     padding: get-rem(48) get-rem(24);
+    padding-bottom: get-rem(80);
   }
 
   @include screenLg() {

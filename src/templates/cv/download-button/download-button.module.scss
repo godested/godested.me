@@ -1,0 +1,42 @@
+@import '~styles/functions.scss';
+
+.download-button {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background-color: #5367FF;
+  border-radius: get-rem(8);
+  height: get-rem(50);
+  color: #fff;
+  transition: background-color 100ms ease-in-out;
+  cursor: pointer;
+  text-decoration: none;
+
+  &:hover {
+    background-color: #334BFF;
+  }
+
+  &__text {
+    text-align: center;
+    flex-grow: 1;
+    font-size: get-rem(16);
+    padding: 0 get-rem(24);
+  }
+
+  &__icon-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: get-rem(50);
+    min-width: get-rem(50);
+    flex: 0 0 get-rem(50);
+    background-color: #334BFF;
+  }
+
+  &__icon {
+    width: get-rem(16);
+    height: get-rem(16);
+    fill: currentColor;
+  }
+}
