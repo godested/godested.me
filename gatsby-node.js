@@ -3,9 +3,6 @@ const { createRemoteImageNode } = require('gatsby-transformer-cloudinary');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const { renderers } = require('./renderers');
 
-// This example assumes "post" nodes are created in a `sourceNodes` function.
-const POST_NODE_TYPE = 'post';
-
 exports.onCreateNode = async ({
   node,
   actions: { createNode },
@@ -14,7 +11,7 @@ exports.onCreateNode = async ({
   reporter,
 }) => {
   // In this example, "post" nodes sometimes have a "cover_photo_url" that's a link to an image.
-  if (node.internal.type === POST_NODE_TYPE && node.cover_photo_url) {
+  if (node.internal.type === 'post' && node.cover_photo_url) {
     await createRemoteImageNode({
       url: node.cover_photo_url,
       parentNode: node,

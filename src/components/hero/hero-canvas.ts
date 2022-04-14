@@ -130,8 +130,9 @@ export class HeroCanvas extends Disposable {
       let life = this._circleProps[i5];
 
       this._context.save();
-      this._context.fillStyle = `hsla(${hueOffset + (hue % (hueRange - hueOffset))
-        },${saturation}%,${lightness}%,${fadeInOut(life, ttl)})`;
+      this._context.fillStyle = `hsla(${
+        hueOffset + (hue % (hueRange - hueOffset))
+      },${saturation}%,${lightness}%,${fadeInOut(life, ttl)})`;
       this._context.beginPath();
       this._context.arc(x, y, radius, 0, Math.PI * 2);
       this._context.fill();

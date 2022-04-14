@@ -34,6 +34,9 @@ jobs:
         CLOUDINARY_API_KEY: ${{ secrets.CLOUDINARY_API_KEY }}
         CLOUDINARY_API_SECRET: ${{ secrets.CLOUDINARY_API_SECRET }}
 
+    - name: Build CV PDF
+      run: npm run build:cv-pdf
+
     - name: Deploy
       run: |
         git config --global user.name $user_name

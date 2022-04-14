@@ -1,7 +1,7 @@
 @import './variables';
 
 @mixin screenMd() {
-  @media screen and (min-width: $screenMd) {
+  @media (min-width: $screenMd) {
     & {
       @content;
     }
@@ -9,7 +9,7 @@
 }
 
 @mixin screenMdOnly() {
-  @media screen and (min-width: $screenMd) and (max-width: $screenLg) {
+  @media (min-width: $screenMd) and (max-width: $screenLg) {
     & {
       @content;
     }
@@ -17,7 +17,7 @@
 }
 
 @mixin screenLg() {
-  @media screen and (min-width: $screenLg) {
+  @media (min-width: $screenLg) {
     & {
       @content;
     }
@@ -25,7 +25,15 @@
 }
 
 @mixin screenXl() {
-  @media screen and (min-width: $screenXl) {
+  @media (min-width: $screenXl) {
+    & {
+      @content;
+    }
+  }
+}
+
+@mixin print {
+  @media print {
     & {
       @content;
     }
