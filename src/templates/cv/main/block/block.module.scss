@@ -1,7 +1,7 @@
 @import "~/styles/variables.scss";
 @import "~/styles/mixins.scss";
 @import "~/components/typography/typography.module.scss";
-@import '~/components/theme/theme-provider-mixins.module.scss';
+@import '~components/theme/theme-provider-mixins.module.scss';
 
 .block {
   margin-bottom: get-rem(48);
@@ -80,7 +80,11 @@
     }
 
     @include themeLight {
-      background-color: #ffffff;
+      background-color: #FFFFFF;
+    }
+
+    @include themeMidnight {
+      background-color: #FDF6EE;
     }
 
     @include themeDark {
@@ -217,7 +221,7 @@
     height: 100%;
     border-radius: get-rem(16);
 
-    @include themeLight {
+    @include theme($light, $midnight) {
       box-shadow: 0 get-rem(18) get-rem(10) rgba(0, 0, 0, 0.01),
                   0 get-rem(8) get-rem(8) rgba(0, 0, 0, 0.02),
                   0 get-rem(2) get-rem(4) rgba(0, 0, 0, 0.02);
@@ -245,7 +249,11 @@
     padding: get-rem(16);
 
     @include themeLight {
-      background-color: #ffffff;
+      background-color: #FFFFFF;
+    }
+
+    @include themeMidnight {
+      background-color: #FDF6EE;
     }
 
     @include themeDark {
@@ -288,6 +296,10 @@
       color: #516CF7;
     }
 
+    @include themeMidnight {
+      color: #9E3F37;
+    }
+
     @include themeDark {
       color: hsl(230, 95%, 75%);
     }
@@ -316,7 +328,11 @@
     color: currentColor;
 
     @include themeLight {
-      background-color: #E1E7FE;
+      background-color: #E3E6ED;
+    }
+
+    @include themeMidnight {
+      background-color: hsl(28deg, 59%, 90%);
     }
 
     @include themeDark {

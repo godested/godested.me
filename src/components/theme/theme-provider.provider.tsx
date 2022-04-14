@@ -100,6 +100,8 @@ function resolveBodyClassNameFromTheme(theme: Theme): CSSClassName {
       return styles.themeLight;
     case Theme.Dark:
       return styles.themeDark;
+    case Theme.Midnight:
+      return styles.themeMidnight;
     default:
       return assertNever(theme);
   }

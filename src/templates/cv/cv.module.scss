@@ -1,6 +1,6 @@
-@import '~/styles/mixins.scss';
-@import '~/styles/functions.scss';
-@import '~/components/theme/theme-provider-mixins.module.scss';
+@import '~styles/mixins.scss';
+@import '~styles/functions.scss';
+@import '~components/theme/theme-provider-mixins.module.scss';
 
 .wrapper {
   min-height: 100%;
@@ -14,6 +14,10 @@
 
   @include themeLight {
     background-color: #E3E7ED;
+  }
+
+  @include themeMidnight {
+    background-color: hsl(32, 50%, 90%);
   }
 
   @include themeDark {
@@ -45,6 +49,12 @@
     @include themeLight {
       box-shadow: 0 get-rem(60) get-rem(36) hsla(215, 21%, 11%, 0.01),
                   0 get-rem(26) get-rem(26) hsla(215, 21%, 11%, 0.01),
+                  0 get-rem(6) get-rem(14) hsla(215, 21%, 11%, 0.01);
+    }
+
+    @include themeMidnight {
+      box-shadow: 0 get-rem(60) get-rem(36) hsla(215, 21%, 11%, 0.03),
+                  0 get-rem(26) get-rem(26) hsla(215, 21%, 11%, 0.02),
                   0 get-rem(6) get-rem(14) hsla(215, 21%, 11%, 0.01);
     }
 

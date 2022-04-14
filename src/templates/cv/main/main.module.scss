@@ -1,8 +1,12 @@
-@import '~/components/theme/theme-provider-mixins.module.scss';
+@import '~components/theme/theme-provider-mixins.module.scss';
 
 .main {
   @include themeLight {
     background-color: #F7F9FC;
+  }
+
+  @include themeMidnight {
+    background-color: #F9F0E8;
   }
 
   @include themeDark {

@@ -1,19 +1,37 @@
 @import '~styles/functions.scss';
+@import '~components/theme/theme-provider-mixins.module.scss';
 
 .download-button {
   display: flex;
   align-items: center;
   overflow: hidden;
-  background-color: #5367FF;
   border-radius: get-rem(8);
   height: get-rem(50);
   color: #fff;
-  transition: background-color 100ms ease-in-out;
+  transition: background-color 300ms ease-in-out;
   cursor: pointer;
   text-decoration: none;
 
+  @include themeMidnight {
+    background-color: hsl(5, 48%, 42%);
+  }
+
+  @include theme($light, $dark) {
+    background-color: #5367FF;
+  }
+
+  @include themeChangeTransition(background-color);
+
   &:hover {
-    background-color: #334BFF;
+    transition-duration: 100ms;
+
+    @include themeMidnight {
+      background-color: hsl(5, 48%, 33%);
+    }
+
+    @include theme($light, $dark) {
+      background-color: #334BFF;
+    }
   }
 
   &__text {
@@ -31,7 +49,15 @@
     width: get-rem(50);
     min-width: get-rem(50);
     flex: 0 0 get-rem(50);
-    background-color: #334BFF;
+    @include themeChangeTransition(background-color);
+
+    @include themeMidnight {
+      background-color: hsl(5, 48%, 33%);
+    }
+
+    @include theme($light, $dark) {
+      background-color: #334BFF;
+    }
   }
 
   &__icon {

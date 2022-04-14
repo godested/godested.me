@@ -1,5 +1,6 @@
 $themeChangingDuration: 250;
 $light: light;
+$midnight: midnight;
 $dark: dark;
 
 @mixin theme($colors...) {
@@ -18,6 +19,12 @@ $dark: dark;
 
 @mixin themeDark {
   :global(.theme_dark) & {
+    @content;
+  }
+}
+
+@mixin themeMidnight {
+  :global(.theme_midnight) & {
     @content;
   }
 }

@@ -1,9 +1,10 @@
-import { ReactElement } from 'react';
+import { FC, ReactElement } from 'react';
 import { WithOptionalClassNameProps } from 'types';
 import classNames from 'classnames';
-import { isBrowser } from 'utils';
+import { assertNever, isBrowser } from 'utils';
 import { useTheme, useChangeTheme } from '../theme-provider.provider';
 import { SunIcon } from './sun-icon.component';
+import { MidnightIcon } from './midnight-icon.component';
 import { MoonIcon } from './moon-icon.component';
 import { Theme } from '../types';
 import * as styles from './theme-toggler.module.scss';
@@ -15,19 +16,21 @@ export function ThemeToggler({
   className,
   invertColors,
 }: ThemeTogglerProps): ReactElement | null {
-  const theme = useTheme();
+  const activeTheme = useTheme();
   const changeTheme = useChangeTheme();
 
   if (!isBrowser) {
     return null;
   }
 
+  const Icon = resolveIcon(activeTheme);
+
   return (
     <button
       type="button"
       onClick={(event) => {
         event.preventDefault();
-        changeTheme(theme === Theme.Light ? Theme.Dark : Theme.Light);
+        changeTheme(resolveNextTheme(activeTheme));
       }}
       className={classNames(
         styles.themeToggler,
@@ -35,7 +38,33 @@ export function ThemeToggler({
         className,
       )}
     >
-      {theme === Theme.Light ? <MoonIcon /> : <SunIcon />}
+      <Icon />
     </button>
   );
+}
+
+function resolveIcon(theme: Theme): FC {
+  switch (theme) {
+    case Theme.Light:
+      return MidnightIcon;
+    case Theme.Midnight:
+      return MoonIcon;
+    case Theme.Dark:
+      return SunIcon;
+    default:
+      return assertNever(theme);
+  }
+}
+
+function resolveNextTheme(theme: Theme): Theme {
+  switch (theme) {
+    case Theme.Light:
+      return Theme.Midnight;
+    case Theme.Midnight:
+      return Theme.Dark;
+    case Theme.Dark:
+      return Theme.Light;
+    default:
+      return assertNever(theme);
+  }
 }

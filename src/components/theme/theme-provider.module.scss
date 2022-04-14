@@ -6,6 +6,10 @@
       --theme: light;
     }
 
+    &_midnight {
+      --theme: midnight;
+    }
+
     &_dark {
       --theme: dark;
     }
@@ -20,5 +24,6 @@
   themeChangingDuration: $themeChangingDuration;
   themeDark: theme_dark;
   themeLight: theme_light;
+  themeMidnight: theme_midnight;
   themeChanging: theme_changing;
 }
