@@ -43,7 +43,7 @@
   margin-right: 3em;
   will-change: opacity;
 
-  @include theme($light, $dark) {
+  @include theme($light, $dark, $midnight) {
     &[href] {
       transition: opacity 0.2s ease-in-out;
       color: #ffffff;
