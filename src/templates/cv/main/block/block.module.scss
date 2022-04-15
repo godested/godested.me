@@ -294,7 +294,7 @@
     flex-direction: row;
     line-height: normal;
     align-items: center;
-    margin-top: get-rem(1);
+    padding-top: get-rem(2);
 
     @include themeLight {
       color: #516CF7;
