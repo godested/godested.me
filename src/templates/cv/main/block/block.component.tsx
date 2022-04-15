@@ -292,7 +292,7 @@ function formatDates(
 
 function formatDateFromTimestamp(timestamp: number): string {
   const date = new Date(timestamp);
-  return `${getDateMonth(date).substring(0, 3)} ${date.getFullYear()}`;
+  return `${getDateMonth(date).substring(0, 3)} ${date.getUTCFullYear()}`;
 }
 
 function formatDuration(timestampA: number, timestampB = Date.now()): string {
