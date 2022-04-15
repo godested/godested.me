@@ -3,7 +3,7 @@
 @import "~/components/typography/typography.module.scss";
 @import '~components/theme/theme-provider-mixins.module.scss';
 
-.block {
+.main-block {
   margin-bottom: get-rem(48);
 
   &:last-child {

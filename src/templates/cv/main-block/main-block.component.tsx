@@ -1,21 +1,15 @@
 import { PropsWithChildren, ReactElement, SVGProps } from 'react';
-import classNames from 'classnames';
-import { WithOptionalClassNameProps } from 'types';
 import { Typography } from 'components/typography';
 import { CV } from 'templates/cv/types';
 import { assertNever, getDateMonth, isSomething, isNumber } from 'utils';
 import { SVGDefs } from 'components/svg-defs';
 import LocationIcon from 'assets/icons/location.inline.svg';
 import LinkIcon from 'assets/icons/link.inline.svg';
-import * as styles from './block.module.scss';
+import * as styles from './main-block.module.scss';
 
-type MainBlockProps = Readonly<{ content: CV.Content }> &
-  PropsWithChildren<WithOptionalClassNameProps>;
+type MainBlockProps = PropsWithChildren<Readonly<{ content: CV.Content }>>;
 
-export function MainBlock({
-  className,
-  content,
-}: MainBlockProps): ReactElement {
+export function MainBlock({ content }: MainBlockProps): ReactElement {
   const renderContent = (): ReactElement | readonly ReactElement[] => {
     const { type } = content;
 
@@ -84,7 +78,7 @@ export function MainBlock({
   };
 
   return (
-    <section className={classNames(styles.block, className)}>
+    <section className={styles.mainBlock}>
       <Typography
         variant={Typography.Variant.Title}
         fontColor={Typography.Color.Black}
