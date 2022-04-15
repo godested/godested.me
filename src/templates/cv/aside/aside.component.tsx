@@ -34,120 +34,122 @@ export function AsideComponent({
 
   return (
     <aside className={classNames(styles.aside, asideClassName)}>
-      <ThemeToggler className={styles.themeToggler} />
-      <AsideBlock>
-        {/* TODO: Weird type error */}
-        {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
-        {/* @ts-ignore */}
-        <Image
-          fluid={data.image.fluid}
-          alt={profile.name}
-          className={styles.profileAvatar}
-          backgroundColor
-        />
-        <Typography
-          as="h1"
-          variant={Typography.Variant.Heading}
-          fontWeight={Typography.Weight.Medium}
-          fontColor={Typography.Color.Black}
-        >
-          {profile.name}
-        </Typography>
-        <Typography
-          as="h2"
-          variant={Typography.Variant.Title}
-          fontWeight={Typography.Weight.Medium}
-          className={styles.position}
-        >
-          {profile.position}
-        </Typography>
-      </AsideBlock>
-      <AsideBlock title="Contacts">
-        <AsideList>
-          {contacts.map((contact) => (
-            <AsideList.ItemWithIcon
-              icon={
-                <span className={styles.iconContainer}>
-                  <ContactIcon
-                    type={contact.type}
-                    className={styles.iconContainerIcon}
-                  />
-                </span>
-              }
-              key={contact.type}
-            >
-              <Typography
-                variant={Typography.Variant.Caption}
-                fontColor={Typography.Color.LightGray}
+      <div className={styles.asideContent}>
+        <ThemeToggler className={styles.themeToggler} />
+        <AsideBlock>
+          {/* TODO: Weird type error */}
+          {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+          {/* @ts-ignore */}
+          <Image
+            fluid={data.image.fluid}
+            alt={profile.name}
+            className={styles.profileAvatar}
+            backgroundColor
+          />
+          <Typography
+            as="h1"
+            variant={Typography.Variant.Heading}
+            fontWeight={Typography.Weight.Medium}
+            fontColor={Typography.Color.Black}
+          >
+            {profile.name}
+          </Typography>
+          <Typography
+            as="h2"
+            variant={Typography.Variant.Title}
+            fontWeight={Typography.Weight.Medium}
+            className={styles.position}
+          >
+            {profile.position}
+          </Typography>
+        </AsideBlock>
+        <AsideBlock title="Contacts">
+          <AsideList>
+            {contacts.map((contact) => (
+              <AsideList.ItemWithIcon
+                icon={
+                  <span className={styles.iconContainer}>
+                    <ContactIcon
+                      type={contact.type}
+                      className={styles.iconContainerIcon}
+                    />
+                  </span>
+                }
+                key={contact.type}
               >
-                {CV.ContactType.toLabel(contact.type)}
-              </Typography>
-              <Typography
-                as="h5"
-                variant={Typography.Variant.ParagraphMD}
-                fontColor={Typography.Color.DarkGray}
-                fontWeight={Typography.Weight.Medium}
-                {...resolveContactProps(contact)}
+                <Typography
+                  variant={Typography.Variant.Caption}
+                  fontColor={Typography.Color.LightGray}
+                >
+                  {CV.ContactType.toLabel(contact.type)}
+                </Typography>
+                <Typography
+                  as="h5"
+                  variant={Typography.Variant.ParagraphMD}
+                  fontColor={Typography.Color.DarkGray}
+                  fontWeight={Typography.Weight.Medium}
+                  {...resolveContactProps(contact)}
+                >
+                  {contact.value}
+                </Typography>
+              </AsideList.ItemWithIcon>
+            ))}
+          </AsideList>
+        </AsideBlock>
+        <AsideBlock title="Socials">
+          <AsideList>
+            {socials.map(({ name, profileURL, username, iconURL }) => (
+              <AsideList.ItemWithIcon
+                icon={
+                  <img src={iconURL} alt={name} className={styles.socialIcon} />
+                }
+                key={name}
               >
-                {contact.value}
-              </Typography>
-            </AsideList.ItemWithIcon>
-          ))}
-        </AsideList>
-      </AsideBlock>
-      <AsideBlock title="Socials">
-        <AsideList>
-          {socials.map(({ name, profileURL, username, iconURL }) => (
-            <AsideList.ItemWithIcon
-              icon={
-                <img src={iconURL} alt={name} className={styles.socialIcon} />
-              }
-              key={name}
-            >
-              <Typography
-                variant={Typography.Variant.Caption}
-                fontColor={Typography.Color.LightGray}
+                <Typography
+                  variant={Typography.Variant.Caption}
+                  fontColor={Typography.Color.LightGray}
+                >
+                  {name}
+                </Typography>
+                <Typography
+                  as="a"
+                  href={profileURL}
+                  variant={Typography.Variant.ParagraphMD}
+                  fontColor={Typography.Color.DarkGray}
+                  fontWeight={Typography.Weight.Medium}
+                >
+                  {username}
+                </Typography>
+              </AsideList.ItemWithIcon>
+            ))}
+          </AsideList>
+        </AsideBlock>
+        <AsideBlock title="Languages">
+          <AsideList>
+            {languages.map(({ name, level, type }) => (
+              <AsideList.ItemWithIcon
+                icon={<FlagIcon type={type} className={styles.flagIcon} />}
+                key={name}
               >
-                {name}
-              </Typography>
-              <Typography
-                as="a"
-                href={profileURL}
-                variant={Typography.Variant.ParagraphMD}
-                fontColor={Typography.Color.DarkGray}
-                fontWeight={Typography.Weight.Medium}
-              >
-                {username}
-              </Typography>
-            </AsideList.ItemWithIcon>
-          ))}
-        </AsideList>
-      </AsideBlock>
-      <AsideBlock title="Languages">
-        <AsideList>
-          {languages.map(({ name, level, type }) => (
-            <AsideList.ItemWithIcon
-              icon={<FlagIcon type={type} className={styles.flagIcon} />}
-              key={name}
-            >
-              <Typography
-                as="h5"
-                variant={Typography.Variant.ParagraphMD}
-                fontColor={Typography.Color.DarkGray}
-                fontWeight={Typography.Weight.Medium}
-              >
-                {name}
-              </Typography>
-              <Typography
-                variant={Typography.Variant.Caption}
-                fontColor={Typography.Color.LightGray}
-              >
-                {level}
-              </Typography>
-            </AsideList.ItemWithIcon>
-          ))}
-        </AsideList>
-      </AsideBlock>
+                <Typography
+                  as="h5"
+                  variant={Typography.Variant.ParagraphMD}
+                  fontColor={Typography.Color.DarkGray}
+                  fontWeight={Typography.Weight.Medium}
+                >
+                  {name}
+                </Typography>
+                <Typography
+                  variant={Typography.Variant.Caption}
+                  fontColor={Typography.Color.LightGray}
+                >
+                  {level}
+                </Typography>
+              </AsideList.ItemWithIcon>
+            ))}
+          </AsideList>
+        </AsideBlock>
+      </div>
     </aside>
   );
 }

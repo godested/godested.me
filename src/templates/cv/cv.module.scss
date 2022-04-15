@@ -79,15 +79,32 @@
   width: 100%;
   position: fixed;
   left: 0;
-  padding: 0 get-rem(20);
-  bottom: get-rem(20);
+  bottom: 0;
+  padding: 0 get-rem(10) get-rem(10) get-rem(10);
   z-index: 3;
+
+  @include themeLight {
+    background-image: linear-gradient(to top, rgba(247, 249, 252, 1) 15%, rgba(247, 249, 252, 0) 80%);
+  }
+
+  @include themeMidnight {
+    background-image: linear-gradient(to top, rgba(253, 245, 237, 1) 15%, rgba(253, 245, 237, 0) 80%);
+  }
+
+  @include themeDark {
+    background-image: linear-gradient(to top, rgba(19, 22, 32, 1) 15%, rgba(19, 22, 32, 0) 80%);
+  }
 
   @include screenMd {
     left: auto;
     padding: 0;
+    bottom: get-rem(20);
     right: get-rem(20);
     width: get-rem(210);
+
+    @include theme($light, $dark, $midnight) {
+      background: transparent;
+    }
   }
 
   @include screenLg {
@@ -111,28 +128,13 @@
   }
 }
 
+
 .aside {
   flex: 0;
   width: 100%;
-  padding: get-rem(64);
-
-  @include screenMd() {
-    padding: get-rem(48);
-  }
 }
 
 .main {
   flex: 1;
-  padding: get-rem(48) get-rem(24);
-  padding-bottom: get-rem(80);
-
-  @include screenMd() {
-    padding: get-rem(48) get-rem(24);
-    padding-bottom: get-rem(80);
-  }
-
-  @include screenLg() {
-    padding: get-rem(64) get-rem(48) get-rem(48) get-rem(32);
-  }
 }
 
