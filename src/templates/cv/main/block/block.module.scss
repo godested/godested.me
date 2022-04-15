@@ -321,6 +321,8 @@
         }
       }
     }
+
+    @include themeChangeTransition(color);
   }
 
   &__certificate-icon-container {
@@ -346,6 +348,8 @@
     @include themeDark {
       background-color: #2F3751;
     }
+
+    @include themeChangeTransition(background-color);
   }
 
   &__certificate-icon {
