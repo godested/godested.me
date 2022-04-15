@@ -32,17 +32,34 @@
   }
 }
 
+.container {
+  flex: 1;
+  display: flex;
+  min-height: 100%;
+  align-items: stretch;
+  position: relative;
+
+  @include screenLg() {
+    margin: 0 auto;
+    max-width: 1140px;
+  }
+
+  @include print {
+    max-width: 100%;
+  }
+}
+
 .content {
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: stretch;
   width: 100%;
+  flex: 1;
 
   @include screenLg() {
-    margin: 0 auto;
     flex-direction: row;
-    max-width: 1140px;
+
     border-radius: get-rem(16);
     overflow: hidden;
 
@@ -75,59 +92,100 @@
   }
 }
 
-.download-button-container {
-  width: 100%;
+.controls {
   position: fixed;
-  left: 0;
   bottom: 0;
-  padding: 0 get-rem(10) get-rem(10) get-rem(10);
+  right: 0;
+  padding-bottom: get-rem(20);
+  padding-right: get-rem(20);
   z-index: 3;
-
-  @include themeLight {
-    background-image: linear-gradient(to top, rgba(247, 249, 252, 1) 15%, rgba(247, 249, 252, 0) 80%);
-  }
-
-  @include themeMidnight {
-    background-image: linear-gradient(to top, rgba(253, 245, 237, 1) 15%, rgba(253, 245, 237, 0) 80%);
-  }
-
-  @include themeDark {
-    background-image: linear-gradient(to top, rgba(19, 22, 32, 1) 15%, rgba(19, 22, 32, 0) 80%);
-  }
-
-  @include screenMd {
-    left: auto;
-    padding: 0;
-    bottom: get-rem(20);
-    right: get-rem(20);
-    width: get-rem(210);
-
-    @include theme($light, $dark, $midnight) {
-      background: transparent;
-    }
-  }
+  transition: opacity 200ms ease-in-out, transform 200ms ease-in-out;
 
   @include screenLg {
-    position: absolute;
+    position: sticky;
+    align-self: flex-start;
+    padding-right: 0;
+    padding-left: get-rem(20);
     bottom: auto;
     width: auto;
     right: 0;
-    top: 0;
+    top: get-rem(20);
   }
 
   @include print {
     display: none;
   }
 
-  .download-button {
-    width: auto;
+  & > * {
+    margin-bottom: get-rem(12);
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &_scrolling-down {
+    opacity: 0;
+    transform: translateY(100%);
 
     @include screenLg {
-      border-radius: 0 0 0 get-rem(16);
+      opacity: 1;
+      transform: none;
     }
   }
 }
 
+.theme-toggler {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  width: get-rem(50);
+  height: get-rem(50);
+  transition: background-color 300ms ease-in-out, box-shadow 300ms ease-in-out;
+
+  &:hover {
+    transition-duration: 100ms;
+  }
+
+  @include themeLight {
+    background-color: hsl(224, 30%, 22.5%);
+    color: #fff;
+    box-shadow: 0 0 get-rem(6) hsla(215, 21%, 11%, 0.01),
+                0 0 get-rem(3) hsla(215, 21%, 11%, 0.01),
+                0 0 get-rem(1) hsla(215, 21%, 11%, 0.01);
+
+    &:hover {
+      background-color: hsl(224, 30%, 35%);
+    }
+  }
+
+  @include themeMidnight {
+    background-color: hsl(30, 50%, 70%);
+    color: #fff;
+    box-shadow: 0 0 get-rem(6) hsla(215, 21%, 11%, 0.01),
+                0 0 get-rem(3) hsla(215, 21%, 11%, 0.01),
+                0 0 get-rem(1) hsla(215, 21%, 11%, 0.01);
+
+    &:hover {
+      background-color: hsl(30, 50%, 50%);
+    }
+  }
+
+  @include themeDark {
+    background-color: hsl(225, 14%, 50%);
+    color: #fff;
+    box-shadow: 0 0 get-rem(6) rgba(0, 0, 0, 0.05),
+                0 0 get-rem(3) rgba(0, 0, 0, 0.1),
+                0 0 get-rem(1) rgba(0, 0, 0, 0.1);
+
+    &:hover {
+      background-color: hsl(226, 27%, 32%);
+    }
+  }
+
+  @include themeChangeTransition(color, background-color, box-shadow);
+}
 
 .aside {
   flex: 0;

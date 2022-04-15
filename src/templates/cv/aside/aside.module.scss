@@ -89,25 +89,6 @@
   }
 }
 
-.theme-toggler {
-  position: absolute;
-  top: get-rem(24);
-  right: get-rem(24);
-
-  @include themeLight {
-    color: #1B2132;
-  }
-
-  @include themeDark {
-    color: #B8BCC6;
-  }
-
-  @include screenMd() {
-    top: get-rem(48);
-    right: get-rem(48);
-  }
-}
-
 .position {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;

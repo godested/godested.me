@@ -3,7 +3,6 @@ import { graphql, useStaticQuery } from 'gatsby';
 import Image from 'gatsby-image';
 import classNames from 'classnames';
 import { WithAdditionalClassNameProps } from 'types';
-import { ThemeToggler } from 'components/theme';
 import { Typography } from 'components/typography';
 import { assertNever } from 'utils';
 import LocationIcon from 'assets/icons/location.inline.svg';
@@ -35,7 +34,6 @@ export function AsideComponent({
   return (
     <aside className={classNames(styles.aside, asideClassName)}>
       <div className={styles.asideContent}>
-        <ThemeToggler className={styles.themeToggler} />
         <AsideBlock>
           {/* TODO: Weird type error */}
           {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}

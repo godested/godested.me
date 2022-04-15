@@ -1,4 +1,7 @@
-import { ReactElement } from 'react';
+import { ReactElement, useEffect, useState } from 'react';
+import { useScrollDirection } from 'use-scroll-direction';
+import { ThemeToggler } from 'components/theme';
+import classNames from 'classnames';
 import { AsideComponent } from './aside/aside.component';
 import { MainComponent } from './main/main.component';
 import * as styles from './cv.module.scss';
@@ -8,13 +11,42 @@ import { DownloadButton } from './download-button/download-button.component';
 export default function CVComponent(): ReactElement {
   return (
     <div className={styles.wrapper}>
-      <article className={styles.content}>
-        <AsideComponent asideClassName={styles.aside} />
-        <MainComponent mainClassName={styles.main} />
-        <div className={styles.downloadButtonContainer}>
-          <DownloadButton className={styles.downloadButton} url="/cv.pdf" />
-        </div>
-      </article>
+      <div className={styles.container}>
+        <article className={styles.content}>
+          <AsideComponent asideClassName={styles.aside} />
+          <MainComponent mainClassName={styles.main} />
+        </article>
+        <Controls />
+      </div>
+    </div>
+  );
+}
+
+function Controls(): ReactElement {
+  const { scrollDirection } = useScrollDirection();
+
+  const [isScrolledDown, setIsScrolledDown] = useState(false);
+
+  useEffect(() => {
+    if (scrollDirection === 'DOWN') {
+      setIsScrolledDown(true);
+      return;
+    }
+
+    if (scrollDirection === 'UP') {
+      setIsScrolledDown(false);
+    }
+  }, [scrollDirection]);
+
+  return (
+    <div
+      className={classNames(
+        styles.controls,
+        isScrolledDown && styles.controlsScrollingDown,
+      )}
+    >
+      <ThemeToggler className={styles.themeToggler} />
+      <DownloadButton url="/cv.pdf" />
     </div>
   );
 }

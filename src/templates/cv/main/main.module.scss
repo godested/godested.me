@@ -4,7 +4,7 @@
 
 .main {
   padding: get-rem(18);
-  padding-bottom: get-rem(80);
+  padding-bottom: get-rem(64);
 
   @include screenLg() {
     padding: get-rem(64) get-rem(48) get-rem(48) get-rem(32);
