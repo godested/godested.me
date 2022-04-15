@@ -275,10 +275,13 @@
     flex-direction: column;
     justify-content: center;
     padding-left: get-rem(12);
+    overflow: hidden;
 
     & > * {
       line-height: 1.1;
       margin-bottom: get-rem(3);
+      overflow: hidden;
+      text-overflow: ellipsis;
 
       &:last-child {
         margin-bottom: 0;
