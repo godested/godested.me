@@ -158,6 +158,10 @@
       fill: $lightThemeLightGray;
     }
 
+    @include themeMidnight {
+      fill: $midnightThemeLightGray;
+    }
+
     @include themeDark {
       fill: $darkThemeLightGray;
     }
