@@ -26,6 +26,8 @@ $darkThemeLightGray: #8E94A4;
   color: inherit;
   text-decoration: none;
 
+  @include themeChangeTransition(color);
+
   &[href]{
     position: relative;
     transition: color 300ms ease-in-out;
