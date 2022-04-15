@@ -30,7 +30,7 @@ export function ThemeToggler({
       type="button"
       onClick={(event) => {
         event.preventDefault();
-        changeTheme(resolveNextTheme(activeTheme));
+        changeTheme((theme) => resolveNextTheme(theme));
       }}
       className={classNames(
         styles.themeToggler,
