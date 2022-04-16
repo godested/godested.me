@@ -4,10 +4,12 @@
 
 .container {
   position: relative;
-  margin-bottom: get-rem(140);
+  width: 100%;
+  padding: get-rem(120) 0 get-rem(20) 0;
 
   @include screenMd {
-    margin-top: get-rem(96);
+    width: auto;
+    margin-top: get-rem(150);
     margin-bottom: 0;
   }
 }
@@ -25,23 +27,35 @@
 
 .links {
   display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  width: 100%;
   flex-direction: column;
-  position: absolute;
   margin-top: get-rem(46);
 
   @include screenMd {
     flex-direction: row;
-    position: relative;
   }
 }
 
 .link {
-  display: block;
+  display: inline-block;
+  width: auto;
   position: relative;
   opacity: 1;
+  min-width: get-rem(110);
   margin-bottom: 3em;
-  margin-right: 3em;
   will-change: opacity;
+
+  @include screenMd {
+    margin-bottom: 0;
+    margin-right: 3em;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+    margin-right: 0;
+  }
 
   @include theme($light, $dark, $midnight) {
     &[href] {
@@ -70,7 +84,7 @@
     will-change: transform;
     top: 120%;
     left: 0;
-    width: 120%;
+    width: 100%;
     border-bottom: get-rem(1) solid currentColor;
     transform-origin: left center;
     pointer-events: none;
@@ -88,3 +102,18 @@
   }
 }
 
+.spotify-playlist-container {
+  padding-top: get-rem(46);
+  min-width: 100%;
+  flex: 1;
+}
+
+.spotify-playlist {
+  width: 100%;
+  height: get-rem(80);
+
+  @include screenMd {
+    height: get-rem(300);
+    // max-width: get-rem(400);
+  }
+}

@@ -61,8 +61,24 @@ export function MainPage(): ReactElement {
               GitHub
             </Typography>
           </div>
+          <div className={styles.spotifyPlaylistContainer}>
+            <SpotifyPlaylist />
+          </div>
         </main>
       </Hero>
     </Page>
+  );
+}
+
+function SpotifyPlaylist(): ReactElement {
+  return (
+    <iframe
+      title="Ilya Zaitsev - Spotify Playlist"
+      src="https://open.spotify.com/embed/playlist/2al6NWOKIZfDORjkMKpNs6"
+      frameBorder="0"
+      allowFullScreen={false}
+      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+      className={styles.spotifyPlaylist}
+    />
   );
 }
