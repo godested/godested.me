@@ -103,17 +103,76 @@
 }
 
 .spotify-playlist-container {
-  padding-top: get-rem(46);
+  position: relative;
+  margin-top: get-rem(46);
   min-width: 100%;
   flex: 1;
-}
+  border-radius: get-rem(8);
+  overflow: hidden;
+  box-shadow: 0 get-rem(5) get-rem(10) rgba(0, 0, 0, 0.2);
+  background-color: #212121;
 
-.spotify-playlist {
-  width: 100%;
   height: get-rem(80);
 
   @include screenMd {
     height: get-rem(300);
-    // max-width: get-rem(400);
+  }
+}
+
+.spotify-playlist {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+
+}
+
+.loader {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  color: hsl(0, 0%, 95%);
+  font-size: get-rem(6);
+  animation-delay: -0.16s;
+  margin-top: -2.5em;
+
+  &,
+  &::before,
+  &::after {
+    border-radius: 50%;
+    width: 2.5em;
+    height: 2.5em;
+    animation: load 1.8s infinite ease-in-out;
+    animation-fill-mode: both;
+  }
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+  }
+
+  &::before {
+    left: -3.5em;
+    animation-delay: -0.32s;
+  }
+
+  &::after {
+    left: 3.5em;
+    animation-delay: 0.16s;
+  }
+}
+
+@keyframes load {
+  0%,
+  80%,
+  100% {
+    box-shadow: 0 2.5em 0 -1.3em;
+  }
+
+  40% {
+    box-shadow: 0 2.5em 0 0;
   }
 }

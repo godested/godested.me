@@ -63,6 +63,7 @@ export function MainPage(): ReactElement {
           </div>
           <div className={styles.spotifyPlaylistContainer}>
             <SpotifyPlaylist />
+            <span className={styles.loader} />
           </div>
         </main>
       </Hero>
