@@ -1,4 +1,7 @@
 {
+  "meta": {
+    "template": "cv-regular"
+  },
   "profile": {
     "name": "Ilya Zaitsev",
     "position": "Frontend Engineer",

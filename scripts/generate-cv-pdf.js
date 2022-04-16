@@ -2,8 +2,6 @@ const puppeteer = require('puppeteer');
 const fs = require('fs-extra');
 const path = require('path');
 
-const paths = ['/cv'];
-
 const normalizePageName = (pagePath = '') => {
   const normalizedFront = pagePath.startsWith('/')
     ? pagePath.slice(1)
@@ -27,7 +25,7 @@ const generatePdf = async ({ pagePath }) => {
   const browser = await puppeteer.launch({ headless: true });
   const page = await browser.newPage();
   const htmlPath = path.join(currentDir, 'public', pagePath, 'index.html');
-  const downloadDir = path.join(currentDir, 'public', pagePath);
+  const downloadDir = path.join(currentDir, 'public');
 
   const contentHtml = fs
     .readFileSync(htmlPath, 'utf8')
@@ -60,9 +58,16 @@ const generatePdf = async ({ pagePath }) => {
 
 async function generateCvPDFs() {
   await Promise.all(
-    paths.map((pagePath) => {
-      return generatePdf({ pagePath });
-    }),
+    fs
+      .readdirSync(path.join(process.cwd(), 'public'))
+      .filter(
+        (filename) =>
+          filename === path.basename(filename, path.extname(filename)),
+      )
+      .filter((filename) => /^cv-\w/.test(filename))
+      .map((pagePath) => {
+        return generatePdf({ pagePath });
+      }),
   );
 }
 

@@ -1,3 +1,4 @@
+import { FluidObject } from 'gatsby-image';
 import { Typography } from 'components/typography';
 import { assertNever } from 'utils';
 
@@ -7,13 +8,14 @@ export type CV = Readonly<{
   socials: readonly CV.Social[];
   languages: readonly CV.Language[];
   body: readonly CV.Content[];
+  pdfURL: string;
 }>;
 
 export namespace CV {
   export type Profile = Readonly<{
     name: string;
     position: string;
-    avatarCloudinaryID: string;
+    avatar: FluidObject;
   }>;
 
   export enum ContactType {

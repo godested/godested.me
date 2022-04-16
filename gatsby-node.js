@@ -32,6 +32,6 @@ exports.onCreateWebpackConfig = ({ actions }) => {
   });
 };
 
-exports.createPages = async ({ actions }) => {
-  renderers.forEach((renderer) => renderer(actions.createPage));
+exports.createPages = async (actions) => {
+  await Promise.all(renderers.map((renderer) => renderer(actions)));
 };

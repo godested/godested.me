@@ -30,6 +30,7 @@ export default function CVComponent(): ReactElement {
 }
 
 function Controls(): ReactElement {
+  const { pdfURL } = useCV();
   const { scrollDirection } = useScrollDirection();
 
   const [isScrolledDown, setIsScrolledDown] = useState(false);
@@ -53,7 +54,7 @@ function Controls(): ReactElement {
       )}
     >
       <ThemeToggler className={styles.themeToggler} />
-      <DownloadButton url="/cv.pdf" />
+      <DownloadButton url={pdfURL} />
     </div>
   );
 }

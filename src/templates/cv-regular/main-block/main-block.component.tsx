@@ -1,10 +1,10 @@
 import { PropsWithChildren, ReactElement, SVGProps } from 'react';
 import { Typography } from 'components/typography';
-import { CV } from 'templates/cv/types';
 import { assertNever, getDateMonth, isSomething, isNumber } from 'utils';
 import { SVGDefs } from 'components/svg-defs';
 import LocationIcon from 'assets/icons/location.inline.svg';
 import LinkIcon from 'assets/icons/link.inline.svg';
+import { CV } from '../types';
 import * as styles from './main-block.module.scss';
 
 type MainBlockProps = PropsWithChildren<Readonly<{ content: CV.Content }>>;

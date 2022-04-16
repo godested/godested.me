@@ -1,5 +1,4 @@
 import { ReactElement } from 'react';
-import { graphql, useStaticQuery } from 'gatsby';
 import Image from 'gatsby-image';
 import classNames from 'classnames';
 import { WithAdditionalClassNameProps } from 'types';
@@ -21,16 +20,6 @@ export function AsideComponent({
 }: WithAdditionalClassNameProps<['asideClassName']>): ReactElement {
   const { profile, contacts, socials, languages } = useCV();
 
-  const data = useStaticQuery(graphql`
-    query Avatar($avatarCloudinaryID: String) {
-      image: cloudinaryAsset(id: { eq: $avatarCloudinaryID }) {
-        fluid {
-          ...CloudinaryAssetFluid
-        }
-      }
-    }
-  `);
-
   return (
     <aside className={classNames(styles.aside, asideClassName)}>
       <div className={styles.asideContent}>
@@ -39,7 +28,7 @@ export function AsideComponent({
           {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
           {/* @ts-ignore */}
           <Image
-            fluid={data.image.fluid}
+            fluid={profile.avatar}
             alt={profile.name}
             className={styles.profileAvatar}
             backgroundColor

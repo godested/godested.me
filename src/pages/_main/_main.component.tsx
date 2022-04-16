@@ -30,7 +30,7 @@ export function MainPage(): ReactElement {
           <div className={styles.links}>
             <Typography
               as={Link}
-              to="/cv"
+              to="/cv-ilya-zaitsev"
               variant={Typography.Variant.ParagraphMD}
               className={styles.link}
             >
