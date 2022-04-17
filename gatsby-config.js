@@ -59,5 +59,17 @@ module.exports = {
         resourceType: 'image',
       },
     },
+    {
+      resolve: 'gatsby-plugin-google-analytics',
+      options: {
+        trackingId: process.env.GOOGLE_ANALYTICS_TRACKING_ID,
+        enableWebVitalsTracking: true,
+        respectDNT: true,
+        anonymize: true,
+        defer: false,
+        head: false,
+        pageTransitionDelay: 0,
+      },
+    },
   ],
 };

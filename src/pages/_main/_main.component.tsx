@@ -1,5 +1,6 @@
 import { ReactElement } from 'react';
 import { Link } from 'gatsby';
+import { OutboundLink } from 'gatsby-plugin-google-analytics';
 import { Typography } from 'components/typography';
 import { Hero } from 'components/hero';
 import { Page } from 'components/page';
@@ -37,7 +38,7 @@ export function MainPage(): ReactElement {
               CV / Résumé
             </Typography>
             <Typography
-              as="a"
+              as={OutboundLink}
               href="https://instagram.com/ztsvi"
               variant={Typography.Variant.ParagraphMD}
               className={styles.link}
@@ -45,7 +46,7 @@ export function MainPage(): ReactElement {
               Instagram
             </Typography>
             <Typography
-              as="a"
+              as={OutboundLink}
               href="https://twitter.com/_godested"
               variant={Typography.Variant.ParagraphMD}
               className={styles.link}
@@ -53,7 +54,7 @@ export function MainPage(): ReactElement {
               Twitter
             </Typography>
             <Typography
-              as="a"
+              as={OutboundLink}
               href="https://www.github.com/godested"
               variant={Typography.Variant.ParagraphMD}
               className={styles.link}
