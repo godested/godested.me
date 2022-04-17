@@ -299,6 +299,12 @@
     line-height: normal;
     align-items: center;
     padding-top: get-rem(2);
+    transition: opacity 300ms ease-in-out;
+
+    &:hover {
+      transition-duration: 100ms;
+      opacity: 0.7;
+    }
 
     @include themeLight {
       color: #516CF7;
@@ -310,16 +316,6 @@
 
     @include themeDark {
       color: hsl(230, 95%, 75%);
-    }
-
-    @include theme($dark, $light) {
-      &[href]{
-        transition: opacity 100ms ease-in-out;
-
-        &:hover {
-          opacity: 0.7;
-        }
-      }
     }
 
     @include themeChangeTransition(color);

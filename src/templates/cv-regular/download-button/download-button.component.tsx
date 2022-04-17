@@ -18,9 +18,6 @@ export function DownloadButton({
   const pathPrefix = useSitePathPrefix();
 
   return (
-    /* TODO: Weird type error */
-    /* eslint-disable-next-line @typescript-eslint/ban-ts-comment */
-    /* @ts-ignore */
     <OutboundLink
       href={pathPrefix + url}
       target="_blank"

@@ -12,7 +12,7 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "esModuleInterop": false,
-    "module": "es6",
+    "module": "esnext",
     "moduleResolution": "node",
     "downlevelIteration": true,
     "noUnusedLocals": true,
@@ -32,6 +32,9 @@
   ],
   "include": [
     "./src/**/*",
-    "./__helpers__/*"
+    "./__helpers__/*",
+    "./scripts",
+    "./renderers",
+    "./*.ts"
   ]
 }

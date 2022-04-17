@@ -1,4 +1,4 @@
-import { PropsWithChildren } from 'react';
+import { PropsWithChildren, ReactElement } from 'react';
 import { Helmet } from 'react-helmet';
 import { WithOptionalClassNameProps } from 'types';
 import { ThemeProvider } from '../theme';
@@ -10,12 +10,13 @@ export type PageProps = Readonly<
 > &
   WithOptionalClassNameProps<'rootClassName'>;
 
-export function Page({ title, rootClassName, children }: PageProps) {
+export function Page({
+  title,
+  rootClassName,
+  children,
+}: PageProps): ReactElement {
   return (
     <>
-      {/* TODO: Weird type error */}
-      {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
-      {/* @ts-ignore */}
       <Helmet
         title={title}
         defaultTitle="@godested"

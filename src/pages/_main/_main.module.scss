@@ -59,14 +59,12 @@
   }
 
   @include theme($light, $dark, $midnight) {
-    &[href] {
-      transition: opacity 0.2s ease-in-out;
-      color: #ffffff;
+    transition: opacity 0.2s ease-in-out;
+    color: #ffffff;
 
-      &:hover {
-        opacity: 0.5;
-        color: #ffffff;
-      }
+    &:hover {
+      opacity: 0.5;
+      color: #ffffff;
     }
   }
 

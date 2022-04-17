@@ -1,9 +1,12 @@
+import { GatsbyConfig } from 'gatsby';
+import path from 'path';
+
 // eslint-disable-next-line import/no-extraneous-dependencies
 require('dotenv').config();
 
-const IS_DEV = process.env.NODE_ENV === 'development';
+const IS_DEV = process.env['NODE_ENV'] === 'development';
 
-module.exports = {
+const gatsbyConfig: GatsbyConfig = {
   pathPrefix: '/godested-site',
   // Since `gatsby-plugin-typescript` is automatically included in Gatsby you
   // don't need to define it here (just if you need to change the options)
@@ -38,31 +41,31 @@ module.exports = {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'images',
-        path: `${__dirname}/src/assets/images`,
+        path: path.resolve('./src/assets/images'),
       },
     },
     {
       resolve: 'gatsby-transformer-cloudinary',
       options: {
-        cloudName: process.env.CLOUDINARY_CLOUD_NAME,
-        apiKey: process.env.CLOUDINARY_API_KEY,
-        apiSecret: process.env.CLOUDINARY_API_SECRET,
+        cloudName: process.env['CLOUDINARY_CLOUD_NAME'],
+        apiKey: process.env['CLOUDINARY_API_KEY'],
+        apiSecret: process.env['CLOUDINARY_API_SECRET'],
         uploadFolder: 'gatsby-cloudinary',
       },
     },
     {
       resolve: 'gatsby-source-cloudinary',
       options: {
-        cloudName: process.env.CLOUDINARY_CLOUD_NAME,
-        apiKey: process.env.CLOUDINARY_API_KEY,
-        apiSecret: process.env.CLOUDINARY_API_SECRET,
+        cloudName: process.env['CLOUDINARY_CLOUD_NAME'],
+        apiKey: process.env['CLOUDINARY_API_KEY'],
+        apiSecret: process.env['CLOUDINARY_API_SECRET'],
         resourceType: 'image',
       },
     },
     {
       resolve: 'gatsby-plugin-google-analytics',
       options: {
-        trackingId: process.env.GOOGLE_ANALYTICS_TRACKING_ID,
+        trackingId: process.env['GOOGLE_ANALYTICS_TRACKING_ID'],
         enableWebVitalsTracking: true,
         respectDNT: true,
         anonymize: true,
@@ -73,3 +76,5 @@ module.exports = {
     },
   ],
 };
+
+export default gatsbyConfig;

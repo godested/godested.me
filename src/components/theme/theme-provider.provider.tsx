@@ -60,9 +60,6 @@ export function ThemeProvider({
 
   return (
     <ThemeContext.Provider value={theme}>
-      {/* TODO: Weird type error */}
-      {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
-      {/* @ts-ignore */}
       <Helmet>
         <body
           className={classNames(

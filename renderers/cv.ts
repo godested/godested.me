@@ -1,10 +1,14 @@
-/* eslint-disable global-require */
-const path = require('path');
-const fs = require('fs-extra');
+import path from 'path';
+import fs from 'fs-extra';
+import { Actions, CreatePagesArgs, GatsbyNode } from 'gatsby';
 
 const cvDataFolder = 'data/cv';
 
-async function renderCVPage({ graphql, actions: { createPage } }, filePath) {
+async function renderCVPage(
+  graphql: CreatePagesArgs['graphql'],
+  createPage: Actions['createPage'],
+  filePath: string,
+) {
   const ext = path.extname(filePath);
 
   if (ext !== '.json') {
@@ -14,7 +18,9 @@ async function renderCVPage({ graphql, actions: { createPage } }, filePath) {
 
   const cvData = JSON.parse(fs.readFileSync(filePath, 'utf8'));
 
-  const result = await graphql(
+  const result = await graphql<{
+    allCloudinaryAsset: { edges: Array<{ node: { fluid: string } }> };
+  }>(
     `
       query Avatar($avatarCloudinaryID: String) {
         allCloudinaryAsset(filter: { id: { eq: $avatarCloudinaryID } }) {
@@ -37,7 +43,7 @@ async function renderCVPage({ graphql, actions: { createPage } }, filePath) {
     { avatarCloudinaryID: cvData.profile.avatarCloudinaryID },
   );
 
-  const avatar = result.data.allCloudinaryAsset.edges[0].node.fluid;
+  const avatar = result.data?.allCloudinaryAsset.edges[0].node.fluid;
 
   const pagePath = `/cv-${cvData.profile.name
     .replace(/\s/g, '-')
@@ -58,7 +64,10 @@ async function renderCVPage({ graphql, actions: { createPage } }, filePath) {
   });
 }
 
-exports.renderer = async (actions) => {
+export const rendererCV: NonNullable<GatsbyNode['createPages']> = async ({
+  graphql,
+  actions,
+}) => {
   const currentDir = process.cwd();
   const folderPath = path.join(currentDir, cvDataFolder);
 
@@ -66,7 +75,11 @@ exports.renderer = async (actions) => {
     fs
       .readdirSync(folderPath)
       .map((filename) =>
-        renderCVPage(actions, path.join(folderPath, filename)),
+        renderCVPage(
+          graphql,
+          actions.createPage,
+          path.join(folderPath, filename),
+        ),
       ),
   );
 };

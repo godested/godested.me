@@ -33,6 +33,7 @@ export function Typography<T extends ElementType = 'p'>(
         inline && styles.typographyInline,
         italic && styles.typographyItalic,
         nowrap && styles.typographyNoWrap,
+        'href' in restProps && styles.typographyLinked,
         optionalMap(fontColor, resolveClassNameFromColor),
         resolveClassNameFromWeight(fontWeight),
         resolveClassNameFromVariant(variant),
