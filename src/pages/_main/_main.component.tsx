@@ -17,7 +17,7 @@ export function MainPage(): ReactElement {
             fontWeight={Typography.Weight.Medium}
             className={styles.title}
           >
-            Ilya Zaitsev{' '}
+            Ilya Zaitsev
           </Typography>
           <Typography
             variant={Typography.Variant.Title}
@@ -75,7 +75,7 @@ function SpotifyPlaylist(): ReactElement {
   return (
     <iframe
       title="Ilya Zaitsev - Spotify Playlist"
-      src="https://open.spotify.com/embed/playlist/2al6NWOKIZfDORjkMKpNs6"
+      src="https://open.spotify.com/embed/playlist/2al6NWOKIZfDORjkMKpNs6?theme=0"
       frameBorder="0"
       allowFullScreen={false}
       allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"

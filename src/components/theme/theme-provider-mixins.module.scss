@@ -1,4 +1,4 @@
-$themeChangingDuration: 250;
+$themeChangingDuration: 300;
 $light: light;
 $midnight: midnight;
 $dark: dark;
@@ -33,7 +33,7 @@ $dark: dark;
 @mixin themeChangeTransition($properties...) {
   :global(.theme_changing) & {
     transition-property: $properties;
-    transition-timing-function: ease-in;
+    transition-timing-function: cubic-bezier(0.11, 0, 0.5, 0);
     transition-duration: $themeChangingDuration + ms;
   }
 }

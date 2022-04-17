@@ -1,4 +1,7 @@
-type DisposableItem = (() => unknown) | { unsubscribe: () => unknown };
+type DisposableItem =
+  | Disposable
+  | { unsubscribe: () => unknown }
+  | (() => unknown);
 
 export class Disposable {
   private readonly _disposables: Array<DisposableItem> = [];
@@ -23,7 +26,12 @@ export class Disposable {
         return;
       }
 
-      dispose.unsubscribe();
+      if ('unsubscribe' in dispose) {
+        dispose.unsubscribe();
+        return;
+      }
+
+      dispose.dispose();
     });
     this._isDisposed = true;
   }
