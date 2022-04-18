@@ -1,17 +1,17 @@
-import { ReactElement, Ref, ReactNode, ElementType } from 'react';
+import { ReactElement, Ref, ReactNode, ElementType, ReactHTML } from 'react';
 import classNames from 'classnames';
 import { CSSClassName } from 'styles';
 import { assertNever, optionalMap } from 'utils';
 import { WithOptionalClassNameProps, PolymorphicComponentProps } from 'types';
 import * as styles from './typography.module.scss';
 
-export function Typography<T extends ElementType = 'p'>(
-  props: Typography.Props<T>,
-): ReactElement {
+export function Typography<
+  T extends ElementType = ReturnType<typeof resolveDefaultTagNameFromVariant>,
+>(props: Typography.Props<T>): ReactElement {
   const {
     variant = Typography.Variant.ParagraphMD,
-    fontWeight = Typography.Weight.Regular,
-    as: Tag = resolveDefaultTagNameFromVariant(variant),
+    as: ComponentToRender = resolveDefaultTagNameFromVariant(variant),
+    fontWeight,
     fontColor,
     inline,
     italic,
@@ -22,11 +22,9 @@ export function Typography<T extends ElementType = 'p'>(
     ...restProps
   } = props;
 
-  const ComponentToRender = Tag as 'p';
-
   return (
     <ComponentToRender
-      ref={innerRef as Ref<HTMLHeadingElement>}
+      ref={innerRef}
       className={classNames(
         className,
         styles.typography,
@@ -35,7 +33,7 @@ export function Typography<T extends ElementType = 'p'>(
         nowrap && styles.typographyNoWrap,
         'href' in restProps && styles.typographyLinked,
         optionalMap(fontColor, resolveClassNameFromColor),
-        resolveClassNameFromWeight(fontWeight),
+        optionalMap(fontWeight, resolveClassNameFromWeight),
         resolveClassNameFromVariant(variant),
       )}
       {...restProps}
@@ -46,6 +44,24 @@ export function Typography<T extends ElementType = 'p'>(
 }
 
 export namespace Typography {
+  export type Props<T extends ElementType = ElementType> =
+    PolymorphicComponentProps<
+      T,
+      Readonly<
+        WithOptionalClassNameProps &
+          Partial<{
+            variant: Variant;
+            fontColor: Color;
+            fontWeight: Weight;
+            inline: true;
+            italic: true;
+            nowrap: true;
+            children: ReactNode | undefined;
+            innerRef: Ref<T>;
+          }>
+      >
+    >;
+
   export enum Variant {
     Heading,
     Title,
@@ -74,23 +90,6 @@ export namespace Typography {
     Accent,
     White,
   }
-
-  export type Props<T extends ElementType> = PolymorphicComponentProps<
-    T,
-    Readonly<
-      WithOptionalClassNameProps &
-        Partial<{
-          variant: Variant;
-          fontColor: Color;
-          fontWeight: Weight;
-          inline: true;
-          italic: true;
-          nowrap: true;
-          children: ReactNode | undefined;
-          innerRef: Ref<T>;
-        }>
-    >
-  >;
 }
 
 function resolveClassNameFromVariant(
@@ -158,7 +157,7 @@ function resolveClassNameFromColor(color: Typography.Color): CSSClassName {
 
 function resolveDefaultTagNameFromVariant(
   variant: Typography.Variant,
-): keyof JSX.IntrinsicElements {
+): keyof ReactHTML {
   switch (variant) {
     case Typography.Variant.Heading:
       return 'h2';

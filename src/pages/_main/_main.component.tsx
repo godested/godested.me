@@ -39,7 +39,7 @@ export function MainPage(): ReactElement {
             </Typography>
             <Typography
               as={OutboundLink}
-              href="https://instagram.com/ztsvi"
+              // href="https://instagram.com/ztsvi"
               variant={Typography.Variant.ParagraphMD}
               className={styles.link}
             >

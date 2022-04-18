@@ -1,4 +1,4 @@
-import { PropsWithChildren, ReactElement, SVGProps } from 'react';
+import { PropsWithChildren, ReactElement, ReactNode, SVGProps } from 'react';
 import { Typography } from 'components/typography';
 import { assertNever, getDateMonth, isSomething, isNumber } from 'utils';
 import { SVGDefs } from 'components/svg-defs';
@@ -10,7 +10,7 @@ import * as styles from './main-block.module.scss';
 type MainBlockProps = PropsWithChildren<Readonly<{ content: CV.Content }>>;
 
 export function MainBlock({ content }: MainBlockProps): ReactElement {
-  const renderContent = (): ReactElement | readonly ReactElement[] => {
+  const renderContent = (): ReactNode => {
     const { type } = content;
 
     switch (type) {
@@ -101,7 +101,7 @@ function Experience({
   dateStarted,
   dateEnded,
   location,
-}: CV.Experience['data'][number]): ReactElement {
+}: CV.InnerContentDataType<CV.Experience>): ReactElement {
   return (
     <div className={styles.experience}>
       <div className={styles.experienceContent}>
@@ -182,7 +182,7 @@ function Education({
   dateEnded,
   description,
   certificateURL,
-}: CV.Education['data'][number]): ReactElement {
+}: CV.InnerContentDataType<CV.Education>): ReactElement {
   return (
     <div className={styles.education}>
       <div className={styles.educationContent}>
@@ -237,9 +237,7 @@ function Education({
   );
 }
 
-function resolveCompanyProps(
-  companyURL: string | undefined,
-): Typography.Props<'a'> {
+function resolveCompanyProps(companyURL: string | undefined): Typography.Props {
   return isSomething(companyURL)
     ? {
         as: 'a',

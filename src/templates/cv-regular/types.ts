@@ -76,6 +76,10 @@ export namespace CV {
     data: readonly D[];
   }>;
 
+  export type InnerContentDataType<
+    T extends CommonContent<ContentType, unknown>,
+  > = T extends CommonContent<ContentType, infer D> ? D : never;
+
   export type Text = CommonContent<ContentType.Text, Paragraph>;
 
   export type Experience = CommonContent<

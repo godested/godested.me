@@ -20,10 +20,11 @@ $darkThemeLightGray: #8E94A4;
 .typography {
   display: block;
   font-family: $primaryFont;
+  line-height: 125%;
   margin: 0;
   padding: 0;
-  line-height: 125%;
   color: inherit;
+  font-weight: inherit;
   text-decoration: none;
 
   @include themeChangeTransition(color);
