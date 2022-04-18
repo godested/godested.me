@@ -2,6 +2,23 @@
 @import '~styles/functions.scss';
 @import '~components/theme/theme-provider-mixins.module.scss';
 
+.root {
+  @include rootThemeLight {
+    background-color: #E3E7ED;
+  }
+
+  @include rootThemeMidnight {
+    background-color: hsl(32, 50%, 90%);
+  }
+
+  @include rootThemeDark {
+    background-color: hsl(222, 25%, 23%);
+  }
+
+  @include rootThemeChangeTransition(background-color);
+}
+
+
 .wrapper {
   min-height: 100%;
   display: flex;
@@ -11,20 +28,6 @@
   @include screenLg() {
     padding: get-rem(30);
   }
-
-  @include themeLight {
-    background-color: #E3E7ED;
-  }
-
-  @include themeMidnight {
-    background-color: hsl(32, 50%, 90%);
-  }
-
-  @include themeDark {
-    background-color: hsl(222, 25%, 23%);
-  }
-
-  @include themeChangeTransition(background-color);
 
   @include print {
     background-color: unset;

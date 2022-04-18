@@ -2,11 +2,14 @@
 @import '~styles/functions.scss';
 @import '~components/theme/theme-provider-mixins.module.scss';
 
+.root {
+  background-color: #141414;
+}
+
 .hero {
   display: flex;
   align-items: stretch;
   min-height: 100%;
-  background-color: #141414;
 
   &__canvas {
     position: fixed;

@@ -17,8 +17,8 @@ import {
   noop,
 } from 'utils';
 import { CSSClassName } from 'styles';
-import { Helmet } from 'react-helmet';
 import classNames from 'classnames';
+import { RootClassName } from 'components/root-classname';
 import { Theme } from './types';
 import * as styles from './theme-provider.module.scss';
 
@@ -59,19 +59,18 @@ export function ThemeProvider({
   );
 
   return (
-    <ThemeContext.Provider value={theme}>
-      <Helmet>
-        <body
-          className={classNames(
-            resolveBodyClassNameFromTheme(theme),
-            changingClassName,
-          )}
-        />
-      </Helmet>
-      <ChangeThemeContext.Provider value={changeTheme}>
-        {children}
-      </ChangeThemeContext.Provider>
-    </ThemeContext.Provider>
+    <RootClassName
+      className={classNames(
+        resolveBodyClassNameFromTheme(theme),
+        changingClassName,
+      )}
+    >
+      <ThemeContext.Provider value={theme}>
+        <ChangeThemeContext.Provider value={changeTheme}>
+          {children}
+        </ChangeThemeContext.Provider>
+      </ThemeContext.Provider>
+    </RootClassName>
   );
 }
 
@@ -110,7 +109,7 @@ function saveTheme(theme: Theme): void {
 
 function loadTheme(): Theme | undefined {
   const theme = window.localStorage.getItem('theme');
-  return isSomething(theme) ? (parseInt(theme, 10) as Theme) : undefined;
+  return isSomething(theme) ? parseInt(theme, 10) : undefined;
 }
 
 function resolveThemeFromDeviceSettings(): Theme | undefined {

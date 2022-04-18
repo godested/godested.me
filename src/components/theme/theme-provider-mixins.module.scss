@@ -29,12 +29,39 @@ $dark: dark;
   }
 }
 
+@mixin rootThemeLight {
+  &:global(.theme_light) {
+    @content;
+  }
+}
+
+@mixin rootThemeDark {
+  &:global(.theme_dark) {
+    @content;
+  }
+}
+
+@mixin rootThemeMidnight {
+  &:global(.theme_midnight) {
+    @content;
+  }
+}
+
+@mixin themeTransition($properties...) {
+  transition-property: $properties;
+  transition-timing-function: cubic-bezier(0.11, 0, 0.5, 0);
+  transition-duration: $themeChangingDuration+ms;
+}
+
+@mixin rootThemeChangeTransition($properties...) {
+  &:global(.theme_changing) {
+    @include themeTransition($properties...);
+  }
+}
 
 @mixin themeChangeTransition($properties...) {
   :global(.theme_changing) & {
-    transition-property: $properties;
-    transition-timing-function: cubic-bezier(0.11, 0, 0.5, 0);
-    transition-duration: $themeChangingDuration + ms;
+    @include themeTransition($properties...);
   }
 }
 

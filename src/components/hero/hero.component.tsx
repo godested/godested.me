@@ -1,5 +1,6 @@
 import { PropsWithChildren, ReactElement, useEffect } from 'react';
 import classNames from 'classnames';
+import { RootClassName } from 'components/root-classname';
 import { useLazyRef } from 'hooks';
 import { WithOptionalClassNameProps } from 'types';
 import { ExpectedRef } from 'utils/ref';
@@ -25,6 +26,7 @@ export function Hero({
 
   return (
     <div className={classNames(styles.hero, className)}>
+      <RootClassName className={styles.root} />
       <Logo className={styles.logo} />
       <canvas ref={heroCanvasRef.update} className={styles.heroCanvas} />
       <div className={styles.heroBody}>{children}</div>
