@@ -7,6 +7,7 @@ require('dotenv').config();
 const IS_DEV = process.env['NODE_ENV'] === 'development';
 
 const gatsbyConfig: GatsbyConfig = {
+  pathPrefix: '/godested-site',
   plugins: [
     'gatsby-plugin-provide-react',
     'gatsby-plugin-preact',
