@@ -7,7 +7,11 @@ require('dotenv').config();
 const IS_DEV = process.env['NODE_ENV'] === 'development';
 
 const gatsbyConfig: GatsbyConfig = {
+  siteMetadata: {
+    siteUrl: 'https://godested.me',
+  },
   plugins: [
+    'gatsby-plugin-cname',
     'gatsby-plugin-provide-react',
     'gatsby-plugin-preact',
     'gatsby-plugin-react-helmet',

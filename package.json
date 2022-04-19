@@ -78,6 +78,7 @@
     "eslint-plugin-prettier": "4.0.0",
     "eslint-plugin-react": "7.29.4",
     "eslint-plugin-react-hooks": "4.4.0",
+    "gatsby-plugin-cname": "1.0.0",
     "gatsby-plugin-manifest": "4.12.1",
     "gatsby-plugin-pdf": "0.0.1",
     "gatsby-plugin-preact": "6.12.1",
