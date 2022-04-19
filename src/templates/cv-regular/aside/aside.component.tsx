@@ -7,6 +7,7 @@ import { assertNever } from 'utils';
 import LocationIcon from 'assets/icons/location.inline.svg';
 import MailIcon from 'assets/icons/mail.inline.svg';
 import PhoneIcon from 'assets/icons/phone.inline.svg';
+import LinkIcon from 'assets/icons/link.inline.svg';
 import UkraineIcon from 'assets/flags/ukraine.inline.svg';
 import EnglandIcon from 'assets/flags/england.inline.svg';
 import { AsideBlock } from './block/block.component';
@@ -73,9 +74,7 @@ export function AsideComponent({
                   fontColor={Typography.Color.DarkGray}
                   fontWeight={Typography.Weight.Medium}
                   {...resolveContactProps(contact)}
-                >
-                  {contact.value}
-                </Typography>
+                />
               </AsideList.ItemWithIcon>
             ))}
           </AsideList>
@@ -148,6 +147,7 @@ function resolveContactProps(contact: CV.Contact): Typography.Props<'a'> {
         target: '_blank',
         rel: 'noopener noreferrer',
         href: `mailto:${value}`,
+        children: value,
       };
     case CV.ContactType.Phone:
       return {
@@ -155,9 +155,20 @@ function resolveContactProps(contact: CV.Contact): Typography.Props<'a'> {
         target: '_blank',
         rel: 'noopener noreferrer',
         href: `tel:${value}`,
+        children: value,
+      };
+    case CV.ContactType.Site:
+      return {
+        as: 'a',
+        target: '_blank',
+        rel: 'noopener noreferrer',
+        href: value,
+        children: new URL(value).host,
       };
     case CV.ContactType.Location:
-      return {};
+      return {
+        children: value,
+      };
     default:
       return assertNever(type);
   }
@@ -175,6 +186,8 @@ function ContactIcon({
       return <PhoneIcon {...props} />;
     case CV.ContactType.Location:
       return <LocationIcon {...props} />;
+    case CV.ContactType.Site:
+      return <LinkIcon {...props} />;
     default:
       return assertNever(type);
   }

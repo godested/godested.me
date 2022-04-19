@@ -22,6 +22,7 @@ export namespace CV {
     Email = 'email',
     Phone = 'phone',
     Location = 'location',
+    Site = 'site',
   }
 
   export namespace ContactType {
@@ -33,6 +34,8 @@ export namespace CV {
           return 'Phone';
         case ContactType.Location:
           return 'Location';
+        case ContactType.Site:
+          return 'Website';
         default:
           return assertNever(type);
       }

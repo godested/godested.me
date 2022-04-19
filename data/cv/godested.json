@@ -17,6 +17,10 @@
       "value": "+380 63 400 6684"
     },
     {
+      "type": "site",
+      "value": "https://godested.me"
+    },
+    {
       "type": "location",
       "value": "Kyiv, Ukraine"
     }
