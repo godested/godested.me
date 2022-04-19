@@ -16,18 +16,16 @@ export default function CVComponent(): ReactElement {
   return (
     <RootClassName className={styles.root}>
       <div className={styles.wrapper}>
-        <div className={styles.container}>
-          <article className={styles.content}>
-            <AsideComponent asideClassName={styles.aside} />
-            <main className={styles.main}>
-              {body.map((content, index) => (
-                // eslint-disable-next-line react/no-array-index-key
-                <MainBlock key={index} content={content} />
-              ))}
-            </main>
-          </article>
-          <Controls />
-        </div>
+        <article className={styles.content}>
+          <AsideComponent asideClassName={styles.aside} />
+          <main className={styles.main}>
+            {body.map((content, index) => (
+              // eslint-disable-next-line react/no-array-index-key
+              <MainBlock key={index} content={content} />
+            ))}
+          </main>
+        </article>
+        <Controls />
       </div>
     </RootClassName>
   );

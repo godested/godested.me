@@ -18,24 +18,7 @@
   @include rootThemeChangeTransition(background-color);
 }
 
-
 .wrapper {
-  min-height: 100%;
-  display: flex;
-  align-items: stretch;
-  justify-content: center;
-
-  @include screenLg() {
-    padding: get-rem(30);
-  }
-
-  @include print {
-    background-color: unset;
-    padding: 0;
-  }
-}
-
-.container {
   flex: 1;
   display: flex;
   min-height: 100%;
@@ -44,11 +27,13 @@
 
   @include screenLg() {
     margin: 0 auto;
+    padding: get-rem(30);
     max-width: 1220px;
   }
 
   @include print {
     max-width: 100%;
+    padding: 0;
   }
 }
 
@@ -62,7 +47,6 @@
 
   @include screenLg() {
     flex-direction: row;
-
     border-radius: get-rem(16);
     overflow: hidden;
 
@@ -111,8 +95,7 @@
     padding-left: get-rem(20);
     bottom: auto;
     width: auto;
-    right: 0;
-    top: get-rem(20);
+    top: get-rem(30);
   }
 
   @include print {

@@ -6,7 +6,6 @@
 .aside {
   position: relative;
   white-space: nowrap;
-  height: 100%;
   padding: get-rem(18);
 
   @include screenLg() {
