@@ -2,8 +2,6 @@ import { PropsWithChildren, ReactElement, ReactNode, SVGProps } from 'react';
 import { Typography } from 'components/typography';
 import { assertNever, getDateMonth, isSomething, isNumber } from 'utils';
 import { SVGDefs } from 'components/svg-defs';
-import LocationIcon from 'assets/icons/location.inline.svg';
-import CalendarIcon from 'assets/icons/calendar.inline.svg';
 import AttachmentIcon from 'assets/icons/attachment.inline.svg';
 import { CV } from '../types';
 import * as styles from './main-block.module.scss';
@@ -141,12 +139,9 @@ function Experience({
               className={styles.experienceMetric}
               nowrap
             >
-              <CalendarIcon className={styles.experienceMetricsIcon} />
-              <span>
-                {formatDates(dateStarted, dateEnded ?? 'Present')}
-                {' · '}
-                {formatDuration(dateStarted, dateEnded)}
-              </span>
+              {formatDates(dateStarted, dateEnded ?? 'Present')}
+              {' · '}
+              {formatDuration(dateStarted, dateEnded)}
             </Typography>
             <Typography
               variant={Typography.Variant.Caption}
@@ -154,8 +149,7 @@ function Experience({
               className={styles.experienceMetric}
               nowrap
             >
-              <LocationIcon className={styles.experienceMetricsIcon} />
-              <span>{location}</span>
+              {location}
             </Typography>
           </div>
         </div>
