@@ -19,7 +19,7 @@ async function renderCVPage(
   const cvData = JSON.parse(fs.readFileSync(filePath, 'utf8'));
 
   const result = await graphql<{
-    allCloudinaryAsset: { edges: Array<{ node: { fluid: string } }> };
+    allCloudinaryAsset: { edges: Array<{ node: { fluid: any } }> };
   }>(
     `
       query Avatar($avatarCloudinaryID: String) {

@@ -12,6 +12,15 @@ const gatsbyConfig: GatsbyConfig = {
     'gatsby-plugin-preact',
     'gatsby-plugin-react-helmet',
     {
+      resolve: 'gatsby-plugin-manifest',
+      options: {
+        name: 'godested.me',
+        short_name: 'godested.me',
+        start_url: '/',
+        icon: 'src/assets/images/favicon.svg',
+      },
+    },
+    {
       resolve: 'gatsby-plugin-sass',
       options: {
         cssLoaderOptions: {
