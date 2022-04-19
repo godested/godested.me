@@ -7,7 +7,7 @@ import { assertNever } from 'utils';
 import LocationIcon from 'assets/icons/location.inline.svg';
 import MailIcon from 'assets/icons/mail.inline.svg';
 import PhoneIcon from 'assets/icons/phone.inline.svg';
-import LinkIcon from 'assets/icons/link.inline.svg';
+import BrowseIcon from 'assets/icons/browse.inline.svg';
 import UkraineIcon from 'assets/flags/ukraine.inline.svg';
 import EnglandIcon from 'assets/flags/england.inline.svg';
 import { AsideBlock } from './block/block.component';
@@ -187,7 +187,7 @@ function ContactIcon({
     case CV.ContactType.Location:
       return <LocationIcon {...props} />;
     case CV.ContactType.Site:
-      return <LinkIcon {...props} />;
+      return <BrowseIcon {...props} />;
     default:
       return assertNever(type);
   }

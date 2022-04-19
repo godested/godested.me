@@ -3,7 +3,8 @@ import { Typography } from 'components/typography';
 import { assertNever, getDateMonth, isSomething, isNumber } from 'utils';
 import { SVGDefs } from 'components/svg-defs';
 import LocationIcon from 'assets/icons/location.inline.svg';
-import LinkIcon from 'assets/icons/link.inline.svg';
+import CalendarIcon from 'assets/icons/calendar.inline.svg';
+import AttachmentIcon from 'assets/icons/attachment.inline.svg';
 import { CV } from '../types';
 import * as styles from './main-block.module.scss';
 
@@ -136,21 +137,24 @@ function Experience({
           <div className={styles.experienceMetrics}>
             <Typography
               variant={Typography.Variant.Caption}
-              fontColor={Typography.Color.DarkGray}
-              className={styles.experienceDates}
+              fontColor={Typography.Color.LightGray}
+              className={styles.experienceMetric}
               nowrap
             >
-              {formatDates(dateStarted, dateEnded ?? 'Present')}
-              {' · '}
-              {formatDuration(dateStarted, dateEnded)}
+              <CalendarIcon className={styles.experienceMetricsIcon} />
+              <span>
+                {formatDates(dateStarted, dateEnded ?? 'Present')}
+                {' · '}
+                {formatDuration(dateStarted, dateEnded)}
+              </span>
             </Typography>
             <Typography
               variant={Typography.Variant.Caption}
               fontColor={Typography.Color.LightGray}
-              className={styles.experienceLocation}
+              className={styles.experienceMetric}
               nowrap
             >
-              <LocationIcon className={styles.experienceLocationIcon} />
+              <LocationIcon className={styles.experienceMetricsIcon} />
               <span>{location}</span>
             </Typography>
           </div>
@@ -226,7 +230,7 @@ function Education({
               nowrap
             >
               <span className={styles.educationCertificateIconContainer}>
-                <LinkIcon className={styles.educationCertificateIcon} />
+                <AttachmentIcon className={styles.educationCertificateIcon} />
               </span>
               <span>Course certificate</span>
             </Typography>

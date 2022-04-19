@@ -15,6 +15,7 @@
   }
 
   &_item {
+    flex: 1 1 100%;
     padding-bottom: get-rem(24);
 
     &:last-child {
@@ -22,6 +23,8 @@
     }
 
     @include screenMdOnly {
+      flex-basis: 33.3333%;
+      max-width: 33.3333%;
       padding-bottom: 0;
       padding-top: get-rem(48);
       padding-right: get-rem(48);

@@ -141,9 +141,9 @@
   @include themeChangeTransition(background-color);
 
   &__icon {
-    width: get-rem(16);
-    min-width: get-rem(16);
-    height: get-rem(16);
+    width: get-rem(14);
+    min-width: get-rem(14);
+    height: get-rem(14);
 
     @include themeLight {
       fill: $lightThemeGray;
