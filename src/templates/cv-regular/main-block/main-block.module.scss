@@ -146,9 +146,6 @@
   }
 
   &__metric {
-    display: flex;
-    align-items: center;
-
     @include screenMd {
       margin-bottom: get-rem(2);
 
@@ -157,30 +154,6 @@
       }
     }
   }
-
-  &__metrics-icon {
-    display: block;
-    width: get-rem(10);
-    min-width: get-rem(10);
-    height: get-rem(10);
-    margin-right: get-rem(5);
-    transform: translateY(-12.5%);
-
-    @include themeLight {
-      fill: $lightThemeLightGray;
-    }
-
-    @include themeMidnight {
-      fill: $midnightThemeLightGray;
-    }
-
-    @include themeDark {
-      fill: $darkThemeLightGray;
-    }
-
-    @include themeChangeTransition(fill);
-  }
-
 
   &__dates {
     @include screenMd {
