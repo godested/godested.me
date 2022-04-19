@@ -18,7 +18,7 @@ export function AsideBlock({
     <section className={classNames(styles.block, className)}>
       {isSomething(title) && (
         <Typography
-          variant={Typography.Variant.Caption}
+          variant={Typography.Variant.CaptionSM}
           fontColor={Typography.Color.DarkGray}
           className={styles.title}
         >

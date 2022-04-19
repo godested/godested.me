@@ -97,20 +97,23 @@
   &__header {
     margin-bottom: get-rem(12);
     display: flex;
-    flex-direction: column-reverse;
     align-items: stretch;
 
     @include screenMd {
-      flex-direction: row;
+      align-items: center;
     }
   }
 
-  &__company {
+  &__company-info {
     display: flex;
-    align-items: center;
-    flex-direction: row;
-    flex-grow: 1;
-    padding-right: get-rem(12);
+    flex-direction: column;
+    padding-left: get-rem(12);
+
+    @include screenMd {
+      flex-direction: row;
+      justify-content: space-between;
+      flex: 1;
+    }
   }
 
   &__company-name {
@@ -118,30 +121,26 @@
   }
 
   &__company-logo {
-    width: get-rem(48);
-    height: get-rem(48);
-  }
+    width: get-rem(52);
+    height: get-rem(52);
 
-  &__company-info {
-    padding-left: get-rem(12);
+    @include screenMd {
+      width: get-rem(48);
+      height: get-rem(48);
+    }
   }
 
   &__metrics {
-    padding-bottom: get-rem(8);
+    padding-top: get-rem(2);
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
     align-items: flex-end;
 
     @include screenMd {
+      padding-top: 0;
       flex-direction: column;
       justify-content: center;
       flex-shrink: 1;
-      padding-bottom: 0;
-    }
-
-    &:last-child {
-      margin-bottom: 0;
     }
   }
 
@@ -155,9 +154,37 @@
     }
   }
 
-  &__dates {
+  &__metric-icon {
+    display: inline-block;
+    width: 0.8em;
+    height: 0.8em;
+    margin-right: 0.4em;
+    transform: translateY(5.5%);
+    fill: currentColor;
+    opacity: 0.8;
+
     @include screenMd {
+      display: none;
+    }
+  }
+
+  &__dates {
+    display: inline-block;
+    margin-right: 1.2em;
+
+    @include screenMd {
+      margin-right: 0;
       margin-bottom: get-rem(4);
+    }
+  }
+
+  &__location {
+    position: absolute;
+    top: get-rem(16);
+    right: get-rem(16);
+
+    @include screenMd {
+      position: static;
     }
   }
 
@@ -259,9 +286,15 @@
   }
 
   &__company-logo {
-    width: get-rem(48);
-    min-width: get-rem(48);
-    height: get-rem(48);
+    width: get-rem(52);
+    min-width: get-rem(52);
+    height: get-rem(52);
+
+    @include screenMd {
+      width: get-rem(48);
+      min-width: get-rem(48);
+      height: get-rem(48);
+    }
   }
 
   &__info {

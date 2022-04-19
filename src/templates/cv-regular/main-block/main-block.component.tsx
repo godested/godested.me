@@ -1,7 +1,9 @@
 import { PropsWithChildren, ReactElement, ReactNode, SVGProps } from 'react';
+import classNames from 'classnames';
 import { Typography } from 'components/typography';
 import { assertNever, getDateMonth, isSomething, isNumber } from 'utils';
 import { SVGDefs } from 'components/svg-defs';
+import LocationIcon from 'assets/icons/location.inline.svg';
 import AttachmentIcon from 'assets/icons/attachment.inline.svg';
 import { CV } from '../types';
 import * as styles from './main-block.module.scss';
@@ -105,12 +107,9 @@ function Experience({
     <div className={styles.experience}>
       <div className={styles.experienceContent}>
         <div className={styles.experienceHeader}>
-          <div className={styles.experienceCompany}>
-            <Icon
-              className={styles.experienceCompanyLogo}
-              url={companyLogoURL}
-            />
-            <div className={styles.experienceCompanyInfo}>
+          <Icon className={styles.experienceCompanyLogo} url={companyLogoURL} />
+          <div className={styles.experienceCompanyInfo}>
+            <div>
               <Typography
                 as="h2"
                 variant={Typography.Variant.ParagraphMD}
@@ -124,33 +123,40 @@ function Experience({
               </Typography>
               <Typography
                 as="h3"
-                variant={Typography.Variant.Caption}
-                fontColor={Typography.Color.LightGray}
+                variant={Typography.Variant.CaptionMD}
+                fontColor={Typography.Color.Gray}
                 nowrap
               >
                 {position}
               </Typography>
             </div>
-          </div>
-          <div className={styles.experienceMetrics}>
-            <Typography
-              variant={Typography.Variant.Caption}
-              fontColor={Typography.Color.LightGray}
-              className={styles.experienceMetric}
-              nowrap
-            >
-              {formatDates(dateStarted, dateEnded ?? 'Present')}
-              {' · '}
-              {formatDuration(dateStarted, dateEnded)}
-            </Typography>
-            <Typography
-              variant={Typography.Variant.Caption}
-              fontColor={Typography.Color.LightGray}
-              className={styles.experienceMetric}
-              nowrap
-            >
-              {location}
-            </Typography>
+            <div className={styles.experienceMetrics}>
+              <Typography
+                variant={Typography.Variant.CaptionSM}
+                fontColor={Typography.Color.LightGray}
+                className={classNames(
+                  styles.experienceMetric,
+                  styles.experienceDates,
+                )}
+                nowrap
+              >
+                {formatDates(dateStarted, dateEnded ?? 'Present')}
+                {' · '}
+                {formatDuration(dateStarted, dateEnded)}
+              </Typography>
+              <Typography
+                variant={Typography.Variant.CaptionSM}
+                fontColor={Typography.Color.LightGray}
+                className={classNames(
+                  styles.experienceMetric,
+                  styles.experienceLocation,
+                )}
+                nowrap
+              >
+                <LocationIcon className={styles.experienceMetricIcon} />
+                {location}
+              </Typography>
+            </div>
           </div>
         </div>
         <div>
@@ -197,7 +203,7 @@ function Education({
             {courseName}
           </Typography>
           <Typography
-            variant={Typography.Variant.Caption}
+            variant={Typography.Variant.CaptionSM}
             fontColor={Typography.Color.Gray}
             nowrap
           >
@@ -206,7 +212,7 @@ function Education({
           {isSomething(description) && (
             <Typography
               as="h3"
-              variant={Typography.Variant.Caption}
+              variant={Typography.Variant.CaptionSM}
               fontColor={Typography.Color.DarkGray}
               nowrap
             >
@@ -219,7 +225,7 @@ function Education({
               href={certificateURL}
               target="_blank"
               rel="noopener noreferrer"
-              variant={Typography.Variant.Caption}
+              variant={Typography.Variant.CaptionSM}
               className={styles.educationCertificate}
               nowrap
             >

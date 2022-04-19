@@ -58,8 +58,12 @@ $darkThemeLightGray: #8E94A4;
     font-size: get-rem(28);
   }
 
-  &_caption {
+  &_caption-sm {
     font-size: get-rem(12);
+  }
+
+  &_caption-md {
+    font-size: get-rem(13);
   }
 
   &_paragraph-md {
@@ -67,7 +71,7 @@ $darkThemeLightGray: #8E94A4;
   }
 
   &_paragraph-sm {
-    font-size: get-rem(14);
+    font-size: get-rem(15);
   }
 
   &_extra-light {

@@ -65,7 +65,8 @@ export namespace Typography {
   export enum Variant {
     Heading,
     Title,
-    Caption,
+    CaptionSM,
+    CaptionMD,
     ParagraphMD,
     ParagraphSM,
   }
@@ -100,8 +101,10 @@ function resolveClassNameFromVariant(
       return styles.typographyHeading;
     case Typography.Variant.Title:
       return styles.typographyTitle;
-    case Typography.Variant.Caption:
-      return styles.typographyCaption;
+    case Typography.Variant.CaptionSM:
+      return styles.typographyCaptionSm;
+    case Typography.Variant.CaptionMD:
+      return styles.typographyCaptionMd;
     case Typography.Variant.ParagraphSM:
       return styles.typographyParagraphSm;
     case Typography.Variant.ParagraphMD:
@@ -163,7 +166,8 @@ function resolveDefaultTagNameFromVariant(
       return 'h2';
     case Typography.Variant.Title:
       return 'h3';
-    case Typography.Variant.Caption:
+    case Typography.Variant.CaptionSM:
+    case Typography.Variant.CaptionMD:
       return 'h4';
     case Typography.Variant.ParagraphMD:
     case Typography.Variant.ParagraphSM:

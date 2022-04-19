@@ -63,7 +63,7 @@ export function AsideComponent({
                 key={contact.type}
               >
                 <Typography
-                  variant={Typography.Variant.Caption}
+                  variant={Typography.Variant.CaptionSM}
                   fontColor={Typography.Color.LightGray}
                 >
                   {CV.ContactType.toLabel(contact.type)}
@@ -89,7 +89,7 @@ export function AsideComponent({
                 key={name}
               >
                 <Typography
-                  variant={Typography.Variant.Caption}
+                  variant={Typography.Variant.CaptionSM}
                   fontColor={Typography.Color.LightGray}
                 >
                   {name}
@@ -123,7 +123,7 @@ export function AsideComponent({
                   {name}
                 </Typography>
                 <Typography
-                  variant={Typography.Variant.Caption}
+                  variant={Typography.Variant.CaptionSM}
                   fontColor={Typography.Color.LightGray}
                 >
                   {level}
