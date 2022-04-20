@@ -64,7 +64,7 @@ async function generateCvPDFs() {
         (filename) =>
           filename === path.basename(filename, path.extname(filename)),
       )
-      .filter((filename) => /^cv-\w.html$/.test(filename))
+      .filter((filename) => /^cv-\w/.test(filename))
       .map((pagePath) => {
         return generatePdf({ pagePath });
       }),
