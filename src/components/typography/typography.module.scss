@@ -26,7 +26,6 @@ $darkThemeLightGray: #8E94A4;
   color: inherit;
   font-weight: inherit;
   text-decoration: none;
-  white-space: pre-wrap;
 
   @include themeChangeTransition(color);
 
@@ -69,10 +68,12 @@ $darkThemeLightGray: #8E94A4;
 
   &_paragraph-md {
     font-size: get-rem(16);
+    white-space: pre-wrap;
   }
 
   &_paragraph-sm {
     font-size: get-rem(15);
+    white-space: pre-wrap;
   }
 
   &_extra-light {
