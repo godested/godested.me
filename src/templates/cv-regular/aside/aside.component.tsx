@@ -1,7 +1,7 @@
 import { ReactElement } from 'react';
 import Image from 'gatsby-image';
 import classNames from 'classnames';
-import { WithAdditionalClassNameProps } from 'types';
+import { PropsOf, WithAdditionalClassNameProps } from 'types';
 import { Typography } from 'components/typography';
 import { assertNever } from 'utils';
 import LocationIcon from 'assets/icons/location.inline.svg';
@@ -56,6 +56,7 @@ export function AsideComponent({
                   <span className={styles.iconContainer}>
                     <ContactIcon
                       type={contact.type}
+                      role="img"
                       className={styles.iconContainerIcon}
                     />
                   </span>
@@ -178,7 +179,8 @@ function ContactIcon({
   type,
   ...props
 }: Readonly<{ type: CV.ContactType }> &
-  WithAdditionalClassNameProps): ReactElement {
+  WithAdditionalClassNameProps &
+  PropsOf<'svg'>): ReactElement {
   switch (type) {
     case CV.ContactType.Email:
       return <MailIcon {...props} />;

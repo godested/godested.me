@@ -143,6 +143,7 @@
     width: get-rem(14);
     min-width: get-rem(14);
     height: get-rem(14);
+    opacity: 0.9;
 
     @include themeLight {
       fill: $lightThemeGray;
@@ -153,7 +154,7 @@
     }
 
     @include themeDark {
-      fill: #B8BCC6;
+      fill: $darkThemeGray;
     }
 
     @include themeChangeTransition(fill);

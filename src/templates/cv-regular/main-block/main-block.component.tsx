@@ -1,10 +1,11 @@
-import { PropsWithChildren, ReactElement, ReactNode, SVGProps } from 'react';
+import { PropsWithChildren, ReactElement, ReactNode } from 'react';
 import classNames from 'classnames';
 import { Typography } from 'components/typography';
 import { assertNever, getDateMonth, isSomething, isNumber } from 'utils';
 import { SVGDefs } from 'components/svg-defs';
 import LocationIcon from 'assets/icons/location.inline.svg';
 import AttachmentIcon from 'assets/icons/attachment.inline.svg';
+import { PropsOf } from 'types';
 import { CV } from '../types';
 import * as styles from './main-block.module.scss';
 
@@ -107,7 +108,11 @@ function Experience({
     <div className={styles.experience}>
       <div className={styles.experienceContent}>
         <div className={styles.experienceHeader}>
-          <Icon className={styles.experienceCompanyLogo} url={companyLogoURL} />
+          <Icon
+            title={`${companyName} logo`}
+            className={styles.experienceCompanyLogo}
+            url={companyLogoURL}
+          />
           <div className={styles.experienceCompanyInfo}>
             <div>
               <Typography
@@ -124,7 +129,7 @@ function Experience({
               <Typography
                 as="h3"
                 variant={Typography.Variant.CaptionMD}
-                fontColor={Typography.Color.Gray}
+                fontColor={Typography.Color.DarkGray}
                 nowrap
               >
                 {position}
@@ -153,7 +158,10 @@ function Experience({
                 )}
                 nowrap
               >
-                <LocationIcon className={styles.experienceMetricIcon} />
+                <LocationIcon
+                  role="img"
+                  className={styles.experienceMetricIcon}
+                />
                 {location}
               </Typography>
             </div>
@@ -190,7 +198,11 @@ function Education({
   return (
     <div className={styles.education}>
       <div className={styles.educationContent}>
-        <Icon className={styles.educationCompanyLogo} url={companyLogoURL} />
+        <Icon
+          title={`${courseName} logo`}
+          className={styles.educationCompanyLogo}
+          url={companyLogoURL}
+        />
         <div className={styles.educationInfo}>
           <Typography
             as="h2"
@@ -202,13 +214,6 @@ function Education({
           >
             {courseName}
           </Typography>
-          <Typography
-            variant={Typography.Variant.CaptionSM}
-            fontColor={Typography.Color.Gray}
-            nowrap
-          >
-            {formatDates(dateStarted, dateEnded)}
-          </Typography>
           {isSomething(description) && (
             <Typography
               as="h3"
@@ -219,6 +224,13 @@ function Education({
               {description}
             </Typography>
           )}
+          <Typography
+            variant={Typography.Variant.CaptionSM}
+            fontColor={Typography.Color.Gray}
+            nowrap
+          >
+            {formatDates(dateStarted, dateEnded)}
+          </Typography>
           {isSomething(certificateURL) && (
             <Typography
               as="a"
@@ -230,7 +242,10 @@ function Education({
               nowrap
             >
               <span className={styles.educationCertificateIconContainer}>
-                <AttachmentIcon className={styles.educationCertificateIcon} />
+                <AttachmentIcon
+                  role="img"
+                  className={styles.educationCertificateIcon}
+                />
               </span>
               <span>Course certificate</span>
             </Typography>
@@ -254,10 +269,17 @@ function resolveCompanyProps(companyURL: string | undefined): Typography.Props {
 
 function Icon({
   url,
+  title,
   ...props
-}: Readonly<{ url: string }> & SVGProps<SVGSVGElement>): ReactElement {
+}: Readonly<{ url: string; title: string }> & PropsOf<'svg'>): ReactElement {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" {...props}>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      role="img"
+      {...props}
+    >
+      <title>{title}</title>
       <SVGDefs singleton id="IconShape">
         <clipPath id="icon-shape">
           <path
