@@ -9,6 +9,10 @@
   &:last-child {
     margin-bottom: 0;
   }
+
+  @include print {
+    margin-bottom: get-rem(36);
+  }
 }
 
 .title {
