@@ -38,6 +38,8 @@
   align-items: center;
 
   &__icon {
+    display: flex;
+    align-items: center;
     width: get-rem(32);
     min-width: get-rem(32);
     height: get-rem(32);
