@@ -11,7 +11,7 @@
   @include screenMdOnly {
     flex-direction: row;
     flex-wrap: wrap;
-    margin-top: get-rem(-48);
+    margin-top: get-rem(-32);
   }
 
   &_item {
@@ -26,7 +26,7 @@
       flex-basis: 33.3333%;
       max-width: 33.3333%;
       padding-bottom: 0;
-      padding-top: get-rem(48);
+      padding-top: get-rem(32);
       padding-right: get-rem(48);
     }
   }

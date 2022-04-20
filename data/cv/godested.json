@@ -95,7 +95,7 @@
           "position": "Senior Frontend Engineer",
           "description": [
             {
-              "text": "Developed and launched 5 multi-screen games. Took responsibility for code review, improving DX, refactoring of existing solutions, developing new big features.",
+              "text": "I took a significant part in the development of 5 new games for tens of thousands of users. Engaged in code reviews, improving DX, refactoring of existing solutions, developing new big features",
               "color": 2
             },
             {
@@ -113,7 +113,7 @@
           "position": "Senior Frontend Engineer",
           "description": [
             {
-              "text": "Successfully launched social app, brand landings. Further evolution to full-fledged product (with support, analytics, payments) was made. Had active participation in the hiring of technical specialists as a interviewer for various projects. Was a mentor for junior developers.",
+              "text": "Successfully launched social app, and brand landings. Further evolution to a full-fledged product (with support, analytics, payments) was made. Had active participation in the hiring of technical specialists as an interviewer for various projects. Was a mentor for junior developers.",
               "color": 2
             },
             {
@@ -133,7 +133,7 @@
           "description": [
             {
               "color": 2,
-              "text": "In collaboration with a back-end developer, successfully developed an application based on UX mockups."
+              "text": "In cooperation with a back-end developer, based on UX mockups successfully developed an application with a graphical representation of business processes in a BPMN and CMMN formats for immediate execution"
             },
             {
               "text": "React, Redux, Redux-Saga, Webpack, CMMN, BPMN, Docker.",
@@ -152,10 +152,10 @@
           "description": [
             {
               "color": 2,
-              "text": "Developed service for searching closest money exchangers with a favorable rate. Mobile-first, cross-browser and SEO friendly app.\nDeveloped service with real-time calls, pptx presentations and schedule manager. "
+              "text": "Mobile-first, cross-browser, and SEO-friendly app for finding the closest money exchangers with a favorable rate was developed from scratch.\nDeveloped service for medical members with real-time calls, pptx presentations, and schedule manager."
             },
             {
-              "text": "React, Redux, Redux-Saga, Webpack, CMMN, BPMN, Docker.",
+              "text": "React, Redux, Redux-Saga, Webpack, Mapbox, WebSockets, WebRTC, Docker.",
               "color": 1
             }
           ],
@@ -171,7 +171,7 @@
           "description": [
             {
               "color": 2,
-              "text": "Developed real-time crypto-currencies exchange MVP."
+              "text": "Participated in the development of a real-time crypto-currencies exchanger."
             },
             {
               "text": "React, Redux, TypeScript, WebSockets, Node.js.",
@@ -183,13 +183,13 @@
           "location": "Dnipro, Ukraine"
         },
         {
-          "companyName": "Freelance (With Mentor)",
+          "companyName": "Upwork",
           "companyLogoURL": "data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='100%25' height='100%25' fill='%236FDA44'/%3E%3Cpath d='M16.676 13.8292C15.8888 13.8292 15.152 13.4956 14.4816 12.9524L14.6448 12.186L14.652 12.158C14.7976 11.342 15.2584 9.9716 16.676 9.9716C17.7392 9.9716 18.604 10.838 18.604 11.902C18.6008 12.9628 17.736 13.8292 16.676 13.8292V13.8292ZM16.676 8.0156C14.8648 8.0156 13.4608 9.194 12.8904 11.1316C12.0184 9.822 11.3592 8.25 10.9728 6.926H9.02405V12.0044C9.02405 13.0052 8.20885 13.8212 7.20885 13.8212C6.20885 13.8212 5.39445 13.0052 5.39445 12.0044V6.926H3.44485V12.0044C3.43765 14.0844 5.12885 15.7916 7.20565 15.7916C9.28245 15.7916 10.9736 14.0844 10.9736 12.0044V11.1524C11.3528 11.9436 11.8168 12.742 12.3808 13.4524L11.1864 19.074H13.1824L14.0472 14.9964C14.8056 15.4828 15.6776 15.7876 16.6776 15.7876C18.8152 15.7876 20.5552 14.034 20.5552 11.894C20.5536 9.758 18.8136 8.0156 16.676 8.0156V8.0156Z' fill='%23fff'/%3E%3C/svg%3E%0A",
           "position": "Frontend Developer",
           "description": [
             {
               "color": 2,
-              "text": "Developed a banking system in a team with a mentor. Developed a lot of landing pages."
+              "text": "Under the supervision of a mentor, was developed a banking system and a lot of landing pages."
             },
             {
               "text": "React, Redux, WebSockets, Gulp, Node.js, Ruby.",

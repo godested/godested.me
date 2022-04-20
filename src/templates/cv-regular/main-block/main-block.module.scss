@@ -160,10 +160,10 @@
     display: inline-block;
     width: 0.8em;
     height: 0.8em;
-    margin-right: 0.4em;
+    margin: 0 0.4em;
     transform: translateY(5.5%);
     fill: currentColor;
-    opacity: 0.8;
+    opacity: 0.5;
 
     @include screenMd {
       display: none;
@@ -182,7 +182,7 @@
 
   &__location {
     position: absolute;
-    top: get-rem(16);
+    top: get-rem(18);
     right: get-rem(16);
 
     @include screenMd {

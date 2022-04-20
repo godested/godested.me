@@ -26,6 +26,7 @@ $darkThemeLightGray: #8E94A4;
   color: inherit;
   font-weight: inherit;
   text-decoration: none;
+  white-space: pre-wrap;
 
   @include themeChangeTransition(color);
 
