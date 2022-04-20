@@ -1,6 +1,6 @@
 import { ReactElement } from 'react';
 import { Link } from 'gatsby';
-import { OutboundLink } from 'gatsby-plugin-google-analytics';
+import { OutboundLink } from 'gatsby-plugin-google-gtag';
 import { Typography } from 'components/typography';
 import { Hero } from 'components/hero';
 import { Page } from 'components/page';

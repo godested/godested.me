@@ -1,6 +1,6 @@
 import { ReactElement } from 'react';
 import classNames from 'classnames';
-import { OutboundLink } from 'gatsby-plugin-google-analytics';
+import { OutboundLink } from 'gatsby-plugin-google-gtag';
 import { WithOptionalClassNameProps } from 'types';
 import { useSitePathPrefix } from 'hooks';
 import DownloadIcon from 'assets/icons/download.inline.svg';

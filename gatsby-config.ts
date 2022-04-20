@@ -73,15 +73,12 @@ const gatsbyConfig: GatsbyConfig = {
       },
     },
     {
-      resolve: 'gatsby-plugin-google-analytics',
+      resolve: 'gatsby-plugin-google-gtag',
       options: {
-        trackingId: process.env['GOOGLE_ANALYTICS_TRACKING_ID'],
-        enableWebVitalsTracking: true,
-        respectDNT: true,
-        anonymize: true,
-        defer: false,
-        head: false,
-        pageTransitionDelay: 0,
+        trackingIds: [process.env['GOOGLE_ANALYTICS_TRACKING_ID']],
+        pluginConfig: {
+          head: false,
+        },
       },
     },
   ],
