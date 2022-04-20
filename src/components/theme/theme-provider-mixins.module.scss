@@ -65,6 +65,14 @@ $dark: dark;
   }
 }
 
+@mixin midnightThemeFilterSepia($value: 0.2) {
+  @include themeMidnight {
+    filter: sepia($value);
+  }
+
+  @include themeTransition(filter);
+}
+
 :export {
   themeChangingDuration: $themeChangingDuration;
 }

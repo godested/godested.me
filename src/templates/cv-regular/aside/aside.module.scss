@@ -114,6 +114,8 @@
   border-radius: 50%;
   overflow: hidden;
   margin-bottom: get-rem(24);
+
+  @include midnightThemeFilterSepia(0.3);
 }
 
 .icon-container {
@@ -168,10 +170,14 @@
   width: 100%;
   min-width: 100%;
   height: 100%;
+
+  @include midnightThemeFilterSepia;
 }
 
 .flag-icon {
   border-radius: get-rem(4);
   width: 100%;
   overflow: hidden;
+
+  @include midnightThemeFilterSepia;
 }
