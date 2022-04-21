@@ -4,15 +4,27 @@
 
 .root {
   @include rootThemeLight {
-    background-color: #E3E7ED;
+    background-color: hsl(216, 22%, 91%);
+
+    ::selection {
+      background-color: hsla(250, 100%, 90%, 0.5);
+    }
   }
 
   @include rootThemeMidnight {
     background-color: hsl(32, 50%, 90%);
+
+    ::selection {
+      background-color: hsla(35, 100%, 60%, 0.5);
+    }
   }
 
   @include rootThemeDark {
     background-color: hsl(222, 25%, 23%);
+
+    ::selection {
+      background-color: hsla(240, 70%, 65%, 0.5);
+    }
   }
 
   @include rootThemeChangeTransition(background-color);
@@ -188,11 +200,11 @@
   }
 
   @include themeLight {
-    background-color: #F7F9FC;
+    background-color: #f7f9fc;
   }
 
   @include themeMidnight {
-    background-color: #F9F0E8;
+    background-color: #f9f0e8;
   }
 
   @include themeDark {

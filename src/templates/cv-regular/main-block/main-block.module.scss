@@ -1,6 +1,6 @@
-@import "~/styles/variables.scss";
-@import "~/styles/mixins.scss";
-@import "~/components/typography/typography.module.scss";
+@import '~styles/variables.scss';
+@import '~styles/mixins.scss';
+@import '~components/typography/typography.module.scss';
 @import '~components/theme/theme-provider-mixins.module.scss';
 
 .main-block {
@@ -84,15 +84,15 @@
     }
 
     @include themeLight {
-      background-color: #FFFFFF;
+      background-color: #ffffff;
     }
 
     @include themeMidnight {
-      background-color: #FDF6EE;
+      background-color: #fdf6ee;
     }
 
     @include themeDark {
-      background-color: #1B2132;
+      background-color: #1b2132;
     }
 
     @include themeChangeTransition(background-color);
@@ -277,15 +277,15 @@
     padding: get-rem(16);
 
     @include themeLight {
-      background-color: #FFFFFF;
+      background-color: #ffffff;
     }
 
     @include themeMidnight {
-      background-color: #FDF6EE;
+      background-color: #fdf6ee;
     }
 
     @include themeDark {
-      background-color: #1B2132;
+      background-color: #1b2132;
     }
 
     @include themeChangeTransition(background-color);
@@ -338,11 +338,11 @@
     }
 
     @include themeLight {
-      color: #516CF7;
+      color: #516cf7;
     }
 
     @include themeMidnight {
-      color: #9E3F37;
+      color: #9e3f37;
     }
 
     @include themeDark {
@@ -365,7 +365,7 @@
     color: currentColor;
 
     @include themeLight {
-      background-color: #E3E6ED;
+      background-color: #e3e6ed;
     }
 
     @include themeMidnight {
@@ -373,7 +373,7 @@
     }
 
     @include themeDark {
-      background-color: #2F3751;
+      background-color: #2f3751;
     }
 
     @include themeChangeTransition(background-color);
