@@ -26,7 +26,6 @@ export function Hero({
   return (
     <div className={classNames(styles.hero, className)}>
       <RootClassName className={styles.root} />
-      <Logo className={styles.logo} />
       <canvas ref={heroCanvasRef.update} className={styles.heroCanvas} />
       <div className={styles.heroBody}>{children}</div>
     </div>
