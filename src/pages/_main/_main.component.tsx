@@ -6,7 +6,7 @@ import { Hero } from 'components/hero';
 import { Page } from 'components/page';
 import * as styles from './_main.module.scss';
 
-// TODO: LinkComponent<{ to: string, external: boolean }>
+// TODO: link-component
 
 export function MainPage(): ReactElement {
   return (

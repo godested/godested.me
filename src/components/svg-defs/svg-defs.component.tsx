@@ -10,7 +10,7 @@ export type SVGDefsProps = Readonly<
 
 /* eslint-disable react/destructuring-assignment */
 export function SVGDefs(props: SVGDefsProps): ReactElement | null {
-  // TODO: singleton
+  // TODO: svg-singleton
   return <defs>{props.children}</defs>;
 }
 /* eslint-enable */

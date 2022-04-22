@@ -9,7 +9,6 @@ import { MainBlock } from './main-block';
 import { DownloadButton } from './download-button.component';
 import * as styles from './cv.module.scss';
 
-// TODO: dynamic url for download button
 export function CVDocument(): ReactElement {
   const { body } = useCV();
 

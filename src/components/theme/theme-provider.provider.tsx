@@ -22,7 +22,6 @@ import { RootClassName } from 'components/root-classname';
 import { Theme } from './types';
 import * as styles from './theme-provider.module.scss';
 
-// TODO: saved-color -> preferred -> default
 const ThemeContext = createContext<Theme>(Theme.Light);
 const ChangeThemeContext = createContext<Dispatch<SetStateAction<Theme>>>(noop);
 

@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "postinstall": "node ./node_modules/.bin/concurrently \"husky install\" \"npm run tsm:build\"",
-    "start": "gatsby develop",
+    "start": "concurrently --kill-others --raw  \"npm run tsm:watch\" \"gatsby develop\"",
     "build": "gatsby build",
     "build:prefix-paths": "gatsby build --prefix-paths",
     "serve": "gatsby serve",
