@@ -1,0 +1,157 @@
+@import '~styles/variables.scss';
+@import '~styles/mixins.scss';
+@import '~components/typography/typography.module.scss';
+@import '~components/theme/theme-provider-mixins.module.scss';
+
+.education {
+  position: relative;
+  height: 100%;
+
+  &::before {
+    content: '';
+    display: block;
+    position: absolute;
+    z-index: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: get-rem(16);
+
+    @include theme($light, $midnight) {
+      box-shadow: 0 get-rem(18) get-rem(10) rgba(0, 0, 0, 0.01),
+                  0 get-rem(8) get-rem(8) rgba(0, 0, 0, 0.02),
+                  0 get-rem(2) get-rem(4) rgba(0, 0, 0, 0.02);
+    }
+
+    @include themeDark {
+      box-shadow: 0 get-rem(18) get-rem(10) rgba(0, 0, 0, 0.05),
+                  0 get-rem(8) get-rem(8) rgba(0, 0, 0, 0.1),
+                  0 get-rem(2) get-rem(4) rgba(0, 0, 0, 0.1);
+    }
+
+    @include themeChangeTransition(box-shadow);
+
+    @include print {
+      filter: opacity(1);
+    }
+  }
+
+  &__content {
+    position: relative;
+    height: 100%;
+    z-index: 1;
+    display: flex;
+    flex-direction: row;
+    border-radius: get-rem(16);
+    padding: get-rem(16);
+
+    @include themeLight {
+      background-color: #ffffff;
+    }
+
+    @include themeMidnight {
+      background-color: #fdf6ee;
+    }
+
+    @include themeDark {
+      background-color: #1b2132;
+    }
+
+    @include themeChangeTransition(background-color);
+  }
+
+  &__company-logo {
+    width: get-rem(52);
+    min-width: get-rem(52);
+    height: get-rem(52);
+
+    @include screenMd {
+      width: get-rem(48);
+      min-width: get-rem(48);
+      height: get-rem(48);
+    }
+
+    @include midnightThemeFilterSepia;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: get-rem(12);
+    overflow: hidden;
+
+    & > * {
+      line-height: 1.1;
+      margin-bottom: get-rem(3);
+      overflow: hidden;
+      text-overflow: ellipsis;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &__certificate {
+    display: flex;
+    flex-direction: row;
+    line-height: normal;
+    align-items: center;
+    padding-top: get-rem(2);
+    transition: opacity 300ms ease-in-out;
+
+    &:hover {
+      transition-duration: 100ms;
+      opacity: 0.7;
+    }
+
+    @include themeLight {
+      color: #516cf7;
+    }
+
+    @include themeMidnight {
+      color: #9e3f37;
+    }
+
+    @include themeDark {
+      color: hsl(230, 95%, 75%);
+    }
+
+    @include themeChangeTransition(color);
+  }
+
+  &__certificate-icon-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: get-rem(16);
+    height: get-rem(16);
+    min-width: get-rem(16);
+    border-radius: 50%;
+    margin-right: get-rem(8);
+    transform: translateY(-10%);
+    color: currentColor;
+
+    @include themeLight {
+      background-color: #e3e6ed;
+    }
+
+    @include themeMidnight {
+      background-color: hsl(28deg, 59%, 90%);
+    }
+
+    @include themeDark {
+      background-color: #2f3751;
+    }
+
+    @include themeChangeTransition(background-color);
+  }
+
+  &__certificate-icon {
+    fill: currentColor;
+    width: get-rem(8);
+    height: get-rem(8);
+  }
+}

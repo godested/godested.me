@@ -1,9 +1,8 @@
 import { ReactElement } from 'react';
 import { PageProps } from 'gatsby';
 import { Page } from 'components/page';
-import { CV } from './types';
-import CVComponent from './cv.component';
-import { CVProvider } from './cv.provider';
+import { CVProvider, CV } from 'components/cv';
+import { CVDocument } from './cv.component';
 
 export default function CVPage({
   pageContext,
@@ -11,7 +10,7 @@ export default function CVPage({
   return (
     <Page title={`${pageContext.cv.profile.name} CV`}>
       <CVProvider cv={pageContext.cv}>
-        <CVComponent />
+        <CVDocument />
       </CVProvider>
     </Page>
   );

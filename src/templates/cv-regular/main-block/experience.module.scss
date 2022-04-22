@@ -1,0 +1,168 @@
+@import '~styles/variables.scss';
+@import '~styles/mixins.scss';
+@import '~components/typography/typography.module.scss';
+@import '~components/theme/theme-provider-mixins.module.scss';
+
+
+.experience {
+  position: relative;
+
+  &::before {
+    content: '';
+    display: block;
+    position: absolute;
+    z-index: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: get-rem(16);
+
+    @include theme($light, $midnight) {
+      box-shadow: 0 get-rem(18) get-rem(10) rgba(0, 0, 0, 0.01),
+                  0 get-rem(8) get-rem(8) rgba(0, 0, 0, 0.02),
+                  0 get-rem(2) get-rem(4) rgba(0, 0, 0, 0.02);
+    }
+
+    @include themeDark {
+      box-shadow: 0 get-rem(18) get-rem(10) rgba(0, 0, 0, 0.05),
+                  0 get-rem(8) get-rem(8) rgba(0, 0, 0, 0.1),
+                  0 get-rem(2) get-rem(4) rgba(0, 0, 0, 0.1);
+    }
+
+    @include themeChangeTransition(box-shadow);
+
+    @include print {
+      filter: opacity(1);
+    }
+  }
+
+  &__content {
+    position: relative;
+    z-index: 1;
+    padding: get-rem(16);
+    border-radius: get-rem(16);
+
+    @include screenMd {
+      padding: get-rem(16) get-rem(24) get-rem(16) get-rem(16);
+    }
+
+    @include themeLight {
+      background-color: #ffffff;
+    }
+
+    @include themeMidnight {
+      background-color: #fdf6ee;
+    }
+
+    @include themeDark {
+      background-color: #1b2132;
+    }
+
+    @include themeChangeTransition(background-color);
+  }
+
+  &__header {
+    margin-bottom: get-rem(12);
+    display: flex;
+    align-items: stretch;
+
+    @include screenMd {
+      align-items: center;
+    }
+  }
+
+  &__company-info {
+    display: flex;
+    flex-direction: column;
+    padding-left: get-rem(12);
+
+    @include screenMd {
+      flex-direction: row;
+      justify-content: space-between;
+      flex: 1;
+    }
+  }
+
+  &__company-name {
+    margin-bottom: get-rem(2);
+  }
+
+  &__company-logo {
+    width: get-rem(52);
+    height: get-rem(52);
+
+    @include screenMd {
+      width: get-rem(48);
+      height: get-rem(48);
+    }
+
+    @include midnightThemeFilterSepia;
+  }
+
+  &__metrics {
+    padding-top: get-rem(2);
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+
+    @include screenMd {
+      padding-top: 0;
+      flex-direction: column;
+      justify-content: center;
+      flex-shrink: 1;
+    }
+  }
+
+  &__metric {
+    @include screenMd {
+      margin-bottom: get-rem(2);
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &__metric-icon {
+    display: inline-block;
+    width: 0.8em;
+    height: 0.8em;
+    margin: 0 0.4em;
+    transform: translateY(5.5%);
+    fill: currentColor;
+    opacity: 0.5;
+
+    @include screenMd {
+      display: none;
+    }
+  }
+
+  &__dates {
+    display: inline-block;
+    margin-right: 1.2em;
+
+    @include screenMd {
+      margin-right: 0;
+      margin-bottom: get-rem(4);
+    }
+  }
+
+  &__location {
+    position: absolute;
+    top: get-rem(18);
+    right: get-rem(16);
+
+    @include screenMd {
+      position: static;
+    }
+  }
+
+  &__paragraph {
+    margin-bottom: get-rem(4);
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}

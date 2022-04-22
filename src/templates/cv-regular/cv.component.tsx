@@ -1,16 +1,16 @@
 import { ReactElement, useEffect, useState } from 'react';
 import { useScrollDirection } from 'use-scroll-direction';
-import { ThemeToggler } from 'components/theme';
 import classNames from 'classnames';
+import { ThemeToggler } from 'components/theme';
 import { RootClassName } from 'components/root-classname';
-import { AsideComponent } from './aside/aside.component';
-import { DownloadButton } from './download-button/download-button.component';
-import { MainBlock } from './main-block/main-block.component';
-import { useCV } from './cv.provider';
+import { useCV } from 'components/cv';
+import { AsideComponent } from './aside';
+import { MainBlock } from './main-block';
+import { DownloadButton } from './download-button.component';
 import * as styles from './cv.module.scss';
 
 // TODO: dynamic url for download button
-export default function CVComponent(): ReactElement {
+export function CVDocument(): ReactElement {
   const { body } = useCV();
 
   return (

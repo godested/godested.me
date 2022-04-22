@@ -10,10 +10,9 @@ import PhoneIcon from 'assets/icons/phone.inline.svg';
 import BrowseIcon from 'assets/icons/browse.inline.svg';
 import UkraineIcon from 'assets/flags/ukraine.inline.svg';
 import EnglandIcon from 'assets/flags/england.inline.svg';
-import { AsideBlock } from './block/block.component';
-import { AsideList } from './list/list.component';
-import { CV } from '../types';
-import { useCV } from '../cv.provider';
+import { CV, useCV } from 'components/cv';
+import { AsideBlock } from './block.component';
+import { AsideList } from './list.component';
 import * as styles from './aside.module.scss';
 
 export function AsideComponent({
