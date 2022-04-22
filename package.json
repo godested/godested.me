@@ -6,10 +6,8 @@
   "author": "Zaitsev Ilya <godested@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "prestart": "npm run tsm:build",
+    "postinstall": "node ./node_modules/.bin/concurrently \"husky install\" \"npm run tsm:build\"",
     "start": "gatsby develop",
-    "prebuild": "npm run tsm:build && npm run type-check",
-    "deploy": "gh-pages -d public",
     "build": "gatsby build",
     "build:prefix-paths": "gatsby build --prefix-paths",
     "serve": "gatsby serve",
@@ -19,7 +17,6 @@
     "type-check": "node ./node_modules/.bin/tsc --noEmit -p ./tsconfig.json",
     "lint": "eslint --ignore-path .gitignore \"src/**/*.+(ts|tsx)\"",
     "format": "prettier --ignore-path .gitignore \"src/**/*.+(ts|tsx)\" --write",
-    "postinstall": "husky install",
     "test": "jest",
     "commit": "cz",
     "build:cv-pdf": "node ./scripts/generate-cv-pdf.js"
@@ -66,6 +63,7 @@
     "babel-jest": "27.5.1",
     "babel-preset-gatsby": "2.11.1",
     "commitizen": "4.2.4",
+    "concurrently": "7.1.0",
     "cz-conventional-changelog": "3.3.0",
     "dotenv": "16.0.0",
     "eslint": "8.12.0",
