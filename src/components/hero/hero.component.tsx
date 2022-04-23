@@ -2,8 +2,8 @@ import { PropsWithChildren, ReactElement, useEffect } from 'react';
 import classNames from 'classnames';
 import { RootClassName } from 'components/root-classname';
 import { useLazyRef } from 'hooks';
+import { isSafari, ExpectedRef } from 'utils';
 import { WithOptionalClassNameProps } from 'types';
-import { ExpectedRef } from 'utils/ref';
 import { HeroCanvas } from './hero-canvas';
 import * as styles from './hero.module.scss';
 
@@ -17,6 +17,9 @@ export function Hero({
 
   useEffect(() => {
     const heroCanvas = new HeroCanvas(heroCanvasRef.node);
+    if (isSafari()) {
+      heroCanvasRef.node.classList.add(styles.heroCanvasSafariFix);
+    }
 
     return () => {
       heroCanvas.dispose();

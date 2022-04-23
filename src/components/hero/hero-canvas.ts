@@ -1,16 +1,23 @@
-import { animationFrameScheduler, fromEvent, interval } from 'rxjs';
+import {
+  animationFrameScheduler,
+  fromEvent,
+  interval,
+  map,
+  startWith,
+} from 'rxjs';
 import SimplexNoise from 'simplex-noise';
 import { Disposable, unwrap } from 'utils';
 
 const simplex = new SimplexNoise();
 
+const scale = 0.1;
 const circlePropCount = 8;
-const baseSpeed = 0.1;
-const rangeSpeed = 0.2;
+const baseSpeed = 0.1 * scale;
+const rangeSpeed = 0.2 * scale;
 const baseTTL = 200;
 const rangeTTL = 500;
-const hueOffset = 180;
-const hueRange = 320;
+const hueOffset = 190;
+const hueRange = 330;
 const xOff = 0.5;
 const yOff = 0.5;
 const zOff = 0.5;
@@ -22,7 +29,7 @@ const hueCenter = hueOffset + maxHueOffset;
 
 export class HeroCanvas extends Disposable {
   private readonly _circleCount: number =
-    Math.round(Math.max(window.innerWidth, window.innerHeight) * 0.35) *
+    Math.round(Math.max(window.innerWidth, window.innerHeight) * 0.01) *
     devicePixelRatio;
 
   private readonly _circlePropsLength: number =
@@ -33,37 +40,59 @@ export class HeroCanvas extends Disposable {
   );
 
   private readonly _baseRadius: number =
-    Math.round(Math.max(window.innerWidth, window.innerHeight) * 0.01) *
-    devicePixelRatio;
+    Math.round(
+      Math.max(window.innerWidth, window.innerHeight) * 0.08 * devicePixelRatio,
+    ) * scale;
 
   private readonly _rangeRadius: number =
-    Math.round(Math.max(window.innerWidth, window.innerHeight) * 0.02) *
-    devicePixelRatio;
+    Math.round(
+      Math.max(window.innerWidth, window.innerHeight) * 0.14 * devicePixelRatio,
+    ) * scale;
 
   private _lifeTime = 0;
 
-  private _canvasBoundingClientRect: DOMRect;
+  private readonly _visibleContext: CanvasRenderingContext2D;
 
-  private readonly _context: CanvasRenderingContext2D;
+  private readonly _hiddenCanvas: HTMLCanvasElement;
 
-  constructor(private readonly _canvas: HTMLCanvasElement) {
+  private readonly _hiddenContext: CanvasRenderingContext2D;
+
+  constructor(private readonly _visibleCanvas: HTMLCanvasElement) {
     super();
 
-    this._context = unwrap(
-      this._canvas.getContext('2d'),
+    this._visibleContext = unwrap(
+      this._visibleCanvas.getContext('2d'),
       "Didn't found canvas context",
     );
 
-    this._canvasBoundingClientRect = this._canvas.getBoundingClientRect();
+    this._hiddenCanvas = document.createElement('canvas');
+    this._hiddenCanvas.style.filter = 'blur(90px)';
 
-    this.addDisposable(
-      fromEvent(this._canvas, 'resize').subscribe(() => {
-        this._canvasBoundingClientRect = this._canvas.getBoundingClientRect();
-      }),
+    this._hiddenContext = unwrap(
+      this._hiddenCanvas.getContext('2d'),
+      "Didn't found canvas context",
     );
 
     this.addDisposable(
       interval(0, animationFrameScheduler).subscribe(() => this.draw()),
+    );
+
+    this.addDisposable(
+      fromEvent(window, 'resize')
+        .pipe(
+          startWith(undefined),
+          map(() => ({
+            width: window.innerWidth * scale,
+            height: window.innerHeight * scale,
+          })),
+        )
+        .subscribe(({ width, height }) => {
+          this._hiddenCanvas.width = width;
+          this._hiddenCanvas.height = height;
+
+          this._visibleCanvas.width = width;
+          this._visibleCanvas.height = height;
+        }),
     );
 
     for (
@@ -75,10 +104,6 @@ export class HeroCanvas extends Disposable {
     }
   }
 
-  private get canvasClientRect() {
-    return this._canvasBoundingClientRect;
-  }
-
   private initCircle(index: number): void {
     this._circleProps.set(this.createCircleProps(), index);
   }
@@ -86,15 +111,15 @@ export class HeroCanvas extends Disposable {
   private isInBounds(x: number, y: number, radius: number): boolean {
     return (
       x < -radius ||
-      x > this.canvasClientRect.width + radius ||
+      x > this._hiddenCanvas.width + radius ||
       y < -radius ||
-      y > this.canvasClientRect.height + radius
+      y > this._hiddenCanvas.height + radius
     );
   }
 
   private createCircleProps(): readonly number[] {
-    const x = getRandomArbitrary(this.canvasClientRect.width);
-    const y = getRandomArbitrary(this.canvasClientRect.height);
+    const x = getRandomArbitrary(this._hiddenCanvas.width);
+    const y = getRandomArbitrary(this._hiddenCanvas.height);
     const n = simplex.noise3D(x * xOff, y * yOff, this._lifeTime * zOff);
     const t = getRandomArbitrary(Math.PI * 2);
     const speed = getRandomArbitrary(rangeSpeed, baseSpeed);
@@ -109,7 +134,7 @@ export class HeroCanvas extends Disposable {
     return [x, y, vx, vy, life, ttl, radius, hue];
   }
 
-  private drawCircles() {
+  private updateCircles() {
     this._lifeTime += 0.01;
 
     for (let i = 0; i < this._circlePropsLength; i += circlePropCount) {
@@ -126,18 +151,19 @@ export class HeroCanvas extends Disposable {
       const vy = this._circleProps[i4];
       const ttl = this._circleProps[i6];
       const radius = this._circleProps[i7];
-      const hue = this._circleProps[i8];
       let life = this._circleProps[i5];
+      const hue = hueOffset + (this._circleProps[i8] % (hueRange - hueOffset));
 
-      this._context.save();
-      this._context.fillStyle = `hsla(${
-        hueOffset + (hue % (hueRange - hueOffset))
-      },${saturation}%,${lightness}%,${fadeInOut(life, ttl)})`;
-      this._context.beginPath();
-      this._context.arc(x, y, radius, 0, Math.PI * 2);
-      this._context.fill();
-      this._context.closePath();
-      this._context.restore();
+      this._hiddenContext.save();
+      this._hiddenContext.beginPath();
+      this._hiddenContext.arc(x, y, radius, 0, Math.PI * 2);
+      this._hiddenContext.fillStyle = `hsla(${hue},${saturation}%,${lightness}%,${fadeInOut(
+        life,
+        ttl,
+      )})`;
+      this._hiddenContext.fill();
+      this._hiddenContext.closePath();
+      this._hiddenContext.restore();
 
       life += 1;
 
@@ -152,14 +178,16 @@ export class HeroCanvas extends Disposable {
   }
 
   private draw(): void {
-    this._context.clearRect(
+    this._visibleContext.clearRect(
       0,
       0,
-      this.canvasClientRect.width,
-      this.canvasClientRect.height,
+      this._visibleCanvas.width,
+      this._visibleCanvas.height,
     );
 
-    this.drawCircles();
+    this.updateCircles();
+    this._visibleContext.filter = `blur(${90 * scale}px)`;
+    this._visibleContext.drawImage(this._hiddenCanvas, 0, 0);
   }
 }
 
