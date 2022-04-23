@@ -5,9 +5,9 @@ import { assertNever, optionalMap } from 'utils';
 import { WithOptionalClassNameProps, PolymorphicComponentProps } from 'types';
 import * as styles from './typography.module.scss';
 
-export function Typography<
-  T extends ElementType = ReturnType<typeof resolveDefaultTagNameFromVariant>,
->(props: Typography.Props<T>): ReactElement {
+export function Typography<T extends ElementType>(
+  props: Typography.Props<T>,
+): ReactElement {
   const {
     variant = Typography.Variant.ParagraphMD,
     as: ComponentToRender = resolveDefaultTagNameFromVariant(variant),

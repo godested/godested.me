@@ -1,4 +1,4 @@
-import { ReactElement } from 'react';
+import { ElementType, ReactElement } from 'react';
 import Image from 'gatsby-image';
 import classNames from 'classnames';
 import { PropsOf, WithAdditionalClassNameProps } from 'types';
@@ -49,34 +49,44 @@ export function AsideComponent({
         </AsideBlock>
         <AsideBlock title="Contacts">
           <AsideList>
-            {contacts.map((contact) => (
-              <AsideList.ItemWithIcon
-                icon={
-                  <span className={styles.iconContainer}>
-                    <ContactIcon
-                      type={contact.type}
-                      role="img"
-                      className={styles.iconContainerIcon}
-                    />
-                  </span>
-                }
-                key={contact.type}
-              >
-                <Typography
-                  variant={Typography.Variant.CaptionSM}
-                  fontColor={Typography.Color.LightGray}
+            {contacts
+              .map(
+                (contact) =>
+                  [contact, resolveContactRenderData(contact)] as const,
+              )
+              .map(([contact, itemProps]) => (
+                <AsideList.ItemWithIcon
+                  icon={
+                    <span className={styles.iconContainer}>
+                      <ContactIcon
+                        type={contact.type}
+                        role="img"
+                        className={styles.iconContainerIcon}
+                      />
+                    </span>
+                  }
+                  key={contact.type}
+                  {...itemProps}
+                  className={classNames(
+                    styles.contactLink,
+                    itemProps.className,
+                  )}
                 >
-                  {CV.ContactType.toLabel(contact.type)}
-                </Typography>
-                <Typography
-                  as="h5"
-                  variant={Typography.Variant.ParagraphMD}
-                  fontColor={Typography.Color.DarkGray}
-                  fontWeight={Typography.Weight.Medium}
-                  {...resolveContactProps(contact)}
-                />
-              </AsideList.ItemWithIcon>
-            ))}
+                  <Typography
+                    variant={Typography.Variant.CaptionSM}
+                    fontColor={Typography.Color.LightGray}
+                  >
+                    {CV.ContactType.toLabel(contact.type)}
+                  </Typography>
+                  <Typography
+                    as="h5"
+                    variant={Typography.Variant.ParagraphMD}
+                    fontWeight={Typography.Weight.Medium}
+                  >
+                    {contact.value}
+                  </Typography>
+                </AsideList.ItemWithIcon>
+              ))}
           </AsideList>
         </AsideBlock>
         <AsideBlock title="Socials">
@@ -86,6 +96,13 @@ export function AsideComponent({
                 icon={
                   <img src={iconURL} alt={name} className={styles.socialIcon} />
                 }
+                as="a"
+                href={profileURL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={classNames(
+                  classNames(styles.contactLink, styles.contactLinkHoverable),
+                )}
                 key={name}
               >
                 <Typography
@@ -95,10 +112,7 @@ export function AsideComponent({
                   {name}
                 </Typography>
                 <Typography
-                  as="a"
-                  href={profileURL}
                   variant={Typography.Variant.ParagraphMD}
-                  fontColor={Typography.Color.DarkGray}
                   fontWeight={Typography.Weight.Medium}
                 >
                   {username}
@@ -137,7 +151,9 @@ export function AsideComponent({
   );
 }
 
-function resolveContactProps(contact: CV.Contact): Typography.Props<'a'> {
+function resolveContactRenderData(
+  contact: CV.Contact,
+): { as: ElementType } & PropsOf<'a' | 'div'> {
   const { type, value } = contact;
 
   switch (type) {
@@ -147,6 +163,7 @@ function resolveContactProps(contact: CV.Contact): Typography.Props<'a'> {
         target: '_blank',
         rel: 'noopener noreferrer',
         href: `mailto:${value}`,
+        className: styles.contactLinkHoverable,
         children: value,
       };
     case CV.ContactType.Phone:
@@ -155,6 +172,7 @@ function resolveContactProps(contact: CV.Contact): Typography.Props<'a'> {
         target: '_blank',
         rel: 'noopener noreferrer',
         href: `tel:${value}`,
+        className: styles.contactLinkHoverable,
         children: value,
       };
     case CV.ContactType.Site:
@@ -163,10 +181,12 @@ function resolveContactProps(contact: CV.Contact): Typography.Props<'a'> {
         target: '_blank',
         rel: 'noopener noreferrer',
         href: value,
+        className: styles.contactLinkHoverable,
         children: new URL(value).host,
       };
     case CV.ContactType.Location:
       return {
+        as: 'div',
         children: value,
       };
     default:

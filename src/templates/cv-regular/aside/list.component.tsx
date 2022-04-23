@@ -1,4 +1,6 @@
-import { Children, PropsWithChildren, ReactElement } from 'react';
+import { Children, ElementType, PropsWithChildren, ReactElement } from 'react';
+import classNames from 'classnames';
+import { PolymorphicComponentProps, WithOptionalClassNameProps } from 'types';
 import * as styles from './list.module.scss';
 
 // eslint-disable-next-line @typescript-eslint/ban-types
@@ -16,19 +18,31 @@ export function AsideList({ children }: PropsWithChildren<{}>): ReactElement {
 }
 
 export namespace AsideList {
-  export type ItemWithIconProps = PropsWithChildren<{
-    icon: ReactElement;
-  }>;
+  export function ItemWithIcon<T extends ElementType>(
+    props: PolymorphicComponentProps<
+      T,
+      PropsWithChildren<{
+        icon: ReactElement;
+      }>
+    > &
+      WithOptionalClassNameProps,
+  ): ReactElement {
+    const {
+      as: ComponentToRender = 'div',
+      children,
+      className,
+      icon,
+      ...restProps
+    } = props;
 
-  export function ItemWithIcon({
-    children,
-    icon,
-  }: ItemWithIconProps): ReactElement {
     return (
-      <div className={styles.itemWithIcon}>
+      <ComponentToRender
+        className={classNames(styles.itemWithIcon, className)}
+        {...restProps}
+      >
         <div className={styles.itemWithIconIcon}>{icon}</div>
         <div className={styles.itemWithIconContent}>{children}</div>
-      </div>
+      </ComponentToRender>
     );
   }
 }

@@ -17,6 +17,27 @@ $darkThemeDarkGray: #D2D4DB;
 $darkThemeGray: #AAAFBB;
 $darkThemeLightGray: #8E94A4;
 
+@mixin linkHover{
+  transition: color 300ms ease-in-out;
+
+  &:hover {
+    transition-duration: 80ms;
+    transition-timing-function: linear;
+
+    @include themeLight {
+      color: #516CF7;
+    }
+
+    @include themeMidnight {
+      color: #9E3F37;
+    }
+
+    @include themeDark {
+      color: #8397fc;
+    }
+  }
+}
+
 .typography {
   display: block;
   font-family: $primaryFont;
@@ -30,24 +51,7 @@ $darkThemeLightGray: #8E94A4;
   @include themeChangeTransition(color);
 
   &_linked {
-    position: relative;
-    transition: color 300ms ease-in-out;
-
-    &:hover {
-      transition-duration: 100ms;
-
-      @include themeLight {
-        color: #516CF7;
-      }
-
-      @include themeMidnight {
-        color: #9E3F37;
-      }
-
-      @include themeDark {
-        color: #8397fc;
-      }
-    }
+    @include linkHover;
   }
 
   &_heading {

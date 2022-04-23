@@ -3,7 +3,6 @@
 @import '~components/typography/typography.module.scss';
 @import '~components/theme/theme-provider-mixins.module.scss';
 
-
 .experience {
   position: relative;
 
@@ -20,14 +19,14 @@
 
     @include theme($light, $midnight) {
       box-shadow: 0 get-rem(18) get-rem(10) rgba(0, 0, 0, 0.01),
-                  0 get-rem(8) get-rem(8) rgba(0, 0, 0, 0.02),
-                  0 get-rem(2) get-rem(4) rgba(0, 0, 0, 0.02);
+        0 get-rem(8) get-rem(8) rgba(0, 0, 0, 0.02),
+        0 get-rem(2) get-rem(4) rgba(0, 0, 0, 0.02);
     }
 
     @include themeDark {
       box-shadow: 0 get-rem(18) get-rem(10) rgba(0, 0, 0, 0.05),
-                  0 get-rem(8) get-rem(8) rgba(0, 0, 0, 0.1),
-                  0 get-rem(2) get-rem(4) rgba(0, 0, 0, 0.1);
+        0 get-rem(8) get-rem(8) rgba(0, 0, 0, 0.1),
+        0 get-rem(2) get-rem(4) rgba(0, 0, 0, 0.1);
     }
 
     @include themeChangeTransition(box-shadow);
@@ -85,6 +84,7 @@
   }
 
   &__company-name {
+    display: inline-block;
     margin-bottom: get-rem(2);
   }
 
