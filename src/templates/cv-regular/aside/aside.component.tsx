@@ -83,7 +83,7 @@ export function AsideComponent({
                     variant={Typography.Variant.ParagraphMD}
                     fontWeight={Typography.Weight.Medium}
                   >
-                    {contact.value}
+                    {itemProps.children}
                   </Typography>
                 </AsideList.ItemWithIcon>
               ))}

@@ -48,8 +48,6 @@ $darkThemeLightGray: #8E94A4;
   font-weight: inherit;
   text-decoration: none;
 
-  @include themeChangeTransition(color);
-
   &_linked {
     @include linkHover;
   }
@@ -128,6 +126,8 @@ $darkThemeLightGray: #8E94A4;
     @include themeDark {
       color: $darkThemeBlack;
     }
+
+    @include themeChangeTransition(color);
   }
 
   &_dark-gray-color {
@@ -142,6 +142,8 @@ $darkThemeLightGray: #8E94A4;
     @include themeDark {
       color: $darkThemeDarkGray;
     }
+
+    @include themeChangeTransition(color);
   }
 
   &_gray-color {
@@ -156,6 +158,8 @@ $darkThemeLightGray: #8E94A4;
     @include themeDark {
       color: $darkThemeGray;
     }
+
+    @include themeChangeTransition(color);
   }
 
   &_light-gray-color {
@@ -170,6 +174,8 @@ $darkThemeLightGray: #8E94A4;
     @include themeDark {
       color: $darkThemeLightGray;
     }
+
+    @include themeChangeTransition(color);
   }
 
   &_accent-color {
@@ -184,6 +190,8 @@ $darkThemeLightGray: #8E94A4;
     @include themeDark {
       color: #8397fc;
     }
+    
+    @include themeChangeTransition(color);
   }
 
   &_white-color {
@@ -192,6 +200,8 @@ $darkThemeLightGray: #8E94A4;
     @include themeDark {
       color: #000;
     }
+
+    @include themeChangeTransition(color);
   }
 
   &_no-wrap {
