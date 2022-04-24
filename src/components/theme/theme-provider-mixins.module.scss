@@ -70,7 +70,7 @@ $dark: dark;
     filter: sepia($value);
   }
 
-  @include themeTransition(filter);
+  @include themeChangeTransition(filter);
 }
 
 :export {
