@@ -19,6 +19,8 @@ import {
 import { CSSClassName } from 'styles';
 import classNames from 'classnames';
 import { RootClassName } from 'components/root-classname';
+import { fromEvent } from 'rxjs';
+import { useDisposable } from 'hooks';
 import { Theme } from './types';
 import * as styles from './theme-provider.module.scss';
 
@@ -32,18 +34,20 @@ export function ThemeProvider({
   defaultTheme,
 }: ThemeProviderProps): ReactElement {
   const [theme, setTheme] = useState(resolveTheme(defaultTheme));
-  const [changingClassName, setChangingClassName] = useState<
-    CSSClassName | undefined
-  >(undefined);
+  const [changingClassName, setChangingClassName] = useState<CSSClassName>();
 
   useEffect(() => saveTheme(theme), [theme]);
-  useEffect(() => {
-    const unsubscribe = listenPreferredTheme((preferredTheme) => {
-      setTheme(preferredTheme);
-    });
-
-    return () => unsubscribe();
-  }, []);
+  useDisposable({
+    onEffect: ({ addDisposable }) =>
+      addDisposable(
+        fromEvent<MediaQueryListEvent>(
+          window.matchMedia('(prefers-color-scheme: dark)'),
+          'change',
+        ).subscribe(({ matches }) => {
+          setTheme(matches ? Theme.Dark : Theme.Light);
+        }),
+      ),
+  });
 
   const changeTheme = useCallback<ContextType<typeof ChangeThemeContext>>(
     (newTheme) => {
@@ -117,16 +121,4 @@ function resolveThemeFromDeviceSettings(): Theme | undefined {
   }
 
   return undefined;
-}
-
-function listenPreferredTheme(callback: (theme: Theme) => void): () => void {
-  const listener = (event: MediaQueryListEvent) => {
-    callback(event.matches ? Theme.Dark : Theme.Light);
-  };
-
-  const matchMedia = window.matchMedia('(prefers-color-scheme: dark)');
-
-  matchMedia.addEventListener('change', listener);
-
-  return () => matchMedia.removeEventListener('change', listener);
 }

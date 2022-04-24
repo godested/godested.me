@@ -4,16 +4,24 @@ type DisposableItem =
   | (() => unknown);
 
 export class Disposable {
-  private readonly _disposables: Array<DisposableItem> = [];
-
-  private _isDisposed = false;
-
-  addDisposable<T extends DisposableItem>(disposable: T): T {
-    this._disposables.push(disposable);
+  static create(...disposables: readonly DisposableItem[]) {
+    const disposable = new Disposable();
+    disposables.forEach((disposableItem) =>
+      disposable.addDisposable(disposableItem),
+    );
     return disposable;
   }
 
-  dispose(): void {
+  private readonly _disposables: DisposableItem[] = [];
+
+  private _isDisposed = false;
+
+  readonly addDisposable = <T extends DisposableItem>(disposable: T): T => {
+    this._disposables.push(disposable);
+    return disposable;
+  };
+
+  readonly dispose = (): void => {
     if (this._isDisposed) {
       // eslint-disable-next-line no-console
       console.error('Already disposed');
@@ -34,5 +42,5 @@ export class Disposable {
       dispose.dispose();
     });
     this._isDisposed = true;
-  }
+  };
 }

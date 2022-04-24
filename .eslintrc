@@ -85,6 +85,7 @@
         "prettier"
       ],
       "rules": {
+        "no-useless-constructor": "off",
         "no-underscore-dangle": "off",
         "no-shadow": "off",
         "dot-notation": "off",

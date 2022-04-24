@@ -1,9 +1,9 @@
-import { ReactElement, useEffect, useState } from 'react';
-import { useScrollDirection } from 'use-scroll-direction';
+import { ReactElement } from 'react';
 import classNames from 'classnames';
 import { ThemeToggler } from 'components/theme';
 import { RootClassName } from 'components/root-classname';
 import { useCV } from 'components/cv';
+import { ScrollDirection, useScrollDirection } from 'hooks';
 import { AsideComponent } from './aside';
 import { MainBlock } from './main-block';
 import { DownloadButton } from './download-button.component';
@@ -32,26 +32,14 @@ export function CVDocument(): ReactElement {
 
 function Controls(): ReactElement {
   const { pdfURL } = useCV();
-  const { scrollDirection } = useScrollDirection();
-
-  const [isScrolledDown, setIsScrolledDown] = useState(false);
-
-  useEffect(() => {
-    if (scrollDirection === 'DOWN') {
-      setIsScrolledDown(true);
-      return;
-    }
-
-    if (scrollDirection === 'UP') {
-      setIsScrolledDown(false);
-    }
-  }, [scrollDirection]);
+  const scrollDirection = useScrollDirection();
 
   return (
     <div
       className={classNames(
         styles.controls,
-        isScrolledDown && styles.controlsScrollingDown,
+        scrollDirection === ScrollDirection.Down &&
+          styles.controlsScrollingDown,
       )}
     >
       <ThemeToggler className={styles.themeToggler} />

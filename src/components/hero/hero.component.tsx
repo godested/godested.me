@@ -1,7 +1,7 @@
 import { PropsWithChildren, ReactElement, useEffect } from 'react';
 import classNames from 'classnames';
 import { RootClassName } from 'components/root-classname';
-import { useLazyRef } from 'hooks';
+import { useDisposable, useLazyRef } from 'hooks';
 import { isSafari, ExpectedRef } from 'utils';
 import { WithOptionalClassNameProps } from 'types';
 import { HeroCanvas } from './hero-canvas';
@@ -15,15 +15,16 @@ export function Hero({
     () => new ExpectedRef<HTMLCanvasElement>('hero-canvas'),
   );
 
+  useDisposable({
+    onEffect: ({ addDisposable }) => {
+      addDisposable(new HeroCanvas(heroCanvasRef.node));
+    },
+  });
+
   useEffect(() => {
-    const heroCanvas = new HeroCanvas(heroCanvasRef.node);
     if (isSafari()) {
       heroCanvasRef.node.classList.add(styles.heroCanvasSafariFix);
     }
-
-    return () => {
-      heroCanvas.dispose();
-    };
   }, []);
 
   return (
