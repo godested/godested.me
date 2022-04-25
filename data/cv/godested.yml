@@ -39,11 +39,6 @@ socials:
     profileURL: https://www.github.com/godested
     iconURL: https://res.cloudinary.com/dtcmmxxh9/image/upload/v1650905546/gatsby-cloudinary/3.svg
 
-  - name: CodeWars
-    username: '@godested'
-    profileURL: https://www.codewars.com/users/godested
-    iconURL: https://res.cloudinary.com/dtcmmxxh9/image/upload/v1650905547/gatsby-cloudinary/4.svg
-
 languages:
   - type: english
     name: English
