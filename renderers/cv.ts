@@ -1,5 +1,7 @@
 import path from 'path';
 import fs from 'fs-extra';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import yaml from 'js-yaml';
 import { Actions, CreatePagesArgs, GatsbyNode } from 'gatsby';
 
 const cvDataFolder = 'data/cv';
@@ -11,12 +13,12 @@ async function renderCVPage(
 ) {
   const ext = path.extname(filePath);
 
-  if (ext !== '.json') {
+  if (ext !== '.yml') {
     console.warn('Unexpected file extension:', filePath);
     return;
   }
 
-  const cvData = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+  const cvData = yaml.load(fs.readFileSync(filePath, 'utf8')) as any;
 
   const result = await graphql<{
     allCloudinaryAsset: { edges: Array<{ node: { fluid: any } }> };
