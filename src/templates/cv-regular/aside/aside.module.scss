@@ -12,20 +12,6 @@
     padding: 0;
   }
 
-  @include themeLight {
-    background-color: #f7f9fc;
-  }
-
-  @include themeMidnight {
-    background-color: #f9f0e8;
-  }
-
-  @include themeDark {
-    background-color: #121621;
-  }
-
-  @include themeChangeTransition(background-color);
-
   &__content {
     position: relative;
     z-index: 1;

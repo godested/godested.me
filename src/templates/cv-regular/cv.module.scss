@@ -57,6 +57,20 @@
   width: 100%;
   flex: 1;
 
+  @include themeLight {
+    background-color: #f7f9fc;
+  }
+
+  @include themeMidnight {
+    background-color: #f9f0e8;
+  }
+
+  @include themeDark {
+    background-color: #121621;
+  }
+
+  @include themeChangeTransition(background-color);
+
   @include screenLg() {
     flex-direction: row;
     border-radius: get-rem(16);
@@ -80,7 +94,7 @@
         0 get-rem(6) get-rem(14) rgba(0, 0, 0, 0.1);
     }
 
-    @include themeChangeTransition(box-shadow);
+    @include themeChangeTransition(background-color, box-shadow);
   }
 
   @include print {
@@ -200,18 +214,4 @@
   @include screenLg() {
     padding: get-rem(64) get-rem(48) get-rem(48) get-rem(32);
   }
-
-  @include themeLight {
-    background-color: #f7f9fc;
-  }
-
-  @include themeMidnight {
-    background-color: #f9f0e8;
-  }
-
-  @include themeDark {
-    background-color: #121621;
-  }
-
-  @include themeChangeTransition(background-color);
 }
