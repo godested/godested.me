@@ -1,9 +1,9 @@
 import { ElementType, ReactElement } from 'react';
-import Image from 'gatsby-image';
+import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import classNames from 'classnames';
 import { PropsOf, WithAdditionalClassNameProps } from 'types';
 import { Typography } from 'components/typography';
-import { assertNever } from 'utils';
+import { assertNever, unwrap } from 'utils';
 import LocationIcon from 'assets/icons/location.inline.svg';
 import MailIcon from 'assets/icons/mail.inline.svg';
 import PhoneIcon from 'assets/icons/phone.inline.svg';
@@ -24,11 +24,10 @@ export function AsideComponent({
     <aside className={classNames(styles.aside, asideClassName)}>
       <div className={styles.asideContent}>
         <AsideBlock>
-          <Image
-            fluid={profile.avatar}
+          <GatsbyImage
+            image={unwrap(getImage(profile.avatar), 'Avatar')}
             alt={profile.name}
             className={styles.profileAvatar}
-            backgroundColor
           />
           <Typography
             as="h1"

@@ -4,7 +4,7 @@ meta:
 profile:
   name: Ilya Zaitsev
   position: Frontend Engineer
-  avatarCloudinaryID: e5bf527c-9bb1-5f07-9b6f-546e66c98809
+  avatarURL: https://res.cloudinary.com/dtcmmxxh9/image/upload/v1649853549/gatsby-cloudinary/avatar.png
 
 contacts:
   - type: email
@@ -189,6 +189,7 @@ body:
         courseName: Computer Engineering
         description: Dnipro National University
         dateStarted: 1506805200000
+
   - type: text
     title: Highlights
     data:

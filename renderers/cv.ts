@@ -1,14 +1,21 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import path from 'path';
 import fs from 'fs-extra';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import yaml from 'js-yaml';
-import { Actions, CreatePagesArgs, GatsbyNode } from 'gatsby';
+import { createRemoteFileNode } from 'gatsby-source-filesystem';
+import { CreatePagesArgs, GatsbyNode } from 'gatsby';
 
 const cvDataFolder = 'data/cv';
 
 async function renderCVPage(
-  graphql: CreatePagesArgs['graphql'],
-  createPage: Actions['createPage'],
+  {
+    actions: { createPage, createNode },
+    store,
+    cache,
+    createContentDigest,
+    reporter,
+    graphql,
+  }: CreatePagesArgs,
   filePath: string,
 ) {
   const ext = path.extname(filePath);
@@ -20,32 +27,25 @@ async function renderCVPage(
 
   const cvData = yaml.load(fs.readFileSync(filePath, 'utf8')) as any;
 
-  const result = await graphql<{
-    allCloudinaryAsset: { edges: Array<{ node: { fluid: any } }> };
-  }>(
+  const { children } = await createRemoteFileNode({
+    url: cvData.profile.avatarURL,
+    store,
+    cache,
+    createNode,
+    createNodeId: createContentDigest,
+    reporter,
+  });
+
+  const { data } = await graphql<{ avatar: { gatsbyImageData: any } }>(
     `
-      query Avatar($avatarCloudinaryID: String) {
-        allCloudinaryAsset(filter: { id: { eq: $avatarCloudinaryID } }) {
-          edges {
-            node {
-              fluid {
-                aspectRatio
-                presentationHeight
-                presentationWidth
-                sizes
-                src
-                srcSet
-                tracedSVG
-              }
-            }
-          }
+      query Avatar($id: String!) {
+        avatar: imageSharp(id: { eq: $id }) {
+          gatsbyImageData(width: 512, placeholder: TRACED_SVG)
         }
       }
     `,
-    { avatarCloudinaryID: cvData.profile.avatarCloudinaryID },
+    { id: children[0] },
   );
-
-  const avatar = result.data?.allCloudinaryAsset.edges[0].node.fluid;
 
   const pagePath = `/cv-${cvData.profile.name
     .replace(/\s/g, '-')
@@ -59,29 +59,22 @@ async function renderCVPage(
     context: {
       cv: {
         ...cvData,
-        profile: { ...cvData.profile, avatar },
+        profile: { ...cvData.profile, avatar: data?.avatar },
         pdfURL: `${pagePath}.pdf`,
       },
     },
   });
 }
 
-export const rendererCV: NonNullable<GatsbyNode['createPages']> = async ({
-  graphql,
-  actions,
-}) => {
+export const rendererCV: NonNullable<GatsbyNode['createPages']> = async (
+  args,
+) => {
   const currentDir = process.cwd();
   const folderPath = path.join(currentDir, cvDataFolder);
 
   await Promise.all(
     fs
       .readdirSync(folderPath)
-      .map((filename) =>
-        renderCVPage(
-          graphql,
-          actions.createPage,
-          path.join(folderPath, filename),
-        ),
-      ),
+      .map((filename) => renderCVPage(args, path.join(folderPath, filename))),
   );
 };

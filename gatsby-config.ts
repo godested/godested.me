@@ -11,6 +11,9 @@ const commonPlugins: readonly PluginRef[] = [
   'gatsby-plugin-cname',
   'gatsby-plugin-provide-react',
   'gatsby-plugin-react-helmet',
+  'gatsby-plugin-image',
+  'gatsby-plugin-sharp',
+  'gatsby-transformer-sharp',
   {
     resolve: 'gatsby-plugin-manifest',
     options: {
@@ -48,24 +51,6 @@ const commonPlugins: readonly PluginRef[] = [
     options: {
       name: 'images',
       path: path.resolve('./src/assets/images'),
-    },
-  },
-  {
-    resolve: 'gatsby-transformer-cloudinary',
-    options: {
-      cloudName: process.env['CLOUDINARY_CLOUD_NAME'],
-      apiKey: process.env['CLOUDINARY_API_KEY'],
-      apiSecret: process.env['CLOUDINARY_API_SECRET'],
-      uploadFolder: 'gatsby-cloudinary',
-    },
-  },
-  {
-    resolve: 'gatsby-source-cloudinary',
-    options: {
-      cloudName: process.env['CLOUDINARY_CLOUD_NAME'],
-      apiKey: process.env['CLOUDINARY_API_KEY'],
-      apiSecret: process.env['CLOUDINARY_API_SECRET'],
-      resourceType: 'image',
     },
   },
 ];

@@ -20,6 +20,10 @@ const convertPixelToInches = (value, dpi) => {
   return `${value / dpi}in`;
 };
 
+const base64Encode = (filepath) => {
+  return fs.readFileSync(filepath, { encoding: 'base64' });
+};
+
 const generatePdf = async ({ pagePath }) => {
   const currentDir = process.cwd();
   const browser = await puppeteer.launch({ headless: true });
@@ -27,9 +31,24 @@ const generatePdf = async ({ pagePath }) => {
   const htmlPath = path.join(currentDir, 'public', pagePath, 'index.html');
   const downloadDir = path.join(currentDir, 'public');
 
-  const contentHtml = fs
+  let contentHtml = fs
     .readFileSync(htmlPath, 'utf8')
-    .replace(/\/static/g, path.join(currentDir, 'public', 'static'));
+    .replace(/loading="lazy"/g, '');
+
+  const matches = contentHtml.match(/\/static\/([\w|\S]+)\.(png|webp)/g);
+
+  matches.forEach((pathToAsset) => {
+    contentHtml = contentHtml.replace(
+      pathToAsset,
+      `data:image/${path
+        .extname(pathToAsset)
+        .replace('.', '')};base64;charset=utf-8,${base64Encode(
+        path.join(currentDir, 'public', pathToAsset),
+      )}`,
+    );
+  });
+
+  fs.writeFileSync(path.join(downloadDir, 'foooooooooooo.html'), contentHtml);
 
   await page.setJavaScriptEnabled(false);
   await page.setContent(contentHtml, {
@@ -39,7 +58,10 @@ const generatePdf = async ({ pagePath }) => {
   await page.setJavaScriptEnabled(true);
   await page.evaluateHandle('document.fonts.ready');
   await page.addStyleTag({
-    content: `html { font-size:${convertPixelToInches(16, 72)}; }`,
+    content: `
+    html { font-size:${convertPixelToInches(16, 72)};}
+    * { transition: none !important; }
+  `,
   });
   await page.setJavaScriptEnabled(false);
 

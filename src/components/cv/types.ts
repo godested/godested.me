@@ -1,4 +1,4 @@
-import { FluidObject } from 'gatsby-image';
+import { ImageDataLike } from 'gatsby-plugin-image';
 import { Typography } from 'components/typography';
 import { assertNever } from 'utils';
 
@@ -15,7 +15,7 @@ export namespace CV {
   export type Profile = Readonly<{
     name: string;
     position: string;
-    avatar: FluidObject;
+    avatar: ImageDataLike;
   }>;
 
   export enum ContactType {
