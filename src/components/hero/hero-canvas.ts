@@ -3,6 +3,7 @@ import {
   fromEvent,
   interval,
   map,
+  observeOn,
   startWith,
 } from 'rxjs';
 import SimplexNoise from 'simplex-noise';
@@ -78,9 +79,10 @@ export class HeroCanvas extends Disposable {
     );
 
     this.addDisposable(
-      fromEvent(window, 'resize')
+      fromEvent(window, 'resize', { passive: true, capture: true })
         .pipe(
           startWith(undefined),
+          observeOn(animationFrameScheduler),
           map(() => ({
             width: window.innerWidth * scale,
             height: window.innerHeight * scale,

@@ -14,7 +14,7 @@ export function useScrollDirection(): ScrollDirection | undefined {
   useDisposable({
     onEffect: ({ addDisposable }) =>
       addDisposable(
-        fromEvent(window, 'scroll')
+        fromEvent(window, 'scroll', { passive: true, capture: true })
           .pipe(observeOn(animationFrameScheduler))
           .subscribe(() => {
             const scrollTop = getNormalizedScrollValue(
