@@ -79,7 +79,7 @@ export function AsideComponent({
                   </Typography>
                   <Typography
                     as="h5"
-                    variant={Typography.Variant.ParagraphMD}
+                    variant={Typography.Variant.ParagraphSM}
                     fontWeight={Typography.Weight.Medium}
                   >
                     {itemProps.children}
@@ -111,7 +111,7 @@ export function AsideComponent({
                   {name}
                 </Typography>
                 <Typography
-                  variant={Typography.Variant.ParagraphMD}
+                  variant={Typography.Variant.ParagraphSM}
                   fontWeight={Typography.Weight.Medium}
                 >
                   {username}
@@ -129,7 +129,7 @@ export function AsideComponent({
               >
                 <Typography
                   as="h5"
-                  variant={Typography.Variant.ParagraphMD}
+                  variant={Typography.Variant.ParagraphSM}
                   fontColor={Typography.Color.DarkGray}
                   fontWeight={Typography.Weight.Medium}
                 >

@@ -10,7 +10,7 @@ $lightThemeLightGray: #79819A;
 $midnightThemeBlack: hsl(0, 7%, 15%);
 $midnightThemeDarkGray: hsl(30, 7%, 25%);
 $midnightThemeGray: hsl(30, 7%, 40%);
-$midnightThemeLightGray: hsl(225, 14%, 40%);
+$midnightThemeLightGray: hsl(30, 14%, 45%);
 
 $darkThemeBlack: #E0E0EB;
 $darkThemeDarkGray: #D2D4DB;
@@ -190,7 +190,7 @@ $darkThemeLightGray: #8E94A4;
     @include themeDark {
       color: #8397fc;
     }
-    
+
     @include themeChangeTransition(color);
   }
 

@@ -24,7 +24,6 @@ export function CompanyIcon({
         </clipPath>
       </SVGDefs>
       <g clipPath="url(#icon-shape)">
-        <rect x="0" y="0" width="200" height="100" fill="transparent" />
         <image href={url} height="100%" width="100%" />
       </g>
     </svg>

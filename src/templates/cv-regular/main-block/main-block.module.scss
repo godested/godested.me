@@ -15,11 +15,13 @@
 }
 
 .title {
-  margin-bottom: get-rem(8);
+  line-height: 1;
+  margin-bottom: get-rem(12);
 }
 
 .paragraph {
   margin-bottom: get-rem(8);
+  max-width: 80ch;
 
   &:last-child {
     margin-bottom: 0;

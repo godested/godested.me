@@ -90,13 +90,8 @@
   }
 
   &__company-logo {
-    width: get-rem(52);
-    height: get-rem(52);
-
-    @include screenMd {
-      width: get-rem(48);
-      height: get-rem(48);
-    }
+    width: get-rem(48);
+    height: get-rem(48);
 
     @include midnightThemeFilterSepia;
   }
@@ -130,7 +125,7 @@
     width: 0.8em;
     height: 0.8em;
     margin: 0 0.4em;
-    transform: translateY(5.5%);
+    transform: translateY(0.05em);
     fill: currentColor;
     opacity: 0.5;
 
@@ -161,6 +156,7 @@
 
   &__paragraph {
     margin-bottom: get-rem(4);
+    max-width: 80ch;
 
     &:last-child {
       margin-bottom: 0;

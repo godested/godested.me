@@ -16,6 +16,9 @@ body,
 }
 
 html {
+  font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
   font-size: $rootFontSize + px;
 
   @include print {
