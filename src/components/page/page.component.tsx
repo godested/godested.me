@@ -15,7 +15,9 @@ export function Page({ title, children }: PageProps): ReactElement {
         title={title}
         defaultTitle="@godested"
         titleTemplate="%s · @godested"
-      />
+      >
+        <html lang="en" />
+      </Helmet>
       <ThemeProvider>{children}</ThemeProvider>
     </>
   );
