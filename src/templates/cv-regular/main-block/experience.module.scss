@@ -92,8 +92,6 @@
   &__company-logo {
     width: get-rem(48);
     height: get-rem(48);
-
-    @include midnightThemeFilterSepia;
   }
 
   &__metrics {
