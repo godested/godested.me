@@ -7,7 +7,13 @@ export enum ScrollDirection {
   Down = 'down',
 }
 
-export function useScrollDirection(): ScrollDirection | undefined {
+export type ScrollDirectionOptions = Readonly<{
+  threshold?: number;
+}>;
+
+export function useScrollDirection({
+  threshold = 0,
+}: ScrollDirectionOptions = {}): ScrollDirection | undefined {
   const lastScrollTop = useRef<number>();
   const [scrollDirection, setScrollDirection] = useState<ScrollDirection>();
 
@@ -20,6 +26,12 @@ export function useScrollDirection(): ScrollDirection | undefined {
             const scrollTop = getNormalizedScrollValue(
               document.documentElement,
             );
+
+            if (
+              Math.abs(scrollTop - (lastScrollTop.current ?? 0)) <= threshold
+            ) {
+              return;
+            }
 
             setScrollDirection(
               scrollTop !== 0 && scrollTop >= (lastScrollTop.current ?? 0)

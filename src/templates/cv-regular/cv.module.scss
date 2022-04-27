@@ -112,6 +112,7 @@
   padding-bottom: get-rem(20);
   padding-right: get-rem(20);
   z-index: 3;
+  transform: translateZ(0);
   transition: opacity 200ms ease-in-out, transform 200ms ease-in-out;
   will-change: transform, opacity;
 
@@ -123,6 +124,7 @@
     bottom: auto;
     top: get-rem(30);
     transition: none;
+    transform: none;
     will-change: none;
   }
 
@@ -140,7 +142,7 @@
 
   &_scrolling-down {
     opacity: 0;
-    transform: translateY(100%);
+    transform: translateY(100%) translateZ(0);
 
     @include screenLg {
       opacity: 1;

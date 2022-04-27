@@ -32,7 +32,7 @@ export function CVDocument(): ReactElement {
 
 function Controls(): ReactElement {
   const { pdfURL } = useCV();
-  const scrollDirection = useScrollDirection();
+  const scrollDirection = useScrollDirection({ threshold: 50 });
 
   return (
     <div
