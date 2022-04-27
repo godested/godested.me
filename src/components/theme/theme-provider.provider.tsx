@@ -43,7 +43,7 @@ export function ThemeProvider({
         fromEvent<MediaQueryListEvent>(
           window.matchMedia('(prefers-color-scheme: dark)'),
           'change',
-          { passive: true, capture: true },
+          { passive: true },
         ).subscribe(({ matches }) => {
           setTheme(matches ? Theme.Dark : Theme.Light);
         }),

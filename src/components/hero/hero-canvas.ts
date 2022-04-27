@@ -79,7 +79,7 @@ export class HeroCanvas extends Disposable {
     );
 
     this.addDisposable(
-      fromEvent(window, 'resize', { passive: true, capture: true })
+      fromEvent(window, 'resize', { passive: true })
         .pipe(
           startWith(undefined),
           observeOn(animationFrameScheduler),
