@@ -20,9 +20,51 @@ const convertPixelToInches = (value, dpi) => {
   return `${value / dpi}in`;
 };
 
-const base64Encode = (filepath) => {
-  return fs.readFileSync(filepath, { encoding: 'base64' });
+const base64Encode = async (filepath) => {
+  return fs.readFile(filepath, { encoding: 'base64' });
 };
+
+async function prepareHTML(input) {
+  const currentDir = process.cwd();
+  let html = input.replace(/loading="lazy"/g, '');
+
+  // images
+
+  const imagesMatches = html.match(/\/static\/([\w|\S]+)\.(png|webp)/g);
+
+  // eslint-disable-next-line no-restricted-syntax
+  for (const pathToAsset of imagesMatches) {
+    html = html.replace(
+      pathToAsset,
+      `data:image/${path
+        .extname(pathToAsset)
+        // eslint-disable-next-line no-await-in-loop
+        .replace('.', '')};base64;charset=utf-8,${await base64Encode(
+        path.join(currentDir, 'public', pathToAsset),
+      )}`,
+    );
+  }
+
+  const stylesMatches = html.match(/href=".+?\.css"/g);
+
+  // styles
+
+  // eslint-disable-next-line no-restricted-syntax
+  for (const styleMatch of [...stylesMatches].reverse()) {
+    const cssPath = styleMatch.replace('href="', '').replace('"', '');
+
+    html = html.replace(
+      '<head>',
+      // eslint-disable-next-line no-await-in-loop
+      `<head><style>${await fs.readFile(
+        path.join(currentDir, 'public', cssPath),
+        'utf8',
+      )}</style>`,
+    );
+  }
+
+  return html;
+}
 
 const generatePdf = async ({ pagePath }) => {
   const currentDir = process.cwd();
@@ -31,24 +73,7 @@ const generatePdf = async ({ pagePath }) => {
   const htmlPath = path.join(currentDir, 'public', pagePath, 'index.html');
   const downloadDir = path.join(currentDir, 'public');
 
-  let contentHtml = fs
-    .readFileSync(htmlPath, 'utf8')
-    .replace(/loading="lazy"/g, '');
-
-  const matches = contentHtml.match(/\/static\/([\w|\S]+)\.(png|webp)/g);
-
-  matches.forEach((pathToAsset) => {
-    contentHtml = contentHtml.replace(
-      pathToAsset,
-      `data:image/${path
-        .extname(pathToAsset)
-        .replace('.', '')};base64;charset=utf-8,${base64Encode(
-        path.join(currentDir, 'public', pathToAsset),
-      )}`,
-    );
-  });
-
-  fs.writeFileSync(path.join(downloadDir, 'foooooooooooo.html'), contentHtml);
+  const contentHtml = await prepareHTML(await fs.readFile(htmlPath, 'utf8'));
 
   await page.setJavaScriptEnabled(false);
   await page.setContent(contentHtml, {
@@ -80,8 +105,9 @@ const generatePdf = async ({ pagePath }) => {
 
 async function generateCvPDFs() {
   await Promise.all(
-    fs
-      .readdirSync(path.join(process.cwd(), 'public'))
+    (
+      await fs.readdir(path.join(process.cwd(), 'public'))
+    )
       .filter(
         (filename) =>
           filename === path.basename(filename, path.extname(filename)),
