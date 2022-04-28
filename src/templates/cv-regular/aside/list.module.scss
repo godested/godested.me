@@ -15,6 +15,8 @@
   }
 
   &_item {
+    display: flex;
+    justify-content: flex-start;
     flex: 1 1 100%;
     padding-bottom: get-rem(24);
 
@@ -33,7 +35,7 @@
 }
 
 .item-with-icon {
-  display: inline-flex;
+  display: flex;
   flex-direction: row;
   align-items: center;
 

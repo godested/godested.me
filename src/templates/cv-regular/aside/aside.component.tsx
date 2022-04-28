@@ -8,9 +8,8 @@ import LocationIcon from 'assets/icons/location.inline.svg';
 import MailIcon from 'assets/icons/mail.inline.svg';
 import PhoneIcon from 'assets/icons/phone.inline.svg';
 import BrowseIcon from 'assets/icons/browse.inline.svg';
-import UkraineIcon from 'assets/flags/ukraine.inline.svg';
-import EnglandIcon from 'assets/flags/england.inline.svg';
 import { CV, useCV } from 'components/cv';
+import countryCodeEmoji from 'country-code-emoji';
 import { AsideBlock } from './block.component';
 import { AsideList } from './list.component';
 import * as styles from './aside.module.scss';
@@ -122,9 +121,14 @@ export function AsideComponent({
         </AsideBlock>
         <AsideBlock title="Languages">
           <AsideList>
-            {languages.map(({ name, level, type }) => (
+            {languages.map(({ name, level, countryCode }) => (
               <AsideList.ItemWithIcon
-                icon={<FlagIcon type={type} className={styles.flagIcon} />}
+                icon={
+                  <FlagIcon
+                    countryCode={countryCode}
+                    className={styles.flagIcon}
+                  />
+                }
                 key={name}
               >
                 <Typography
@@ -214,16 +218,42 @@ function ContactIcon({
 }
 
 function FlagIcon({
-  type,
+  countryCode,
   ...props
-}: Readonly<{ type: CV.LanguageType }> &
+}: Readonly<{ countryCode: string }> &
   WithAdditionalClassNameProps): ReactElement {
-  switch (type) {
-    case CV.LanguageType.English:
-      return <EnglandIcon {...props} />;
-    case CV.LanguageType.Ukrainian:
-      return <UkraineIcon {...props} />;
-    default:
-      return assertNever(type);
+  const emojiHex = toCodePoint(countryCodeEmoji(countryCode));
+
+  return (
+    <img
+      src={`https://twemoji.maxcdn.com/v/latest/svg/${emojiHex}.svg`}
+      alt={`${countryCode} flag`}
+      {...props}
+    />
+  );
+}
+
+// grabbed from https://github.com/twitter/twemoji
+function toCodePoint(unicodeSurrogates: string): string {
+  const result = [];
+  let charCode = 0;
+  let previous = 0;
+  let i = 0;
+
+  while (i < unicodeSurrogates.length) {
+    // eslint-disable-next-line no-plusplus
+    charCode = unicodeSurrogates.charCodeAt(i++);
+    if (previous) {
+      result.push(
+        // eslint-disable-next-line no-bitwise
+        (65536 + ((previous - 55296) << 10) + (charCode - 56320)).toString(16),
+      );
+      previous = 0;
+    } else if (charCode >= 55296 && charCode <= 56319) {
+      previous = charCode;
+    } else {
+      result.push(charCode.toString(16));
+    }
   }
+  return result.join('-');
 }

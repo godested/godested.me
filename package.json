@@ -29,6 +29,7 @@
   },
   "dependencies": {
     "classnames": "2.3.1",
+    "country-code-emoji": "2.3.0",
     "fs-extra": "10.0.1",
     "gatsby": "4.11.1",
     "gatsby-image": "3.11.0",

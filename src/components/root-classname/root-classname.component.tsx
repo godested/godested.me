@@ -21,7 +21,9 @@ export function RootClassName({
 
   return (
     <RootClassNameContext.Provider value={fullClassName}>
-      <Helmet htmlAttributes={{ class: fullClassName }} />
+      <Helmet>
+        <body className={fullClassName} />
+      </Helmet>
       {children}
     </RootClassNameContext.Provider>
   );

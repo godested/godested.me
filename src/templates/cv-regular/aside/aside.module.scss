@@ -183,7 +183,8 @@
 }
 
 .flag-icon {
-  border-radius: get-rem(4);
+  display: block;
+  height: auto;
   width: 100%;
-  transform: translateZ(0);
+  max-width: 100%;
 }

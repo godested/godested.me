@@ -54,13 +54,8 @@ export namespace CV {
     name: string;
   }>;
 
-  export enum LanguageType {
-    English = 'english',
-    Ukrainian = 'ukrainian',
-  }
-
   export type Language = Readonly<{
-    type: LanguageType;
+    countryCode: string;
     name: string;
     level: string;
   }>;
