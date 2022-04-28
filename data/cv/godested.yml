@@ -53,17 +53,16 @@ body:
     title: Professional summary
     data:
       - text:
-          Enthusiastic frontend engineer with more than 5 years of commercial experience.
+          Enthusiastic front-end engineer with more than 5 years of commercial experience.
           Good at project development from scratch and improvement of existing solutions.
-          Have analytical and investigative skills. Confidently understand how to build
-          an MVP. Able to create full autonomy in frontend development. Strive to improve
-          DX, automate code quality analysis. Familiar with unit economics. Ready to analyze
-          business requirements, propose product and development flow improvements.
+          Have analytical and investigative skills. I confidently understand how to build an MVP.
+          Able to create full autonomy in front-end development.
+          Strive to improve DX and automate code quality analysis. Familiar with unit economics.
+          Ready to analyze business requirements and propose product and development flow improvements
         color: 2
       - text:
-          Looking for a professional workgroup to implement knowledge and gained experience,
-          be a part of the “Big idea” project, grow and contribute, improve management
-          and product skills to obtain a lead position in the future.
+          "I strive to find a professional environment to implement knowledge and gained experience,
+          be a part of the “Big\u00A0idea” project and improve management skills."
         color: 1
 
   - type: experience
@@ -75,9 +74,8 @@ body:
         position: Senior Frontend Engineer
         description:
           - text:
-              I took a significant part in the development of 5 new games for tens of
-              thousands of users. Was engaged in code reviews, improving DX, refactoring
-              of existing solutions, developing new big features
+              I played a significant part in developing 5 new games for tens of thousands of users,
+              was engaged in code reviews, improving DX, refactoring existing solutions, and developing new complex features.
             color: 2
           - text:
               TypeScript, React, Mobx, RxJS, Inversify, Webpack, Protobuf, Jest, Kibana,
@@ -92,14 +90,12 @@ body:
         position: Senior Frontend Engineer
         description:
           - text:
-              Successfully launched social app, and brand landings. Further evolution
-              to a full-fledged product (with support, analytics, payments) was made. Had
-              active participation in the hiring of technical specialists as an interviewer
-              for various projects. Was a mentor for junior developers.
+              The successfully launched social app and brand landings with further
+              evolution to a full-fledged product (support, analytics, payments).
+              Various projects have used me as an interviewer for hiring senior developers.
             color: 2
           - text:
-              React, Redux, Redux-Saga, Webpack, Gatsby, TypeScript, WebSockets, GitLab
-              CI/CD, Docker, Sentry, PRPL pattern.
+              React, Redux, Redux-Saga, Webpack, Gatsby, TypeScript, GitLab CI/CD, Docker, Sentry, PRPL pattern.
             color: 1
         dateStarted: 1554066000000
         dateEnded: 1601499600000
@@ -112,9 +108,9 @@ body:
         description:
           - color: 2
             text:
-              In cooperation with a back-end developer, based on UX mockups successfully
+              In cooperation with a back-end developer, based on UX mockups, successfully
               developed an application with a graphical representation of business processes
-              in a BPMN and CMMN formats for immediate execution
+              in a BPMN and CMMN formats for immediate execution.
           - text: React, Redux, Redux-Saga, Webpack, CMMN, BPMN, Docker.
             color: 1
         dateStarted: 1543615200000
@@ -192,7 +188,7 @@ body:
         text:
           I’m familiar with fast prototyping and release MVP for early test ideas
           in the real world. It took me about 3 months to analyze requirements, set up
-          development flow, and create the first social discovery MVP (with paying customers)
+          the development flow, and create the first social discovery MVP (with paying customers)
           version of the latest released project.
       - color: 2
         text:

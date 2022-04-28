@@ -3,14 +3,10 @@
 @import '~styles/functions.scss';
 
 .main-block {
-  margin-bottom: get-rem(48);
+  margin-bottom: get-rem(36);
 
   &:last-child {
     margin-bottom: 0;
-  }
-
-  @include print {
-    margin-bottom: get-rem(36);
   }
 }
 

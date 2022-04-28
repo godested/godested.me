@@ -28,8 +28,6 @@ async function prepareHTML(input) {
   const currentDir = process.cwd();
   let html = input.replace(/loading="lazy"/g, '');
 
-  // images
-
   const imagesMatches = html.match(/\/static\/([\w|\S]+)\.(png|webp)/g);
 
   // eslint-disable-next-line no-restricted-syntax
@@ -46,8 +44,6 @@ async function prepareHTML(input) {
   }
 
   const stylesMatches = html.match(/href=".+?\.css"/g);
-
-  // styles
 
   // eslint-disable-next-line no-restricted-syntax
   for (const styleMatch of [...stylesMatches].reverse()) {

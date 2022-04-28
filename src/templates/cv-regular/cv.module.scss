@@ -40,7 +40,7 @@
   @include screenLg() {
     margin: 0 auto;
     padding: get-rem(30);
-    max-width: 1260px;
+    max-width: 1275px;
   }
 
   @include print {
@@ -120,7 +120,7 @@
     position: sticky;
     align-self: flex-start;
     padding-right: 0;
-    padding-left: get-rem(20);
+    padding-left: get-rem(24);
     bottom: auto;
     top: get-rem(30);
     transition: none;
@@ -214,6 +214,6 @@
   padding-bottom: get-rem(64);
 
   @include screenLg() {
-    padding: get-rem(64) get-rem(48) get-rem(48) get-rem(32);
+    padding: get-rem(64) get-rem(48) get-rem(48) get-rem(48);
   }
 }
