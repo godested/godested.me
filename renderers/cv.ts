@@ -110,6 +110,7 @@ export const rendererCV: NonNullable<GatsbyNode['createPages']> = async ({
               }
               position
               dateStarted
+              dateEnded
               location
               description {
                 text

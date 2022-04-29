@@ -14,5 +14,5 @@ const months: readonly string[] = [
 ];
 
 export function getDateMonth(date: Date): string {
-  return months[date.getUTCMonth()];
+  return months[date.getMonth()];
 }

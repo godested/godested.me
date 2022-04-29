@@ -1,27 +1,29 @@
-import { getDateMonth, isNumber, isSomething } from 'utils';
+import { getDateMonth, isSomething, optionalMap } from 'utils';
 
 export function formatDates(
-  dateStarted: number,
-  dateEnded: number | string | undefined,
+  dateStarted: Date,
+  dateEnded: Date | string | undefined,
 ): string {
   return [
-    formatDateFromTimestamp(dateStarted),
-    isNumber(dateEnded) ? formatDateFromTimestamp(dateEnded) : dateEnded,
+    formatDate(dateStarted),
+    optionalMap(dateEnded, (endedAt) =>
+      endedAt instanceof Date ? formatDate(endedAt) : endedAt,
+    ),
   ]
     .filter(isSomething)
     .join(' - ');
 }
 
-export function formatDateFromTimestamp(timestamp: number): string {
-  const date = new Date(timestamp);
-  return `${getDateMonth(date).substring(0, 3)} ${date.getUTCFullYear()}`;
+export function formatDate(date: Date): string {
+  console.log(date, getDateMonth(date));
+  return `${getDateMonth(date).substring(0, 3)} ${date.getFullYear()}`;
 }
 
 export function formatDuration(
-  timestampA: number,
-  timestampB = Date.now(),
+  dateA: Date,
+  dateB = new Date(Date.now()),
 ): string {
-  const difference = Math.abs(timestampA - timestampB);
+  const difference = Math.abs(dateA.getTime() - dateB.getTime());
   const mothsDifference = Math.floor(difference / 1000 / 60 / 60 / 24 / 30);
 
   const years = Math.floor(mothsDifference / 12);

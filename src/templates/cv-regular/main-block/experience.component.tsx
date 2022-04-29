@@ -1,4 +1,4 @@
-import { ReactElement } from 'react';
+import { ReactElement, useMemo } from 'react';
 import classNames from 'classnames';
 import { Typography } from 'components/typography';
 import LocationIcon from 'assets/icons/location.inline.svg';
@@ -18,6 +18,12 @@ export function Experience({
   dateEnded,
   location,
 }: CV.InnerContentDataType<CV.Experience>): ReactElement {
+  const fromDate = useMemo(() => new Date(dateStarted), [dateStarted]);
+  const toDate = useMemo(
+    () => (dateEnded ? new Date(dateEnded) : undefined),
+    [dateEnded],
+  );
+
   return (
     <div className={styles.experience}>
       <div className={styles.experienceContent}>
@@ -59,9 +65,9 @@ export function Experience({
                 )}
                 nowrap
               >
-                {formatDates(dateStarted, dateEnded ?? 'Present')}
+                {formatDates(fromDate, toDate ?? 'Present')}
                 {' · '}
-                {formatDuration(dateStarted, dateEnded)}
+                {formatDuration(fromDate, toDate)}
               </Typography>
               <Typography
                 variant={Typography.Variant.CaptionSM}

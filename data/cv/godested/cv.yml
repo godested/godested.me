@@ -83,7 +83,7 @@ body:
               TypeScript, React, Mobx, RxJS, Inversify, Webpack, Protobuf, Jest, Kibana,
               Jenkins.
             color: 1
-        dateStarted: 1601499600000
+        dateStarted: 2020-09
         location: Kyiv, Ukraine
 
       - companyName: Genesis
@@ -98,8 +98,8 @@ body:
             color: 2
           - text: React, Redux, Redux-Saga, Webpack, Gatsby, TypeScript, GitLab CI/CD, Docker, Sentry, PRPL pattern.
             color: 1
-        dateStarted: 1554066000000
-        dateEnded: 1601499600000
+        dateStarted: 2019-05
+        dateEnded: 2020-09
         location: Kyiv, Ukraine
 
       - companyName: Skywell Software
@@ -114,8 +114,8 @@ body:
               in a BPMN and CMMN formats for immediate execution.
           - text: React, Redux, Redux-Saga, Webpack, CMMN, BPMN, Docker.
             color: 1
-        dateStarted: 1543615200000
-        dateEnded: 1554066000000
+        dateStarted: 2018-11
+        dateEnded: 2019-03
         location: Kyiv, Ukraine
 
       - companyName: Lab73
@@ -129,8 +129,8 @@ body:
               Developed service for medical members with real-time calls, pptx presentations, and schedule manager.
           - text: React, Redux, Redux-Saga, Webpack, Mapbox, WebSockets, WebRTC, Docker.
             color: 1
-        dateStarted: 1527800400000
-        dateEnded: 1543615200000
+        dateStarted: 2018-05
+        dateEnded: 2018-11
         location: Kyiv, Ukraine
 
       - companyName: WorkRocks
@@ -142,8 +142,8 @@ body:
             text: Participated in the development of a real-time crypto-currencies exchanger.
           - text: React, Redux, TypeScript, WebSockets, Node.js.
             color: 1
-        dateStarted: 1519855200000
-        dateEnded: 1527800400000
+        dateStarted: 2018-02
+        dateEnded: 2018-05
         location: Dnipro, Ukraine
 
       - companyName: Upwork
@@ -156,8 +156,8 @@ body:
               a lot of landing pages.
           - text: React, Redux, WebSockets, Gulp, Node.js, Ruby.
             color: 1
-        dateStarted: 1490994000000
-        dateEnded: 1527800400000
+        dateStarted: 2017-03
+        dateEnded: 2018-05
         location: Dnipro, Ukraine
 
   - title: Education
@@ -166,21 +166,21 @@ body:
       - companyLogo: images/hillel.svg
         companyURL: https://dnipro.ithillel.ua/ua/courses/front-end-pro-dnepr
         courseName: Frontend Pro
-        dateStarted: 1509487200000
-        dateEnded: 1517436000000
+        dateStarted: 2017-10
+        dateEnded: 2018-01
         certificateURL: https://admin.itschool-hillel.org/certificate/HISD61667232-en.pdf
 
       - companyLogo: images/hillel.svg
         companyURL: https://dnipro.ithillel.ua/ua/courses/front-end-basic-dnepr
         courseName: Frontend Basic
-        dateStarted: 1504213200000
-        dateEnded: 1509487200000
+        dateStarted: 2017-08
+        dateEnded: 2017-10
         certificateURL: https://admin.itschool-hillel.org/certificate/HISD80187425-en.pdf
 
       - companyLogo: images/highschool.svg
         courseName: Computer Engineering
         description: Dnipro National University
-        dateStarted: 1506805200000
+        dateStarted: 2017-09
 
   - title: Highlights
     type: text

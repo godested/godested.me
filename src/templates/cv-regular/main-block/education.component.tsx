@@ -1,5 +1,5 @@
+import { ReactElement, useMemo } from 'react';
 import { Typography } from 'components/typography';
-import { ReactElement } from 'react';
 import { isSomething } from 'utils';
 import AttachmentIcon from 'assets/icons/attachment.inline.svg';
 import { CV } from 'components/cv';
@@ -16,6 +16,12 @@ export function Education({
   description,
   certificateURL,
 }: CV.InnerContentDataType<CV.Education>): ReactElement {
+  const fromDate = useMemo(() => new Date(dateStarted), [dateStarted]);
+  const toDate = useMemo(
+    () => (dateEnded ? new Date(dateEnded) : undefined),
+    [dateEnded],
+  );
+
   return (
     <div className={styles.education}>
       <div className={styles.educationContent}>
@@ -50,7 +56,7 @@ export function Education({
             fontColor={Typography.Color.Gray}
             nowrap
           >
-            {formatDates(dateStarted, dateEnded)}
+            {formatDates(fromDate, toDate)}
           </Typography>
           {isSomething(certificateURL) && (
             <Typography

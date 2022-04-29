@@ -77,7 +77,7 @@ export namespace CV {
 
   export type InnerContentDataType<
     T extends CommonContent<ContentType, unknown>,
-    > = T extends CommonContent<ContentType, infer D> ? D : never;
+  > = T extends CommonContent<ContentType, infer D> ? D : never;
 
   export type Text = CommonContent<ContentType.Text, Paragraph>;
 
@@ -88,8 +88,8 @@ export namespace CV {
       companyLogo: GatsbyImageAsset;
       position: string;
       description: readonly Paragraph[];
-      dateStarted: number;
-      dateEnded: number | undefined;
+      dateStarted: number | string;
+      dateEnded?: number | string;
       location: string;
       companyURL?: string;
     }
@@ -100,8 +100,8 @@ export namespace CV {
     {
       courseName: string;
       companyLogo: GatsbyImageAsset;
-      dateStarted: number;
-      dateEnded?: number;
+      dateStarted: number | string;
+      dateEnded?: number | string;
       companyURL?: string;
       description?: string;
       certificateURL?: string;
