@@ -14,3 +14,5 @@ Depends on file type do optimizations
 
 ## TODO: get-rid-of-local-images-assets
 Use cloudinary to upload image sharp data
+
+## TODO: relative-images-in-cv-data
