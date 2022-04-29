@@ -98,7 +98,7 @@ body:
             color: 2
           - text: React, Redux, Redux-Saga, Webpack, Gatsby, TypeScript, GitLab CI/CD, Docker, Sentry, PRPL pattern.
             color: 1
-        dateStarted: 2019-05
+        dateStarted: 2019-03
         dateEnded: 2020-09
         location: Kyiv, Ukraine
 
