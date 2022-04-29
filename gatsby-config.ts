@@ -12,8 +12,6 @@ const commonPlugins: readonly PluginRef[] = [
   'gatsby-plugin-provide-react',
   'gatsby-plugin-react-helmet',
   'gatsby-plugin-image',
-  'gatsby-plugin-sharp',
-  'gatsby-transformer-sharp',
   {
     resolve: 'gatsby-plugin-manifest',
     options: {
@@ -49,10 +47,19 @@ const commonPlugins: readonly PluginRef[] = [
   {
     resolve: 'gatsby-source-filesystem',
     options: {
-      name: 'images',
-      path: path.resolve('./src/assets/images'),
+      name: 'cvFiles',
+      path: path.resolve('data', 'cv'),
     },
   },
+  {
+    resolve: 'gatsby-transformer-yaml',
+    options: {
+      typeName: 'Yaml',
+    },
+  },
+  'gatsby-transformer-inline-svg',
+  'gatsby-plugin-sharp',
+  'gatsby-transformer-sharp',
 ];
 
 const prodPlugins: readonly PluginRef[] = [

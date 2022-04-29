@@ -36,7 +36,7 @@ export function MainBlock({ content }: MainBlockProps): ReactElement {
                 className={styles.educationListItem}
               >
                 <Education
-                  companyLogoURL={education.companyLogoURL}
+                  companyLogo={education.companyLogo}
                   companyURL={education.companyURL}
                   courseName={education.courseName}
                   dateStarted={education.dateStarted}
@@ -59,7 +59,7 @@ export function MainBlock({ content }: MainBlockProps): ReactElement {
               >
                 <Experience
                   companyName={experience.companyName}
-                  companyLogoURL={experience.companyLogoURL}
+                  companyLogo={experience.companyLogo}
                   companyURL={experience.companyURL}
                   dateStarted={experience.dateStarted}
                   dateEnded={experience.dateEnded}

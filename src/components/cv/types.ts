@@ -1,5 +1,5 @@
-import { ImageDataLike } from 'gatsby-plugin-image';
 import { Typography } from 'components/typography';
+import { GatsbyImageAsset } from 'components/gatsby-asset-image';
 import { assertNever } from 'utils';
 
 export type CV = Readonly<{
@@ -15,7 +15,7 @@ export namespace CV {
   export type Profile = Readonly<{
     name: string;
     position: string;
-    avatar: ImageDataLike;
+    avatar: GatsbyImageAsset;
   }>;
 
   export enum ContactType {
@@ -48,13 +48,14 @@ export namespace CV {
   }>;
 
   export type Social = Readonly<{
-    iconURL: string;
+    icon: GatsbyImageAsset;
     profileURL: string;
     username: string;
     name: string;
   }>;
 
   export type Language = Readonly<{
+    icon: GatsbyImageAsset;
     countryCode: string;
     name: string;
     level: string;
@@ -76,7 +77,7 @@ export namespace CV {
 
   export type InnerContentDataType<
     T extends CommonContent<ContentType, unknown>,
-  > = T extends CommonContent<ContentType, infer D> ? D : never;
+    > = T extends CommonContent<ContentType, infer D> ? D : never;
 
   export type Text = CommonContent<ContentType.Text, Paragraph>;
 
@@ -84,7 +85,7 @@ export namespace CV {
     ContentType.Experience,
     {
       companyName: string;
-      companyLogoURL: string;
+      companyLogo: GatsbyImageAsset;
       position: string;
       description: readonly Paragraph[];
       dateStarted: number;
@@ -97,8 +98,8 @@ export namespace CV {
   export type Education = CommonContent<
     ContentType.Education,
     {
-      companyLogoURL: string;
       courseName: string;
+      companyLogo: GatsbyImageAsset;
       dateStarted: number;
       dateEnded?: number;
       companyURL?: string;

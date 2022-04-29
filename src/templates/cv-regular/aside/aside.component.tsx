@@ -1,15 +1,14 @@
 import { ElementType, ReactElement } from 'react';
-import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import classNames from 'classnames';
 import { PropsOf, WithAdditionalClassNameProps } from 'types';
 import { Typography } from 'components/typography';
-import { assertNever, unwrap } from 'utils';
+import { GatsbyAssetImage } from 'components/gatsby-asset-image';
+import { assertNever } from 'utils';
 import LocationIcon from 'assets/icons/location.inline.svg';
 import MailIcon from 'assets/icons/mail.inline.svg';
 import PhoneIcon from 'assets/icons/phone.inline.svg';
 import BrowseIcon from 'assets/icons/browse.inline.svg';
 import { CV, useCV } from 'components/cv';
-import countryCodeEmoji from 'country-code-emoji';
 import { AsideBlock } from './block.component';
 import { AsideList } from './list.component';
 import * as styles from './aside.module.scss';
@@ -23,8 +22,8 @@ export function AsideComponent({
     <aside className={classNames(styles.aside, asideClassName)}>
       <div className={styles.asideContent}>
         <AsideBlock>
-          <GatsbyImage
-            image={unwrap(getImage(profile.avatar), 'Avatar')}
+          <GatsbyAssetImage
+            source={profile.avatar}
             alt={profile.name}
             className={styles.profileAvatar}
           />
@@ -89,10 +88,14 @@ export function AsideComponent({
         </AsideBlock>
         <AsideBlock title="Socials">
           <AsideList>
-            {socials.map(({ name, profileURL, username, iconURL }) => (
+            {socials.map(({ name, profileURL, username, icon }) => (
               <AsideList.ItemWithIcon
                 icon={
-                  <img src={iconURL} alt={name} className={styles.socialIcon} />
+                  <GatsbyAssetImage
+                    source={icon}
+                    alt={name}
+                    className={styles.socialIcon}
+                  />
                 }
                 as="a"
                 href={profileURL}
@@ -121,11 +124,12 @@ export function AsideComponent({
         </AsideBlock>
         <AsideBlock title="Languages">
           <AsideList>
-            {languages.map(({ name, level, countryCode }) => (
+            {languages.map(({ name, level, icon, countryCode }) => (
               <AsideList.ItemWithIcon
                 icon={
-                  <FlagIcon
-                    countryCode={countryCode}
+                  <GatsbyAssetImage
+                    source={icon}
+                    alt={countryCode}
                     className={styles.flagIcon}
                   />
                 }
@@ -215,45 +219,4 @@ function ContactIcon({
     default:
       return assertNever(type);
   }
-}
-
-function FlagIcon({
-  countryCode,
-  ...props
-}: Readonly<{ countryCode: string }> &
-  WithAdditionalClassNameProps): ReactElement {
-  const emojiHex = toCodePoint(countryCodeEmoji(countryCode));
-
-  return (
-    <img
-      src={`https://twemoji.maxcdn.com/v/latest/svg/${emojiHex}.svg`}
-      alt={`${countryCode} flag`}
-      {...props}
-    />
-  );
-}
-
-// grabbed from https://github.com/twitter/twemoji
-function toCodePoint(unicodeSurrogates: string): string {
-  const result = [];
-  let charCode = 0;
-  let previous = 0;
-  let i = 0;
-
-  while (i < unicodeSurrogates.length) {
-    // eslint-disable-next-line no-plusplus
-    charCode = unicodeSurrogates.charCodeAt(i++);
-    if (previous) {
-      result.push(
-        // eslint-disable-next-line no-bitwise
-        (65536 + ((previous - 55296) << 10) + (charCode - 56320)).toString(16),
-      );
-      previous = 0;
-    } else if (charCode >= 55296 && charCode <= 56319) {
-      previous = charCode;
-    } else {
-      result.push(charCode.toString(16));
-    }
-  }
-  return result.join('-');
 }

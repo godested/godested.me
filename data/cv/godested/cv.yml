@@ -1,10 +1,11 @@
 meta:
+  type: cv
   template: cv-regular
 
 profile:
   name: Ilya Zaitsev
   position: Frontend Engineer
-  avatarURL: https://res.cloudinary.com/dtcmmxxh9/image/upload/v1649853549/gatsby-cloudinary/avatar.png
+  avatar: images/avatar.png
 
 contacts:
   - type: email
@@ -18,26 +19,27 @@ contacts:
 
   - type: location
     value: Kyiv, Ukraine
+
 socials:
   - name: LinkedIn
     username: godested
     profileURL: https://www.linkedin.com/in/godested
-    iconURL: https://res.cloudinary.com/dtcmmxxh9/image/upload/v1650905543/gatsby-cloudinary/0.svg
+    icon: images/linkedin.svg
 
   - name: Twitter
     username: '@_godested'
     profileURL: https://twitter.com/_godested
-    iconURL: https://res.cloudinary.com/dtcmmxxh9/image/upload/v1650905544/gatsby-cloudinary/1.svg
+    icon: images/twitter.svg
 
   - name: Instagram
     username: '@ztsvi'
     profileURL: https://instagram.com/ztsvi
-    iconURL: https://res.cloudinary.com/dtcmmxxh9/image/upload/v1650905545/gatsby-cloudinary/2.svg
+    icon: images/instagram.svg
 
   - name: GitHub
     username: '@godested'
     profileURL: https://www.github.com/godested
-    iconURL: https://res.cloudinary.com/dtcmmxxh9/image/upload/v1650905546/gatsby-cloudinary/3.svg
+    icon: images/github.svg
 
 languages:
   - countryCode: GB
@@ -49,9 +51,9 @@ languages:
     level: Native
 
 body:
-  - type: text
-    title: Professional summary
-    data:
+  - title: Professional summary
+    type: text
+    paragraphs:
       - text:
           Enthusiastic front-end engineer with more than 5 years of commercial experience.
           Good at project development from scratch and improvement of existing solutions.
@@ -65,12 +67,12 @@ body:
           be a part of the “Big\u00A0idea” project and improve management skills."
         color: 1
 
-  - type: experience
-    title: Experience
-    data:
+  - title: Experience
+    type: experience
+    companies:
       - companyName: Playtech · Live
         companyURL: https://jobs.dou.ua/companies/playtech
-        companyLogoURL: https://res.cloudinary.com/dtcmmxxh9/image/upload/v1650905548/gatsby-cloudinary/5.svg
+        companyLogo: images/playtech.svg
         position: Senior Frontend Engineer
         description:
           - text:
@@ -86,7 +88,7 @@ body:
 
       - companyName: Genesis
         companyURL: https://jobs.dou.ua/companies/genesis-technology-partners
-        companyLogoURL: https://res.cloudinary.com/dtcmmxxh9/image/upload/v1650905549/gatsby-cloudinary/6.svg
+        companyLogo: images/genesis.svg
         position: Senior Frontend Engineer
         description:
           - text:
@@ -94,8 +96,7 @@ body:
               evolution to a full-fledged product (support, analytics, payments).
               Various projects have used me as an interviewer for hiring senior developers.
             color: 2
-          - text:
-              React, Redux, Redux-Saga, Webpack, Gatsby, TypeScript, GitLab CI/CD, Docker, Sentry, PRPL pattern.
+          - text: React, Redux, Redux-Saga, Webpack, Gatsby, TypeScript, GitLab CI/CD, Docker, Sentry, PRPL pattern.
             color: 1
         dateStarted: 1554066000000
         dateEnded: 1601499600000
@@ -103,7 +104,7 @@ body:
 
       - companyName: Skywell Software
         companyURL: https://jobs.dou.ua/companies/skywell
-        companyLogoURL: https://res.cloudinary.com/dtcmmxxh9/image/upload/v1650905549/gatsby-cloudinary/7.svg
+        companyLogo: images/skywell.svg
         position: Frontend Developer
         description:
           - color: 2
@@ -119,7 +120,7 @@ body:
 
       - companyName: Lab73
         companyURL: https://www.behance.net/lab-73digital
-        companyLogoURL: https://res.cloudinary.com/dtcmmxxh9/image/upload/v1650905549/gatsby-cloudinary/8.svg
+        companyLogo: images/lab73.svg
         position: Frontend Developer
         description:
           - color: 2
@@ -134,7 +135,7 @@ body:
 
       - companyName: WorkRocks
         companyURL: https://jobs.dou.ua/companies/workrocks-/
-        companyLogoURL: https://res.cloudinary.com/dtcmmxxh9/image/upload/v1650905549/gatsby-cloudinary/9.svg
+        companyLogo: images/workrocks.svg
         position: Frontend Developer
         description:
           - color: 2
@@ -146,7 +147,7 @@ body:
         location: Dnipro, Ukraine
 
       - companyName: Upwork
-        companyLogoURL: https://res.cloudinary.com/dtcmmxxh9/image/upload/v1650905549/gatsby-cloudinary/10.svg
+        companyLogo: images/upwork.svg
         position: Frontend Developer
         description:
           - color: 2
@@ -159,31 +160,31 @@ body:
         dateEnded: 1527800400000
         location: Dnipro, Ukraine
 
-  - type: education
-    title: Education
-    data:
-      - companyLogoURL: https://res.cloudinary.com/dtcmmxxh9/image/upload/v1650905549/gatsby-cloudinary/11.svg
+  - title: Education
+    type: education
+    courses:
+      - companyLogo: images/hillel.svg
         companyURL: https://dnipro.ithillel.ua/ua/courses/front-end-pro-dnepr
         courseName: Frontend Pro
         dateStarted: 1509487200000
         dateEnded: 1517436000000
         certificateURL: https://admin.itschool-hillel.org/certificate/HISD61667232-en.pdf
 
-      - companyLogoURL: https://res.cloudinary.com/dtcmmxxh9/image/upload/v1650905549/gatsby-cloudinary/11.svg
+      - companyLogo: images/hillel.svg
         companyURL: https://dnipro.ithillel.ua/ua/courses/front-end-basic-dnepr
         courseName: Frontend Basic
         dateStarted: 1504213200000
         dateEnded: 1509487200000
         certificateURL: https://admin.itschool-hillel.org/certificate/HISD80187425-en.pdf
 
-      - companyLogoURL: https://res.cloudinary.com/dtcmmxxh9/image/upload/v1650905549/gatsby-cloudinary/13.svg
+      - companyLogo: images/highschool.svg
         courseName: Computer Engineering
         description: Dnipro National University
         dateStarted: 1506805200000
 
-  - type: text
-    title: Highlights
-    data:
+  - title: Highlights
+    type: text
+    paragraphs:
       - color: 2
         text:
           I’m familiar with fast prototyping and release MVP for early test ideas

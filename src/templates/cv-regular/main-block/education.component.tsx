@@ -8,7 +8,7 @@ import { formatDates } from './dates';
 import * as styles from './education.module.scss';
 
 export function Education({
-  companyLogoURL,
+  companyLogo,
   companyURL,
   courseName,
   dateStarted,
@@ -20,9 +20,9 @@ export function Education({
     <div className={styles.education}>
       <div className={styles.educationContent}>
         <CompanyIcon
-          title={`${courseName} logo`}
+          alt={`${courseName} logo`}
           className={styles.educationCompanyLogo}
-          url={companyLogoURL}
+          source={companyLogo}
         />
         <div className={styles.educationInfo}>
           <Typography

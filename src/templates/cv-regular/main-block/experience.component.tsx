@@ -10,7 +10,7 @@ import * as styles from './experience.module.scss';
 
 export function Experience({
   companyName,
-  companyLogoURL,
+  companyLogo,
   companyURL,
   position,
   description,
@@ -23,9 +23,9 @@ export function Experience({
       <div className={styles.experienceContent}>
         <div className={styles.experienceHeader}>
           <CompanyIcon
-            title={`${companyName} logo`}
+            alt={`${companyName} logo`}
             className={styles.experienceCompanyLogo}
-            url={companyLogoURL}
+            source={companyLogo}
           />
           <div className={styles.experienceCompanyInfo}>
             <div>

@@ -1,4 +1,10 @@
-import { Children, ElementType, PropsWithChildren, ReactElement } from 'react';
+import {
+  Children,
+  ElementType,
+  PropsWithChildren,
+  ReactElement,
+  ReactNode,
+} from 'react';
 import classNames from 'classnames';
 import { PolymorphicComponentProps, WithOptionalClassNameProps } from 'types';
 import * as styles from './list.module.scss';
@@ -22,7 +28,7 @@ export namespace AsideList {
     props: PolymorphicComponentProps<
       T,
       PropsWithChildren<{
-        icon: ReactElement;
+        icon: ReactNode;
       }>
     > &
       WithOptionalClassNameProps,
