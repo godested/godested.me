@@ -42,8 +42,8 @@ function Controls(): ReactElement {
           styles.controlsScrollingDown,
       )}
     >
-      <ThemeToggler className={styles.themeToggler} />
       <DownloadButton url={pdfURL} />
+      <ThemeToggler className={styles.themeToggler} />
     </div>
   );
 }

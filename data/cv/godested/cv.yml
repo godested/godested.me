@@ -120,7 +120,7 @@ body:
 
       - companyName: Lab73
         companyURL: https://www.behance.net/lab-73digital
-        companyLogo: images/lab73.svg
+        companyLogo: images/lab73digital.svg
         position: Frontend Developer
         description:
           - color: 2

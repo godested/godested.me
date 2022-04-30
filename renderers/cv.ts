@@ -4,37 +4,6 @@ import { countryCodeEmoji } from 'country-code-emoji';
 import { createRemoteFileNode } from 'gatsby-source-filesystem';
 import { GatsbyNode } from 'gatsby';
 
-// grabbed from https://github.com/twitter/twemoji
-function toCodePoint(unicodeSurrogates: string): string {
-  const result = [];
-  let charCode = 0;
-  let previous = 0;
-  let i = 0;
-
-  while (i < unicodeSurrogates.length) {
-    // eslint-disable-next-line no-plusplus
-    charCode = unicodeSurrogates.charCodeAt(i++);
-    if (previous) {
-      result.push(
-        // eslint-disable-next-line no-bitwise
-        (65536 + ((previous - 55296) << 10) + (charCode - 56320)).toString(16),
-      );
-      previous = 0;
-    } else if (charCode >= 55296 && charCode <= 56319) {
-      previous = charCode;
-    } else {
-      result.push(charCode.toString(16));
-    }
-  }
-  return result.join('-');
-}
-
-function resolveTwimojiURL(countryCode: string): string {
-  return `https://twemoji.maxcdn.com/v/latest/svg/${toCodePoint(
-    countryCodeEmoji(countryCode),
-  )}.svg`;
-}
-
 export const rendererCV: NonNullable<GatsbyNode['createPages']> = async ({
   actions: { createPage, createNode },
   graphql,
@@ -225,4 +194,35 @@ export const rendererCV: NonNullable<GatsbyNode['createPages']> = async ({
 
 function arrayOrEmptyArray<T>(list: T[] | undefined | null): T[] {
   return list ?? [];
+}
+
+// grabbed from https://github.com/twitter/twemoji
+function toCodePoint(unicodeSurrogates: string): string {
+  const result = [];
+  let charCode = 0;
+  let previous = 0;
+  let i = 0;
+
+  while (i < unicodeSurrogates.length) {
+    // eslint-disable-next-line no-plusplus
+    charCode = unicodeSurrogates.charCodeAt(i++);
+    if (previous) {
+      result.push(
+        // eslint-disable-next-line no-bitwise
+        (65536 + ((previous - 55296) << 10) + (charCode - 56320)).toString(16),
+      );
+      previous = 0;
+    } else if (charCode >= 55296 && charCode <= 56319) {
+      previous = charCode;
+    } else {
+      result.push(charCode.toString(16));
+    }
+  }
+  return result.join('-');
+}
+
+function resolveTwimojiURL(countryCode: string): string {
+  return `https://twemoji.maxcdn.com/v/latest/svg/${toCodePoint(
+    countryCodeEmoji(countryCode),
+  )}.svg`;
 }

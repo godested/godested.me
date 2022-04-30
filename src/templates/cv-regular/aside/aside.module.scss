@@ -82,11 +82,7 @@
   text-fill-color: transparent;
 
   @include themeLight {
-    background-image: linear-gradient(
-      102.91deg,
-      hsl(277, 49%, 29%) 2.33%,
-      hsl(212, 61%, 42%) 100%
-    );
+    background-image: linear-gradient(102.91deg, #556af6 5%, #8f94fb 100%);
   }
 
   @include themeMidnight {
@@ -98,11 +94,7 @@
   }
 
   @include themeDark {
-    background-image: linear-gradient(
-      102.91deg,
-      hsl(277, 56%, 70%) 2.33%,
-      hsl(212, 70%, 70%) 100%
-    );
+    background-image: linear-gradient(102.91deg, hsl(232, 90%, 75%) 5%, #8f94fb 100%);
   }
 }
 
