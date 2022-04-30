@@ -102,6 +102,7 @@ export const rendererCV: NonNullable<GatsbyNode['createPages']> = async ({
               dateStarted
               dateEnded
               certificateURL
+              description
             }
           }
         }
