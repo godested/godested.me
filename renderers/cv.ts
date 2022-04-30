@@ -58,7 +58,7 @@ export const rendererCV: NonNullable<GatsbyNode['createPages']> = async ({
                 content
               }
               childImageSharp {
-                gatsbyImageData(placeholder: TRACED_SVG)
+                gatsbyImageData(placeholder: BLURRED)
               }
               extension
               publicURL
