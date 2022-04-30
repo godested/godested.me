@@ -15,7 +15,6 @@ export function formatDates(
 }
 
 export function formatDate(date: Date): string {
-  console.log(date, getDateMonth(date));
   return `${getDateMonth(date).substring(0, 3)} ${date.getFullYear()}`;
 }
 

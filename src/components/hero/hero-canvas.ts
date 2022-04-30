@@ -47,7 +47,7 @@ export class HeroCanvas extends Disposable {
 
   private readonly _rangeRadius: number =
     Math.round(
-      Math.max(window.innerWidth, window.innerHeight) * 0.14 * devicePixelRatio,
+      Math.max(window.innerWidth, window.innerHeight) * 0.1 * devicePixelRatio,
     ) * scale;
 
   private _lifeTime = 0;
@@ -131,9 +131,9 @@ export class HeroCanvas extends Disposable {
     const ttl = getRandomArbitrary(rangeTTL, baseTTL);
     const radius = getRandomArbitrary(this._rangeRadius, this._baseRadius);
 
-    const hue = hueCenter + maxHueOffset * n * Math.cos(this._lifeTime);
+    const baseHue = hueCenter + maxHueOffset * n * Math.cos(this._lifeTime);
 
-    return [x, y, vx, vy, life, ttl, radius, hue];
+    return [x, y, vx, vy, life, ttl, radius, baseHue];
   }
 
   private updateCircles() {
@@ -153,8 +153,9 @@ export class HeroCanvas extends Disposable {
       const vy = this._circleProps[i4];
       const ttl = this._circleProps[i6];
       const radius = this._circleProps[i7];
+      const baseHue = this._circleProps[i8];
       let life = this._circleProps[i5];
-      const hue = hueOffset + (this._circleProps[i8] % (hueRange - hueOffset));
+      const hue = hueOffset + (baseHue % (hueRange - hueOffset));
 
       this._hiddenContext.save();
       this._hiddenContext.beginPath();

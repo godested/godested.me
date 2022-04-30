@@ -104,7 +104,7 @@ body:
 
       - companyName: Skywell Software
         companyURL: https://jobs.dou.ua/companies/skywell
-        companyLogo: images/skywell.svg
+        companyLogo: images/skywellsoftware.svg
         position: Frontend Developer
         description:
           - color: 2
