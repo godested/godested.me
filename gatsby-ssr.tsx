@@ -1,4 +1,5 @@
 /* eslint-disable no-param-reassign */
+import { ThemeProvider } from 'components/theme';
 import { GatsbySSR } from 'gatsby';
 
 export const onPreRenderHTML: GatsbySSR['onPreRenderHTML'] = ({
@@ -33,4 +34,8 @@ export const onPreRenderHTML: GatsbySSR['onPreRenderHTML'] = ({
     });
 
   replaceHeadComponents(headComponents);
+};
+
+export const wrapRootElement: GatsbySSR['wrapRootElement'] = ({ element }) => {
+  return <ThemeProvider>{element}</ThemeProvider>;
 };

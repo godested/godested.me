@@ -35,6 +35,7 @@
     "./__helpers__/*",
     "./scripts",
     "./renderers",
-    "./*.ts"
+    "./*.ts",
+    "./*.tsx"
   ]
 }

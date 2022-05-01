@@ -1,3 +1,5 @@
+import { GatsbyBrowser } from 'gatsby';
+import { ThemeProvider } from './src/components/theme';
 import 'normalize.css';
 import './src/styles/global.scss';
 import './src/styles/fonts.scss';
@@ -28,3 +30,9 @@ function patchScrollListeners() {
 }
 
 patchScrollListeners();
+
+export const wrapRootElement: GatsbyBrowser['wrapRootElement'] = ({
+  element,
+}) => {
+  return <ThemeProvider>{element}</ThemeProvider>;
+};
