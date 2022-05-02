@@ -9,7 +9,6 @@ const IS_PROD = process.env['NODE_ENV'] === 'production';
 
 const commonPlugins: readonly PluginRef[] = [
   'gatsby-plugin-cname',
-  'gatsby-plugin-provide-react',
   'gatsby-plugin-react-helmet',
   'gatsby-plugin-image',
   {
@@ -79,6 +78,11 @@ const gatsbyConfig: GatsbyConfig = {
   siteMetadata: {
     siteUrl: 'https://godested.me',
   },
+  flags: {
+    FAST_DEV: true,
+  },
+  trailingSlash: 'always',
+  jsxRuntime: 'automatic',
   plugins: [...commonPlugins, ...(IS_PROD ? prodPlugins : [])],
 };
 
