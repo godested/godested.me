@@ -22,8 +22,8 @@ const hueRange = 330;
 const xOff = 0.5;
 const yOff = 0.5;
 const zOff = 0.5;
-const saturation = 70;
-const lightness = 40;
+const saturation = 75;
+const lightness = 45;
 
 const maxHueOffset = hueRange - hueOffset / 2;
 const hueCenter = hueOffset + maxHueOffset;

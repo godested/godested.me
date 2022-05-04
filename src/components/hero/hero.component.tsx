@@ -30,7 +30,9 @@ export function Hero({
   return (
     <div className={classNames(styles.hero, className)}>
       <RootClassName className={styles.root} />
-      <canvas ref={heroCanvasRef.update} className={styles.heroCanvas} />
+      <div className={styles.heroCanvasContainer}>
+        <canvas ref={heroCanvasRef.update} className={styles.heroCanvas} />
+      </div>
       <div className={styles.heroBody}>{children}</div>
     </div>
   );
