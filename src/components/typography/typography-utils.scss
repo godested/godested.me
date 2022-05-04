@@ -1,0 +1,22 @@
+@import './typography-variables.scss';
+
+@mixin linkHover {
+  transition: color 300ms ease-in-out;
+
+  &:hover {
+    transition-duration: 80ms;
+    transition-timing-function: linear;
+
+    @include themeLight {
+      color: #516cf7;
+    }
+
+    @include themeMidnight {
+      color: #9e3f37;
+    }
+
+    @include themeDark {
+      color: #8397fc;
+    }
+  }
+}

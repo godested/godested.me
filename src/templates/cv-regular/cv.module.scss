@@ -1,6 +1,7 @@
-@import '~styles/mixins.scss';
 @import '~styles/functions.scss';
+@import '~styles/mixins.scss';
 @import '~components/theme/theme-provider-mixins.module.scss';
+@import '~components/typography/typography-utils.scss';
 
 .root {
   @include rootThemeLight {
@@ -20,7 +21,7 @@
   }
 
   @include rootThemeDark {
-    background-color: hsl(222, 25%, 23%);
+    background-color: hsl(224, 25%, 23%);
 
     ::selection {
       background-color: hsla(240, 70%, 65%, 0.5);
@@ -118,6 +119,7 @@
 
   @include screenLg {
     position: sticky;
+    overflow-anchor: none;
     align-self: flex-start;
     padding-right: 0;
     padding-left: get-rem(24);

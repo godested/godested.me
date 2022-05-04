@@ -1,6 +1,6 @@
 /* eslint-disable no-param-reassign */
-import { ThemeProvider } from 'components/theme';
 import { GatsbySSR } from 'gatsby';
+import { AppWrapper } from 'components/app-wrapper';
 
 export const onPreRenderHTML: GatsbySSR['onPreRenderHTML'] = ({
   getHeadComponents,
@@ -37,5 +37,5 @@ export const onPreRenderHTML: GatsbySSR['onPreRenderHTML'] = ({
 };
 
 export const wrapRootElement: GatsbySSR['wrapRootElement'] = ({ element }) => {
-  return <ThemeProvider>{element}</ThemeProvider>;
+  return <AppWrapper>{element}</AppWrapper>;
 };

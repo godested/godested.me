@@ -4,7 +4,6 @@ import path from 'path';
 // eslint-disable-next-line import/no-extraneous-dependencies
 require('dotenv').config();
 
-const IS_DEV = process.env['NODE_ENV'] === 'development';
 const IS_PROD = process.env['NODE_ENV'] === 'production';
 
 const commonPlugins: readonly PluginRef[] = [
@@ -26,9 +25,9 @@ const commonPlugins: readonly PluginRef[] = [
       cssLoaderOptions: {
         modules: {
           exportLocalsConvention: 'camelCaseOnly',
-          localIdentName: IS_DEV
-            ? '[local]__[path][name]'
-            : '[sha1:hash:hex:5]',
+          localIdentName: IS_PROD
+            ? '[sha1:hash:hex:5]'
+            : '[local]__[path][name]',
         },
       },
       sassRuleTest: /\.scss$/,

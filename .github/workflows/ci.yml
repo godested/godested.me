@@ -3,7 +3,7 @@ name: Build & Start Deploy
 on:
   workflow_dispatch:
   push:
-    branches: [ master ]
+    branches: [master]
   schedule:
     - cron: '0 3 1 * *'
 
@@ -40,7 +40,7 @@ jobs:
 
       - name: Build CV PDF
         run: |
-          cp -a ${PWD}/src/assets/fonts/. ~/.fonts
+          cp -a ${PWD}/src/components/typography/fonts/. ~/.fonts
           fc-cache -f -v
           npm run build:cv-pdf
 
@@ -49,4 +49,3 @@ jobs:
         with:
           branch: gh-pages
           folder: public
-

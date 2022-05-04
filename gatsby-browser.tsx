@@ -1,9 +1,8 @@
 import { GatsbyBrowser } from 'gatsby';
-import { ThemeProvider } from './src/components/theme';
+// important styles ordering
 import 'normalize.css';
-import './src/styles/global.scss';
-import './src/styles/fonts.scss';
-import './src/components/typography/typography.module.scss';
+import 'styles/global.scss';
+import { AppWrapper } from 'components/app-wrapper';
 
 function applyPassiveOption(options?: boolean | AddEventListenerOptions) {
   return typeof options === 'boolean'
@@ -34,5 +33,5 @@ patchScrollListeners();
 export const wrapRootElement: GatsbyBrowser['wrapRootElement'] = ({
   element,
 }) => {
-  return <ThemeProvider>{element}</ThemeProvider>;
+  return <AppWrapper>{element}</AppWrapper>;
 };

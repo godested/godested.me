@@ -1,42 +1,8 @@
-@import '~styles/variables.scss';
 @import '~styles/functions.scss';
 @import '~components/theme/theme-provider-mixins.module.scss';
-
-$lightThemeBlack: #2E2E48;
-$lightThemeDarkGray: #3D465C;
-$lightThemeGray: #646A7B;
-$lightThemeLightGray: #79819A;
-
-$midnightThemeBlack: hsl(0, 7%, 15%);
-$midnightThemeDarkGray: hsl(30, 7%, 25%);
-$midnightThemeGray: hsl(30, 7%, 40%);
-$midnightThemeLightGray: hsl(30, 14%, 45%);
-
-$darkThemeBlack: #E0E0EB;
-$darkThemeDarkGray: #D2D4DB;
-$darkThemeGray: #AAAFBB;
-$darkThemeLightGray: #8E94A4;
-
-@mixin linkHover{
-  transition: color 300ms ease-in-out;
-
-  &:hover {
-    transition-duration: 80ms;
-    transition-timing-function: linear;
-
-    @include themeLight {
-      color: #516CF7;
-    }
-
-    @include themeMidnight {
-      color: #9E3F37;
-    }
-
-    @include themeDark {
-      color: #8397fc;
-    }
-  }
-}
+@import './typography-fonts.scss';
+@import './typography-utils.scss';
+@import './typography-variables.scss';
 
 .typography {
   display: block;
@@ -178,11 +144,11 @@ $darkThemeLightGray: #8E94A4;
 
   &_accent-color {
     @include themeLight {
-      color: #516CF7;
+      color: #516cf7;
     }
 
     @include themeMidnight {
-      color: #9E3F37;
+      color: #9e3f37;
     }
 
     @include themeDark {

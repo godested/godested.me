@@ -1,6 +1,6 @@
-@import '~styles/variables.scss';
 @import '~styles/mixins.scss';
 @import '~styles/functions.scss';
+@import '~components/typography/typography-variables.scss';
 
 .main-block {
   margin-bottom: get-rem(36);

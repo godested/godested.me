@@ -1,5 +1,6 @@
 @import '~styles/functions.scss';
 @import '~components/theme/theme-provider-mixins.module.scss';
+@import '~components/typography/typography-utils.scss';
 
 .download-button {
   display: flex;
@@ -21,8 +22,6 @@
   @include theme($light, $dark) {
     background-color: #5367FF;
   }
-
-  @include themeChangeTransition(background-color);
 
   @include themeChangeTransition(background-color);
 

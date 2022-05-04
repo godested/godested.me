@@ -1,7 +1,7 @@
-@import '~styles/functions.scss';
 @import '~styles/mixins.scss';
+@import '~styles/functions.scss';
+@import '~components/typography/typography-utils.scss';
 @import '~components/theme/theme-provider-mixins.module.scss';
-@import '~components/typography/typography.module.scss';
 
 .aside {
   position: relative;

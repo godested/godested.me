@@ -1,6 +1,6 @@
-@import '~styles/variables.scss';
 @import '~styles/mixins.scss';
-@import '~components/typography/typography.module.scss';
+@import '~styles/functions.scss';
+@import '~components/typography/typography-variables.scss';
 @import '~components/theme/theme-provider-mixins.module.scss';
 
 .experience {
