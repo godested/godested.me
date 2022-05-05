@@ -1,6 +1,8 @@
 const puppeteer = require('puppeteer');
 const fs = require('fs-extra');
 const path = require('path');
+const util = require('util');
+const exec = util.promisify(require('child_process').exec);
 
 const normalizePageName = (pagePath = '') => {
   const normalizedFront = pagePath.startsWith('/')
@@ -89,29 +91,61 @@ const generatePdf = async ({ pagePath }) => {
   const width = 1188;
   const height = width * Math.sqrt(2);
 
+  const uncompressedPdfPath = path.join(
+    downloadDir,
+    `${normalizePageName(pagePath)}-uncompressed.pdf`,
+  );
+
   await page.pdf({
     printBackground: true,
     width: convertPixelToInches(width, 72),
     height: convertPixelToInches(height, 72),
-    path: path.join(downloadDir, `${normalizePageName(pagePath)}.pdf`),
+    path: uncompressedPdfPath,
   });
 
   browser.close();
+
+  const outputPdfPath = path.join(
+    downloadDir,
+    `${normalizePageName(pagePath)}.pdf`,
+  );
+
+  await exec(
+    `sh ${path.join(
+      currentDir,
+      'scripts',
+      'shrink-pdf.sh',
+    )} ${uncompressedPdfPath} ${outputPdfPath}`,
+  );
+
+  await exec(`rm -f ${uncompressedPdfPath}`);
+
+  console.log('Generated:', path.basename(outputPdfPath));
 };
 
 async function generateCvPDFs() {
-  await Promise.all(
-    (
-      await fs.readdir(path.join(process.cwd(), 'public'))
+  console.log('Generating CV PDFs...');
+  const publicDir = await fs.readdir(path.join(process.cwd(), 'public'));
+
+  const pagesToPDF = publicDir
+    .filter(
+      (filename) =>
+        filename === path.basename(filename, path.extname(filename)) &&
+        /^cv-\w/.test(filename),
     )
-      .filter(
-        (filename) =>
-          filename === path.basename(filename, path.extname(filename)),
-      )
-      .filter((filename) => /^cv-\w/.test(filename))
-      .map((pagePath) => {
-        return generatePdf({ pagePath });
-      }),
+    .map((pagePath) => {
+      return pagePath;
+    });
+
+  console.log(
+    'Pages:',
+    pagesToPDF.map((pagePath) => `\n  ${path.basename(pagePath)}`).join(''),
+  );
+
+  await Promise.all(
+    pagesToPDF.map((pagePath) => {
+      return generatePdf({ pagePath });
+    }),
   );
 }
 
