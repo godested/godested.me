@@ -44,23 +44,22 @@ export function Typography<T extends ElementType>(
 }
 
 export namespace Typography {
-  export type Props<T extends ElementType = ElementType> =
-    PolymorphicComponentProps<
-      T,
-      Readonly<
-        WithOptionalClassNameProps &
-          Partial<{
-            variant: Variant;
-            fontColor: Color;
-            fontWeight: Weight;
-            inline: true;
-            italic: true;
-            nowrap: true;
-            children: ReactNode | undefined;
-            innerRef: Ref<T>;
-          }>
-      >
-    >;
+  export type Props<T extends ElementType> = PolymorphicComponentProps<
+    T,
+    Readonly<
+      WithOptionalClassNameProps &
+        Partial<{
+          variant: Variant;
+          fontColor: Color;
+          fontWeight: Weight;
+          inline: true;
+          italic: true;
+          nowrap: true;
+          children: ReactNode | undefined;
+          innerRef: Ref<T>;
+        }>
+    >
+  >;
 
   export enum Variant {
     Heading,

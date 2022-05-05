@@ -36,7 +36,7 @@ export function Experience({
           <div className={styles.experienceCompanyInfo}>
             <div>
               <Typography
-                as="h2"
+                as="h4"
                 variant={Typography.Variant.ParagraphMD}
                 fontWeight={Typography.Weight.Medium}
                 fontColor={Typography.Color.Black}
@@ -47,7 +47,7 @@ export function Experience({
                 {companyName}
               </Typography>
               <Typography
-                as="h3"
+                as="h5"
                 variant={Typography.Variant.CaptionMD}
                 fontColor={Typography.Color.DarkGray}
                 nowrap
@@ -57,6 +57,7 @@ export function Experience({
             </div>
             <div className={styles.experienceMetrics}>
               <Typography
+                as="h6"
                 variant={Typography.Variant.CaptionSM}
                 fontColor={Typography.Color.LightGray}
                 className={classNames(
@@ -70,6 +71,7 @@ export function Experience({
                 {formatDuration(fromDate, toDate)}
               </Typography>
               <Typography
+                as="h6"
                 variant={Typography.Variant.CaptionSM}
                 fontColor={Typography.Color.LightGray}
                 className={classNames(
@@ -106,7 +108,9 @@ export function Experience({
   );
 }
 
-function resolveCompanyProps(companyURL: string | undefined): Typography.Props {
+function resolveCompanyProps(
+  companyURL: string | undefined,
+): Typography.Props<'a'> {
   return isSomething(companyURL)
     ? {
         as: 'a',

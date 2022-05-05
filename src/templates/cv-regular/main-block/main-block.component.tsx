@@ -79,6 +79,7 @@ export function MainBlock({ content }: MainBlockProps): ReactElement {
   return (
     <section className={styles.mainBlock}>
       <Typography
+        as="h3"
         variant={Typography.Variant.Title}
         fontColor={Typography.Color.Black}
         fontWeight={Typography.Weight.Medium}

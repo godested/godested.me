@@ -19,7 +19,7 @@ export function AsideComponent({
   const { profile, contacts, socials, languages } = useCV();
 
   return (
-    <aside className={classNames(styles.aside, asideClassName)}>
+    <div className={classNames(styles.aside, asideClassName)}>
       <div className={styles.asideContent}>
         <AsideBlock>
           <GatsbyAssetImage
@@ -28,7 +28,7 @@ export function AsideComponent({
             className={styles.profileAvatar}
           />
           <Typography
-            as="h1"
+            as="h2"
             variant={Typography.Variant.Heading}
             fontWeight={Typography.Weight.Medium}
             fontColor={Typography.Color.Black}
@@ -102,7 +102,8 @@ export function AsideComponent({
                 target="_blank"
                 rel="noopener noreferrer"
                 className={classNames(
-                  classNames(styles.contactLink, styles.contactLinkHoverable),
+                  styles.contactLink,
+                  styles.contactLinkHoverable,
                 )}
                 key={name}
               >
@@ -154,7 +155,7 @@ export function AsideComponent({
           </AsideList>
         </AsideBlock>
       </div>
-    </aside>
+    </div>
   );
 }
 
@@ -178,7 +179,7 @@ function resolveContactRenderData(
         as: 'a',
         target: '_blank',
         rel: 'noopener noreferrer',
-        href: `tel:${value}`,
+        href: `tel:${value.replace(/\s/g, '')}`,
         className: styles.contactLinkHoverable,
         children: value,
       };

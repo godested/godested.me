@@ -15,15 +15,15 @@ export function CVDocument(): ReactElement {
   return (
     <RootClassName className={styles.root}>
       <div className={styles.wrapper}>
-        <article className={styles.content}>
+        <main className={styles.content}>
           <AsideComponent asideClassName={styles.aside} />
-          <main className={styles.main}>
+          <div className={styles.main}>
             {body.map((content, index) => (
               // eslint-disable-next-line react/no-array-index-key
               <MainBlock key={index} content={content} />
             ))}
-          </main>
-        </article>
+          </div>
+        </main>
         <Controls />
       </div>
     </RootClassName>
@@ -35,7 +35,7 @@ function Controls(): ReactElement {
   const scrollDirection = useScrollDirection({ threshold: 50 });
 
   return (
-    <div
+    <aside
       className={classNames(
         styles.controls,
         scrollDirection === ScrollDirection.Down &&
@@ -44,6 +44,6 @@ function Controls(): ReactElement {
     >
       <DownloadButton url={pdfURL} />
       <ThemeToggler className={styles.themeToggler} />
-    </div>
+    </aside>
   );
 }

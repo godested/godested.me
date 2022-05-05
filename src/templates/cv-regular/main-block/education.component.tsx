@@ -32,7 +32,7 @@ export function Education({
         />
         <div className={styles.educationInfo}>
           <Typography
-            as="h2"
+            as="h4"
             variant={Typography.Variant.ParagraphMD}
             fontWeight={Typography.Weight.Medium}
             fontColor={Typography.Color.Black}
@@ -43,7 +43,7 @@ export function Education({
           </Typography>
           {isSomething(description) && (
             <Typography
-              as="h3"
+              as="h5"
               variant={Typography.Variant.CaptionSM}
               fontColor={Typography.Color.DarkGray}
               nowrap
@@ -83,7 +83,9 @@ export function Education({
   );
 }
 
-function resolveCompanyProps(companyURL: string | undefined): Typography.Props {
+function resolveCompanyProps(
+  companyURL: string | undefined,
+): Typography.Props<'a'> {
   return isSomething(companyURL)
     ? {
         as: 'a',

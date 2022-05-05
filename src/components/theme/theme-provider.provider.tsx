@@ -27,13 +27,11 @@ import * as styles from './theme-provider.module.scss';
 const ThemeContext = createContext<Theme>(Theme.Light);
 const ChangeThemeContext = createContext<Dispatch<SetStateAction<Theme>>>(noop);
 
-type ThemeProviderProps = Readonly<PropsWithChildren<{ defaultTheme?: Theme }>>;
+// eslint-disable-next-line @typescript-eslint/ban-types
+type ThemeProviderProps = Readonly<PropsWithChildren<{}>>;
 
-export function ThemeProvider({
-  children,
-  defaultTheme,
-}: ThemeProviderProps): ReactElement {
-  const [theme, setTheme] = useState(resolveTheme(defaultTheme));
+export function ThemeProvider({ children }: ThemeProviderProps): ReactElement {
+  const [theme, setTheme] = useState(resolveTheme());
   const [changingClassName, setChangingClassName] = useState<CSSClassName>();
 
   useEffect(() => saveTheme(theme), [theme]);
@@ -123,3 +121,25 @@ function resolveThemeFromDeviceSettings(): Theme | undefined {
 
   return undefined;
 }
+
+export const getLoadScript = (): string => `
+(function() {
+  var storedTheme
+  try {
+    storedTheme = window.localStorage.getItem('theme');
+  } catch (e) {
+  }
+  var theme = storedTheme
+    ? parseInt(storedTheme, 10)
+    : window.matchMedia
+      ? window.matchMedia('(prefers-color-scheme: dark)').matches
+      : ${Theme.Light};
+  var themeClass = theme === ${Theme.Dark}
+    ? '${styles.themeDark}'
+    : theme === ${Theme.Midnight}
+      ? '${styles.themeMidnight}'
+      : '${styles.themeLight}';
+  document.body.classList.remove('${styles.themeLight}', '${styles.themeDark}', '${styles.themeMidnight}');
+  document.body.classList.add(themeClass);
+})()
+`;
