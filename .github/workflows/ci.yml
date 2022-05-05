@@ -40,27 +40,9 @@ jobs:
         env:
           GOOGLE_ANALYTICS_TRACKING_ID: ${{ secrets.GOOGLE_ANALYTICS_TRACKING_ID }}
 
-      - name: Cache ghostscript
-        uses: actions/cache@v2
-        id: cache-ghostscript
-        with:
-          path: "~/ghostscript"
-          key: ghostscript
-
-      - name: Install ghostscript
-        env:
-          CACHE_HIT: ${{steps.cache-ghostscript.outputs.cache-hit}}
-        run: |
-          if [[ "$CACHE_HIT" == 'true' ]]; then
-            sudo cp --verbose --force --recursive ~/ghostscript/* /
-          else
-            sudo apt-get install --yes ghostscript
-            mkdir -p ~/ghostscript
-            sudo dpkg -L ghostscript | while IFS= read -r f; do if test -f $f; then echo $f; fi; done | xargs cp --parents --target-directory ~/ghostscript/
-          fi
-
       - name: Build CV PDF
         run: |
+          sudo apt-get install -y ghostscript
           cp -a ${PWD}/src/components/typography/fonts/. ~/.fonts
           fc-cache -f -v
           npm run build:cv-pdf
