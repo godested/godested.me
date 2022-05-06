@@ -17,13 +17,13 @@ const baseSpeed = 0.1 * scale;
 const rangeSpeed = 0.2 * scale;
 const baseTTL = 200;
 const rangeTTL = 500;
-const hueOffset = 190;
-const hueRange = 330;
+const hueOffset = 10;
+const hueRange = 62;
 const xOff = 0.5;
 const yOff = 0.5;
 const zOff = 0.5;
-const saturation = 70;
-const lightness = 40;
+const saturation = 85;
+const lightness = 60;
 
 const maxHueOffset = hueRange - hueOffset / 2;
 const hueCenter = hueOffset + maxHueOffset;

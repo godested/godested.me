@@ -1,5 +1,15 @@
-import { getLoadScript } from 'components/theme';
 import { ReactElement } from 'react';
+import { getLoadScript } from 'components/theme';
+import { RenderBodyArgs } from 'gatsby';
+
+type HTMLProps = Readonly<{
+  htmlAttributes: Parameters<RenderBodyArgs['setHtmlAttributes']>[0];
+  headComponents: Parameters<RenderBodyArgs['setHeadComponents']>[0];
+  bodyAttributes: Parameters<RenderBodyArgs['setBodyAttributes']>[0];
+  preBodyComponents: Parameters<RenderBodyArgs['setPreBodyComponents']>[0];
+  postBodyComponents: Parameters<RenderBodyArgs['setPostBodyComponents']>[0];
+  body: string;
+}>;
 
 export default function HTML({
   htmlAttributes,
@@ -8,7 +18,7 @@ export default function HTML({
   preBodyComponents,
   body,
   postBodyComponents,
-}: any): ReactElement {
+}: HTMLProps): ReactElement {
   return (
     // eslint-disable-next-line jsx-a11y/html-has-lang
     <html {...htmlAttributes}>

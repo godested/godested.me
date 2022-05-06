@@ -12,17 +12,18 @@
     margin-top: get-rem(150);
     margin-bottom: 0;
   }
+  color: #121212;
 }
 
 .title {
   font-size: get-rem(51);
   line-height: 0.8em;
-  color: #ffffff;
+  color: inherit;
 }
 
 .username {
   font-size: get-rem(29);
-  color: #ffffff;;
+  color: inherit;
   opacity: 0.65;
 }
 
@@ -60,11 +61,11 @@
 
   @include theme($light, $dark, $midnight) {
     transition: opacity 0.2s ease-in-out;
-    color: #ffffff;
+    color: inherit;
 
     &:hover {
       opacity: 0.5;
-      color: #ffffff;
+      color: inherit;
     }
   }
 
