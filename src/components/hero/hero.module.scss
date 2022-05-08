@@ -8,7 +8,7 @@
 
 .hero {
   display: flex;
-  position: absolute;
+  position: fixed;
   align-items: stretch;
   min-height: 100%;
   background-color: hsl(35, 85%, 60%);
