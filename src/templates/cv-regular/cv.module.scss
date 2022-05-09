@@ -3,8 +3,14 @@
 @import '~components/theme/theme-provider-mixins.module.scss';
 @import '~components/typography/typography-utils.scss';
 
-.root {
-  @include rootThemeLight {
+.wrapper {
+  flex: 1;
+  display: flex;
+  min-height: 100%;
+  align-items: stretch;
+  position: relative;
+
+  @include themeLight {
     background-color: hsl(216, 22%, 91%);
 
     ::selection {
@@ -12,7 +18,7 @@
     }
   }
 
-  @include rootThemeMidnight {
+  @include themeMidnight {
     background-color: hsl(32, 50%, 90%);
 
     ::selection {
@@ -20,7 +26,7 @@
     }
   }
 
-  @include rootThemeDark {
+  @include themeDark {
     background-color: hsl(224, 25%, 23%);
 
     ::selection {
@@ -28,15 +34,7 @@
     }
   }
 
-  @include rootThemeChangeTransition(background-color);
-}
-
-.wrapper {
-  flex: 1;
-  display: flex;
-  min-height: 100%;
-  align-items: stretch;
-  position: relative;
+  @include themeChangeTransition(background-color);
 
   @include screenLg() {
     margin: 0 auto;
