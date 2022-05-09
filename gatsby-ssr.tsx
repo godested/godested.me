@@ -1,6 +1,10 @@
 /* eslint-disable no-param-reassign */
+import { ReactElement } from 'react';
+import { renderToString } from 'react-dom/server';
 import { GatsbySSR } from 'gatsby';
 import { AppWrapper } from 'components/app-wrapper';
+import { getStringifiedSprites } from 'components/inline-svg/inline-svg-ssr';
+import { SPRITES_NODE_ID } from 'components/inline-svg';
 
 export const onPreRenderHTML: GatsbySSR['onPreRenderHTML'] = ({
   getHeadComponents,
@@ -34,6 +38,26 @@ export const onPreRenderHTML: GatsbySSR['onPreRenderHTML'] = ({
     });
 
   replaceHeadComponents(headComponents);
+};
+
+export const replaceRenderer: GatsbySSR['replaceRenderer'] = async ({
+  bodyComponent,
+  setPreBodyComponents,
+}) => {
+  if (process.env['NODE_ENV'] !== 'production') {
+    return;
+  }
+
+  const bodyHTML = renderToString(bodyComponent as ReactElement);
+
+  setPreBodyComponents([
+    <div
+      id={SPRITES_NODE_ID}
+      dangerouslySetInnerHTML={{
+        __html: await getStringifiedSprites(bodyHTML),
+      }}
+    />,
+  ]);
 };
 
 export const wrapRootElement: GatsbySSR['wrapRootElement'] = ({ element }) => {

@@ -1,7 +1,12 @@
 // This file holds ambient type declarations.
 /// <reference types="react" />
 
-declare module '*.inline.svg' {
-  const _: ComponentClass<SVGProps<SVGSVGElement>>;
+interface SVGSource {
+  readonly viewBox: string;
+  readonly url: string;
+}
+
+declare module '*.svg' {
+  const _: SVGSource;
   export default _;
 }

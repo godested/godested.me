@@ -6,7 +6,10 @@ export namespace GatsbyImageAsset {
   export type SVG = Readonly<{
     extension: 'svg';
     publicURL: string;
-    svg?: { content: string };
+    svg?: {
+      content: string;
+    };
+    childSvgSprites?: SVGSource;
   }>;
 
   export type Image = Readonly<{

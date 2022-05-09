@@ -9,3 +9,4 @@ export * from './noop';
 export * from './react-context';
 export * from './browser';
 export * from './ref';
+export * from './unique';

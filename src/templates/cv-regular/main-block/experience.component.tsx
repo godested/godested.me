@@ -1,7 +1,8 @@
 import { ReactElement, useMemo } from 'react';
 import classNames from 'classnames';
 import { Typography } from 'components/typography';
-import LocationIcon from 'assets/icons/location.inline.svg';
+import { InlineSVG } from 'components/inline-svg';
+import locationIcon from 'assets/icons/location.inline.svg';
 import { isSomething } from 'utils';
 import { CV } from 'components/cv';
 import { CompanyIcon } from './company-icon.component';
@@ -80,7 +81,8 @@ export function Experience({
                 )}
                 nowrap
               >
-                <LocationIcon
+                <InlineSVG
+                  source={locationIcon}
                   role="img"
                   className={styles.experienceMetricIcon}
                 />

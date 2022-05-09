@@ -23,8 +23,9 @@ export const rendererCV: NonNullable<GatsbyNode['createPages']> = async ({
             name
             position
             avatar {
-              svg {
-                content
+              childSvgSprites {
+                url
+                viewBox
               }
               childImageSharp {
                 gatsbyImageData(placeholder: BLURRED)
@@ -42,8 +43,9 @@ export const rendererCV: NonNullable<GatsbyNode['createPages']> = async ({
             username
             profileURL
             icon {
-              svg {
-                content
+              childSvgSprites {
+                url
+                viewBox
               }
               childImageSharp {
                 gatsbyImageData(placeholder: DOMINANT_COLOR)
@@ -68,8 +70,9 @@ export const rendererCV: NonNullable<GatsbyNode['createPages']> = async ({
               companyName
               companyURL
               companyLogo {
-                svg {
-                  content
+                childSvgSprites {
+                  url
+                  viewBox
                 }
                 childImageSharp {
                   gatsbyImageData(placeholder: DOMINANT_COLOR)
@@ -88,8 +91,9 @@ export const rendererCV: NonNullable<GatsbyNode['createPages']> = async ({
             }
             courses {
               companyLogo {
-                svg {
-                  content
+                childSvgSprites {
+                  url
+                  viewBox
                 }
                 childImageSharp {
                   gatsbyImageData(placeholder: DOMINANT_COLOR)
@@ -138,7 +142,7 @@ export const rendererCV: NonNullable<GatsbyNode['createPages']> = async ({
 
       const languages = await Promise.all(
         cv.languages.map(async (language: any) => {
-          const { relativePath } = await createRemoteFileNode({
+          const fileNode = await createRemoteFileNode({
             url: resolveTwimojiURL(language.countryCode),
             ext: '.svg',
             store,
@@ -151,6 +155,7 @@ export const rendererCV: NonNullable<GatsbyNode['createPages']> = async ({
           const { data } = await graphql<{
             flagIcon: any;
           }>(
+            // TODO: add emoji flags to sprite *childSvgSprites don't insert svg into sprite
             `
               query FlagIcon($relativePath: String!) {
                 flagIcon: file(relativePath: { eq: $relativePath }) {
@@ -165,7 +170,7 @@ export const rendererCV: NonNullable<GatsbyNode['createPages']> = async ({
                 }
               }
             `,
-            { relativePath },
+            { relativePath: fileNode.relativePath },
           );
 
           return {
