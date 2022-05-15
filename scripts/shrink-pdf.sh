@@ -5,6 +5,8 @@ shrink ()
     -dQUIET \
     -sDEVICE=pdfwrite \
     -dPDFSETTINGS=/screen \
+    -sPAPERSIZE=a4 \
+    -dPDFFitPage \
     `# font settings` \
     -dSubsetFonts=true \
     -dCompressFonts=true \
