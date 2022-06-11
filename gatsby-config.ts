@@ -35,14 +35,6 @@ const commonPlugins: readonly PluginRef[] = [
     },
   },
   {
-    resolve: 'gatsby-plugin-react-svg',
-    options: {
-      rule: {
-        include: /\.inline\.svg$/,
-      },
-    },
-  },
-  {
     resolve: 'gatsby-source-filesystem',
     options: {
       name: 'cvFiles',
@@ -53,6 +45,21 @@ const commonPlugins: readonly PluginRef[] = [
     resolve: 'gatsby-transformer-yaml',
     options: {
       typeName: 'Yaml',
+    },
+  },
+  {
+    resolve: 'gatsby-transformer-svg-sprites',
+    options: {
+      optimize: false,
+      spriteConfig: {
+        usages: false,
+      },
+    },
+  },
+  {
+    resolve: 'gatsby-plugin-svg-sprites',
+    options: {
+      minifyIds: false,
     },
   },
   'gatsby-transformer-inline-svg',

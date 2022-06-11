@@ -3,7 +3,8 @@ import classNames from 'classnames';
 import { OutboundLink } from 'gatsby-plugin-google-gtag';
 import { WithOptionalClassNameProps } from 'types';
 import { useSitePathPrefix } from 'hooks';
-import DownloadIcon from 'assets/icons/download.inline.svg';
+import { InlineSVG } from 'components/inline-svg';
+import downloadIcon from 'assets/icons/download.inline.svg';
 import * as styles from './download-button.module.scss';
 
 export type DownloadButtonProps = Readonly<{
@@ -24,7 +25,7 @@ export function DownloadButton({
       className={classNames(styles.downloadButton, className)}
     >
       Download CV
-      <DownloadIcon className={styles.downloadButtonIcon} />
+      <InlineSVG source={downloadIcon} className={styles.downloadButtonIcon} />
     </OutboundLink>
   );
 }

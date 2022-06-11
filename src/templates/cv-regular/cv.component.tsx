@@ -1,7 +1,6 @@
 import { ReactElement } from 'react';
 import classNames from 'classnames';
 import { ThemeToggler } from 'components/theme';
-import { RootClassName } from 'components/root-classname';
 import { useCV } from 'components/cv';
 import { ScrollDirection, useScrollDirection } from 'hooks';
 import { AsideComponent } from './aside';
@@ -13,20 +12,18 @@ export function CVDocument(): ReactElement {
   const { body } = useCV();
 
   return (
-    <RootClassName className={styles.root}>
-      <div className={styles.wrapper}>
-        <main className={styles.content}>
-          <AsideComponent asideClassName={styles.aside} />
-          <div className={styles.main}>
-            {body.map((content, index) => (
-              // eslint-disable-next-line react/no-array-index-key
-              <MainBlock key={index} content={content} />
-            ))}
-          </div>
-        </main>
-        <Controls />
-      </div>
-    </RootClassName>
+    <div className={styles.wrapper}>
+      <main className={styles.content}>
+        <AsideComponent asideClassName={styles.aside} />
+        <div className={styles.main}>
+          {body.map((content, index) => (
+            // eslint-disable-next-line react/no-array-index-key
+            <MainBlock key={index} content={content} />
+          ))}
+        </div>
+      </main>
+      <Controls />
+    </div>
   );
 }
 

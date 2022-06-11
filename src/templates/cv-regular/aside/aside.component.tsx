@@ -4,10 +4,11 @@ import { PropsOf, WithAdditionalClassNameProps } from 'types';
 import { Typography } from 'components/typography';
 import { GatsbyAssetImage } from 'components/gatsby-asset-image';
 import { assertNever } from 'utils';
-import LocationIcon from 'assets/icons/location.inline.svg';
-import MailIcon from 'assets/icons/mail.inline.svg';
-import PhoneIcon from 'assets/icons/phone.inline.svg';
-import BrowseIcon from 'assets/icons/browse.inline.svg';
+import { InlineSVG } from 'components/inline-svg';
+import locationIcon from 'assets/icons/location.inline.svg';
+import mailIcon from 'assets/icons/mail.inline.svg';
+import phoneIcon from 'assets/icons/phone.inline.svg';
+import browseIcon from 'assets/icons/browse.inline.svg';
 import { CV, useCV } from 'components/cv';
 import { AsideBlock } from './block.component';
 import { AsideList } from './list.component';
@@ -210,13 +211,13 @@ function ContactIcon({
   PropsOf<'svg'>): ReactElement {
   switch (type) {
     case CV.ContactType.Email:
-      return <MailIcon {...props} />;
+      return <InlineSVG source={mailIcon} {...props} />;
     case CV.ContactType.Phone:
-      return <PhoneIcon {...props} />;
+      return <InlineSVG source={phoneIcon} {...props} />;
     case CV.ContactType.Location:
-      return <LocationIcon {...props} />;
+      return <InlineSVG source={locationIcon} {...props} />;
     case CV.ContactType.Site:
-      return <BrowseIcon {...props} />;
+      return <InlineSVG source={browseIcon} {...props} />;
     default:
       return assertNever(type);
   }

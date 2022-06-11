@@ -1,6 +1,7 @@
 import { ReactElement } from 'react';
-import { getLoadScript } from 'components/theme';
 import { RenderBodyArgs } from 'gatsby';
+import { getLoadScript } from 'components/theme';
+import { SPRITES_NODE_ID } from 'components/inline-svg';
 
 type HTMLProps = Readonly<{
   htmlAttributes: Parameters<RenderBodyArgs['setHtmlAttributes']>[0];
@@ -33,6 +34,9 @@ export default function HTML({
       </head>
       <body {...bodyAttributes}>
         <script dangerouslySetInnerHTML={{ __html: getLoadScript() }} />
+        {process.env['NODE_ENV'] === 'development' && (
+          <div id={SPRITES_NODE_ID} />
+        )}
         {preBodyComponents}
         <div
           key="body"

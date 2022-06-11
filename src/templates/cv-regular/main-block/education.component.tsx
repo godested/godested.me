@@ -1,7 +1,8 @@
 import { ReactElement, useMemo } from 'react';
 import { Typography } from 'components/typography';
 import { isSomething } from 'utils';
-import AttachmentIcon from 'assets/icons/attachment.inline.svg';
+import { InlineSVG } from 'components/inline-svg';
+import attachmentIcon from 'assets/icons/attachment.inline.svg';
 import { CV } from 'components/cv';
 import { CompanyIcon } from './company-icon.component';
 import { formatDates } from './dates';
@@ -69,7 +70,8 @@ export function Education({
               nowrap
             >
               <span className={styles.educationCertificateIconContainer}>
-                <AttachmentIcon
+                <InlineSVG
+                  source={attachmentIcon}
                   role="img"
                   className={styles.educationCertificateIcon}
                 />
