@@ -23,10 +23,10 @@ export function formatDuration(
   dateB = new Date(Date.now()),
 ): string {
   const difference = Math.abs(dateA.getTime() - dateB.getTime());
-  const mothsDifference = Math.floor(difference / 1000 / 60 / 60 / 24 / 30);
+  const mothsDifference = Math.floor(difference / 1000 / 60 / 60 / 24 / 30) + 1;
 
   const years = Math.floor(mothsDifference / 12);
-  const months = (mothsDifference % 12) + 1;
+  const months = (mothsDifference % 12);
 
   return [
     years > 0 ? `${years} yr${years > 1 ? 's' : ''}` : undefined,
