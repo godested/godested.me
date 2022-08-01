@@ -29,8 +29,8 @@ export function formatDuration(
   const months = mothsDifference % 12;
 
   return [
-    years > 0 ? `${years} yr${years > 1 ? 's' : ''}` : undefined,
-    `${months} ${months > 1 ? 'mos' : 'mon'}`,
+    years > 0 ? `${years} ${years > 1 ? 'yrs' : 'yr'}` : undefined,
+    months > 0 ? `${months} ${months > 1 ? 'mos' : 'mon'}` : undefined,
   ]
     .filter(isSomething)
     .join(' ');
